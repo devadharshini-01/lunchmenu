@@ -1,0 +1,31 @@
+
+.card
+{
+ width:520px ;
+
+}
+.border
+{
+    border-radius:4px; 
+    outline:none; 
+}
+.font
+{
+    font-style: italic;
+  
+}
+.size
+{
+    font-size:12px ;
+}
+.btn
+{
+    background-color: #4cb050 ;
+}
+.text
+{
+    width:300px ;
+}
+
+
+
