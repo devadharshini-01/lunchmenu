@@ -1,31 +1,61 @@
+.card {
+  width: 520px;
+ 
+}
+.border {
+  border-radius: 4px;
+  outline: none;
+}
+.font {
+  font-style: italic;
+  
+  
+}
+.size {
+  font-size: 12px;
+  
+}
 
+.text {
+  width: 300px;
+}
+.homebanner {
+    background-image: url("./images/brooke-lark-08bOYnH_r_E-unsplash.jpg");
+    height: 100vh;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
 .card
 {
- width:520px ;
-
-}
-.border
-{
-    border-radius:4px; 
-    outline:none; 
+  background-color: #f0005f !important;
+  width: 380px !important;
+  height: 380px !important;
+  
 }
 .font
 {
-    font-style: italic;
-  
+ font-size: 25px !important;
+ text-align: center;
+ margin-top:10px !important;
+ margin-left: 20px !important;
+ 
 }
 .size
 {
-    font-size:12px ;
+  font-size: 25px !important;
+  text-align: center;
 }
-.btn
+.logo
 {
-    background-color: #4cb050 ;
+  background-image:url("./images/d76ccc67610489.5b3f7fefee944-removebg-preview.png") ;
 }
-.text
+.color
 {
-    width:300px ;
+   color: #ff4b92 !important;
 }
-
-
-
+.align
+{
+  margin-top:90px !important ;
+  font-size:35px !important;
+}
