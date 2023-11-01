@@ -6,17 +6,15 @@
   border-radius: 4px;
   outline: none;
 }
-.font {
+.font 
+{
   font-style: italic;
-  
-  
 }
-.size {
-  font-size: 12px;
-  
-}
-
-.text {
+.size 
+{
+  font-size: 12px;}
+.text 
+{
   width: 300px;
 }
 .homebanner {
@@ -26,36 +24,105 @@
     background-size: cover;
     background-repeat: no-repeat;
 }
-.card
-{
-  background-color: #f0005f !important;
-  width: 380px !important;
-  height: 380px !important;
-  
-}
+
 .font
 {
- font-size: 25px !important;
- text-align: center;
- margin-top:10px !important;
- margin-left: 20px !important;
- 
+  background-color: #f0005f !important;
+  font-size: 25px !important;
+    
+     width: 439px; 
+    height:363px !important;   
 }
 .size
 {
   font-size: 25px !important;
   text-align: center;
 }
-.logo
-{
-  background-image:url("./images/d76ccc67610489.5b3f7fefee944-removebg-preview.png") ;
-}
+
 .color
 {
-   color: #ff4b92 !important;
-}
+  font-size: 15px !important;
+  color:  #8a9198 !important;
+
+ 
+ }
 .align
 {
-  margin-top:90px !important ;
-  font-size:35px !important;
+ font-size:30px !important;
+  font-weight: bolder !important;
+  font-style: normal !important;
+}
+.text
+{
+  font-size:13px !important ;
+   margin-top: 90px !important; 
+  font-style: normal;
+  }
+.exam
+{
+  font-size:13px !important ;
+   margin-top: 90px !important; 
+   cursor: pointer !important;
+  font-style: normal;
+  word-spacing: 12px !important;
+  margin-right: 30px !important;
+}
+.top
+{
+  color: #ff4b92 !important;
+ font-weight:bolder !important;
+ font-size: 17px !important;
+ font-weight: bolder !important;
+}
+.ug
+{
+  color: #ced9de !important;
+  width: 290px !important;
+  border: none !important;
+}
+.btn
+{
+  width: 120px !important;
+  background-color: #406576 !important;
+  margin-top: 35px !important;
+}
+.email
+{
+  font-size:15px !important ;
+}
+.image
+{
+  color:#ff9fc2 !important ;
+  font-style: normal !important;
+  margin-right: 90px !important;
+ 
+}
+.pg
+{
+  width: 150px !important; 
+}
+.pink
+{
+  color:#ffaacc !important ;
+}
+.cs
+{
+  height: 90px;
+}
+.line
+{
+  color: #ff5a9e !important;
+  border-radius: 12px !important;
+}
+.end
+{
+  display:flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+.start
+{
+  display:flex !important;
+  justify-content: center !important;
+  align-items: center !important;
 }
