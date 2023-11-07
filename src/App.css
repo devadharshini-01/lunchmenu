@@ -18,20 +18,21 @@
   width: 300px;
 }
 .homebanner {
-    background-image: url("./images/brooke-lark-08bOYnH_r_E-unsplash.jpg");
+    background-image: url("./components/image/background.jpg");
     height: 100vh;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
+    width: 100%;
+    /* overflow: hidden; */
 }
 
 .font
 {
   background-color: #f0005f !important;
   font-size: 25px !important;
-    
-     width: 439px; 
-    height:363px !important;   
+    /* width: 439px; 
+    height:363px !important;    */
 }
 .size
 {
@@ -55,13 +56,14 @@
 .text
 {
   font-size:13px !important ;
-   margin-top: 90px !important; 
+   /* margin-top: 90px !important;   */
   font-style: normal;
+  cursor: pointer !important;
   }
 .exam
 {
   font-size:13px !important ;
-   margin-top: 90px !important; 
+    /* margin-top: 90px !important;  */
    cursor: pointer !important;
   font-style: normal;
   word-spacing: 12px !important;
@@ -84,22 +86,27 @@
 {
   width: 120px !important;
   background-color: #406576 !important;
-  margin-top: 35px !important;
+   margin-top: 35px !important; 
+  
 }
-.email
+.user
 {
   font-size:15px !important ;
-}
+  border:none !important;
+  outline:none !important;
+  /* cursor: pointer !important; */
+
+ }
 .image
 {
   color:#ff9fc2 !important ;
   font-style: normal !important;
-  margin-right: 90px !important;
+  /* margin-right: 90px !important; */
  
 }
 .pg
 {
-  width: 150px !important; 
+  width: 100px !important; 
 }
 .pink
 {
@@ -125,4 +132,62 @@
   display:flex !important;
   justify-content: center !important;
   align-items: center !important;
+}
+.user
+{
+  color: #c3d0d7 !important;
+  padding:3px;
+  border-radius:2px;
+  font-size:14px !important;
+  ;
+}
+.top
+{
+ color:  #ff5a9e !important;
+}
+.task
+{
+  color:#c3d0d7 !important;
+  font-size:14px !important;
+  
+}
+input:focus{
+  box-shadow: none !important;
+}
+.red{
+ background-color:#f0005f !important;
+}
+.git
+{
+  width:70px !important;
+}
+.width
+{
+  width:50px !important;
+}
+.day
+{
+ background-color: #a8b0b4 !important;
+ height: 600px!important;
+ }
+ .url
+ {
+  text-decoration-line: none !important ;
+  font-weight:bold !important ;
+  color:  #406576 !important;
+ 
+
+ }
+.mix
+{
+  width: 500px !important;
+}
+.all
+{
+  color: #f0005f !important;
+  font-size:15px !important;
+}
+.idea
+{
+  font-size:15px !important;
 }
