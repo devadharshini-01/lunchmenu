@@ -24,7 +24,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     width: 100%;
-    /* overflow: hidden; */
+     overflow: hidden; 
 }
 
 .font
@@ -85,7 +85,8 @@
 .btn
 {
   width: 120px !important;
-  background-color: #406576 !important;
+  color: #6560f0!important ;
+  border-color: #6560f0 !important;
    margin-top: 35px !important; 
   
 }
@@ -155,7 +156,7 @@ input:focus{
   box-shadow: none !important;
 }
 .red{
- background-color:#f0005f !important;
+ background-color:#ff006b  !important;
 }
 .git
 {
@@ -167,15 +168,13 @@ input:focus{
 }
 .day
 {
- background-color: #a8b0b4 !important;
+ background-color:rgb(252, 179, 197) !important;
  height: 600px!important;
  }
  .url
  {
   text-decoration-line: none !important ;
-  font-weight:bold !important ;
-  color:  #406576 !important;
- 
+ font-size:13px !important;
 
  }
 .mix
@@ -184,10 +183,55 @@ input:focus{
 }
 .all
 {
-  color: #f0005f !important;
   font-size:15px !important;
+  color: #99a3c5 !important;
 }
+
+  
+
+
+ 
 .idea
 {
   font-size:15px !important;
 }
+a:hover {
+  background-color:#f2f2f8 !important;
+  border-radius:5px !important;
+ 
+ }
+.data
+{
+  color: #99a3c5 !important;
+
+  
+}
+.sd
+{
+  text-decoration-line: none !important ;
+ font-size:20px !important;
+ 
+
+}
+.sd
+{
+  color: #8a9198;
+}
+.message
+{
+  text-decoration-line: none !important ;
+  font-size: 13PX !important;
+  font-weight: bold !important;
+}
+.your
+{
+  border-bottom: 1px dashed green !important;
+}
+.high
+{
+  height: 5px !important;
+}
+/* .edit
+{
+  background-color: #f8f8fb !important;
+} */
