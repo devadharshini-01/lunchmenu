@@ -6,16 +6,17 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Breakfast from "./components/breakfast/Breakfast";
 import Dinner from "./components/dinner/Dinner";
 import Lunch from "./components/lunch/Lunch";
-import Sidebor from "./components/breakfast/Sidebor";
+import Sidebor from "./components/breakfast/Sidebar";
 import Header from "./components/breakfast/Header";
-import Content from "./components/breakfast/Content";
+// import Content from "./components/breakfast/Content";
 
 const App = () => {
   return (
     <>
-      {/* <Foods /> */}
+       <Foods />  
+    
      
-       {/* <BrowserRouter>
+        {/* <BrowserRouter>
       <Routes>
         <Route path="login"element={<Login/>}/>
         <Route path="breakfast" element={<Breakfast/>}/>
@@ -23,11 +24,11 @@ const App = () => {
         <Route path="dinner" element={<Dinner/>}/>
 
       </Routes>
-      </BrowserRouter>  */}
+      </BrowserRouter>   */}
             
-            {/* <Header/>   
-           <Sidebor />   */}
-           <Breakfast/>
+             
+        
+           {/* <Breakfast/> */}
          
 
            
