@@ -157,22 +157,13 @@ input:focus {
   font-size: 15px !important;
 }
 a:hover {
-  background-color:#fdf0f5!important;
+  color: #f0005f !important;
+  background-color:#e4edf2!important;
   border-radius: 5px !important;
-
-
-  }
-/* .dta
-{
-  overflow: hidden;
-
-  
-} */
-
-
+ }
 .edit {
-  background-color:#fdf0f5  !important;
-  height: 100vh !important;
+  background-color:#e4edf2  !important;
+  height: 100% !important;
   box-shadow: black !important;
 
 }
@@ -182,23 +173,29 @@ a:hover {
 }
 .message
 {
-  background-color:  #f776aa  !important;
-  height: 100vh !important;
-}
-.shadow
-{
-  height: 100vh !important;
+  background-color: #ff3285  !important;
+  height: 100% !important;
 }
 .box
 {
   border-radius:5px !important;
   width:100% !important;
-}
+ outline: 0 none !important;
+ }
 .male
 {
   font-size: 15px !important;
 }
-.female
+
+.logo
 {
-  border-radius:5px !important;
+  width: 80px !important;
+}
+.divider
+{
+  --bs-breadcrumb-divider: '>';
+}
+.bs
+{
+  color: #99a3cc !important;
 }

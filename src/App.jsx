@@ -13,30 +13,20 @@ import Header from "./components/breakfast/Header";
 const App = () => {
   return (
     <>
-       <Foods />  
+      {/* <Foods />   */}
+
+      <BrowserRouter>
+        <Routes>
+          <Route path="login" element={<Login />} />
+          <Route path="breakfast" element={<Breakfast />} />
+          <Route path="lunch" element={<Lunch />} />
+          <Route path="dinner" element={<Dinner />} />
+        </Routes>
+      </BrowserRouter>
+
     
-     
-        {/* <BrowserRouter>
-      <Routes>
-        <Route path="login"element={<Login/>}/>
-        <Route path="breakfast" element={<Breakfast/>}/>
-        <Route path="lunch" element={<Lunch/>}/>
-        <Route path="dinner" element={<Dinner/>}/>
-
-      </Routes>
-      </BrowserRouter>   */}
-            
-             
-        
-           {/* <Breakfast/> */}
-         
-
-           
-          
-         
     </>
   );
 };
 
 export default App;
-
