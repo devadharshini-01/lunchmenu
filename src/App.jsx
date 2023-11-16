@@ -8,6 +8,7 @@ import Dinner from "./components/dinner/Dinner";
 import Lunch from "./components/lunch/Lunch";
 import Sidebor from "./components/breakfast/Sidebar";
 import Header from "./components/breakfast/Header";
+import AddBreakfast from "./components/breakfast/AddBreakfast";
 // import Content from "./components/breakfast/Content";
 
 const App = () => {
@@ -20,10 +21,11 @@ const App = () => {
           <Route path="login" element={<Login />} />
           <Route path="breakfast" element={<Breakfast />} />
           <Route path="lunch" element={<Lunch />} />
+          <Route path="Addbreakfast" element={<AddBreakfast/>}/>
           <Route path="dinner" element={<Dinner />} />
         </Routes>
       </BrowserRouter>
-
+     
     
     </>
   );

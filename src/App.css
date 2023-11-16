@@ -70,7 +70,7 @@
   border: none !important;
 }
 .btn {
-  background-color:#406576 !important;
+  background-color:  #406576  !important;
   width: 120px !important;
 
    margin-top: 35px !important; 
@@ -116,9 +116,10 @@
   border-radius: 2px;
   font-size: 14px !important;
 }
-/* .top {
-  color: #ff5a9e !important;
-} */
+  .top 
+ {
+  background-color: #ff4b92!important;
+} 
 /* .task {
   color: #c3d0d7 !important;
   font-size: 14px !important;
@@ -128,7 +129,7 @@ input:focus {
 }
 .red {
   background-color: #ff006b !important;
-  /* height: 100vh; */
+  height: 100vh;
 
 }
 /* .git {
@@ -145,9 +146,7 @@ input:focus {
   text-decoration-line: none !important ;
   font-size: 16px !important;
 }
-/* .mix {
-  width: 500px !important;
-} */
+
 .all {
   font-size: 14px !important;
   color: #99a3c5 !important;
@@ -189,13 +188,33 @@ a:hover {
 
 .logo
 {
-  width: 80px !important;
+  width: 100px !important;
 }
-.divider
-{
-  --bs-breadcrumb-divider: '>';
-}
+
 .bs
 {
   color: #99a3cc !important;
+}
+.divider
+{
+  --bs-breadcrumb-divider: '>' !important;
+  font-size: 22px !important;
+}
+.big
+{
+  font-size: 24px !important;
+}
+.mix
+{
+  background-color: #f2f1f9 !important;
+  height:100vh !important;
+}
+.day
+{
+  font-size: 15px !important;
+  color: #99a3c5 !important;
+}
+.pink
+{
+ background-color:  #f0005f !important;
 }
