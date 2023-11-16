@@ -116,10 +116,10 @@
   border-radius: 2px;
   font-size: 14px !important;
 }
-  .top 
+  /* .top 
  {
   background-color: #ff4b92!important;
-} 
+}  */
 /* .task {
   color: #c3d0d7 !important;
   font-size: 14px !important;
@@ -188,7 +188,7 @@ a:hover {
 
 .logo
 {
-  width: 100px !important;
+  width: 90px !important;
 }
 
 .bs
@@ -217,4 +217,8 @@ a:hover {
 .pink
 {
  background-color:  #f0005f !important;
+}
+.commit
+{
+  background-color:#ff4b92!important;
 }

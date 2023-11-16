@@ -24,8 +24,8 @@ const Breakfast = () => {
               </div>
               <div className="col-3">
                 <div className=" d-flex justify-content-end ">
-                  <button
-                    className="btn top text-white mb-3 "
+                  <button 
+                    className="btn commit text-white mb-3 " onClick={()=>navigate("/Addbreakfast")}
                    
                     
                     type="button"

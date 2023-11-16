@@ -3,22 +3,42 @@ import Lunchlist from "./Lunchlist";
 import { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 
-const Datalist = (props) => {
-  const handleName = (event) => {
-    props.setName(event.target.value);
-  };
-  const handlePrice = (event) => {
-    props.setPrice(event.target.value);
+const Datalist = () => {
+const [datalist, setDatalist] = useState({
+  
+  name:"",
+ phoneNumber:"",
+ dateofbirth:"",
+ gender:"",
+lunchliat:"",
+
+mealsproduct:"",
+curdriceproduct:"",
+vegriceproduct:"",
+vegnoodles:"",
+
+mealsquantity:"",
+curdricequantity:"",
+vegricequantity:"",
+vegnoodlesquantity:"",
+
+ street:"",
+ city:"",
+ state:"",
+ zip:"",
+
+});
+ 
+
+
+  const [active, setActive] = useState();
+  
+  const navigate = useNavigate();
+  const handledatalist = (e) => {
+    setDatalist({ ...datalist, [e.target.name]: e.target.value });
   };
 
-  const handleIssue = (event) => {
-    props.setIssue(event.target.value);
-  };
-  const handleFeedback = (event) => {
-    props.setFeedback(event.target.value);
-  };
-  const [active, setActive] = useState();
-  const navigate = useNavigate();
+  
   return (
     <div className="row ">
       
@@ -33,15 +53,17 @@ const Datalist = (props) => {
           <h5 className="bs">Personal Details</h5>
           <div className="col-3">
             <label>Name :</label>
-            <input className=" form-control box" />
+            <input className=" form-control box" name="name" value={datalist.name}
+            onChange={(e)=>handledatalist(e)} />
+           
           </div>
           <div className="col-3">
             <label>Phone Number :</label>
-            <input type="number" className=" form-control box" />
+            <input type="number" className=" form-control box" name="phonenumber" value={datalist.phoneNumber} onChange={(e)=>handledatalist(e)} />
           </div>
           <div className="col-3">
             <label>Date of Birth :</label>
-            <input type="date" className="form-control" />
+            <input type="date" className="form-control" name="dateofbirth" value={datalist.dateofbirth} onChange={(e)=>handledatalist(e)}/>
           </div>
 
           <div className="row">
@@ -52,8 +74,9 @@ const Datalist = (props) => {
                   <input
                     className="form-check-input "
                     type="radio"
-                    name="flexRadioDefault"
-                    id="flexRadioDefault1"
+                  
+                    id="male"
+                    name="gender" value="male"onClick={(e)=>handledatalist(e)}
                   />
                   <label
                     className="form-check-label male "
@@ -68,8 +91,10 @@ const Datalist = (props) => {
                   <input
                     className="form-check-input "
                     type="radio"
-                    name="flexRadioDefault"
-                    id="flexRadioDefault2"
+                  
+                    id="female"
+                    name="gender" value="female"   
+                    onClick={(e)=>handledatalist(e)}
                   />
                   <label className="form-check-label" for="flexRadioDefault2">
                     Female
@@ -81,8 +106,10 @@ const Datalist = (props) => {
                   <input
                     className="form-check-input"
                     type="radio"
-                    name="flexRadioDefault"
-                    id="flexRadioDefault2"
+                   
+                    id="others"
+                   name="gender" value="others"
+                    onClick={(e)=>handledatalist(e)}
                   />
                   <label className="form-check-label" for="flexRadioDefault2">
                     Others
@@ -99,10 +126,10 @@ const Datalist = (props) => {
               <input
                 className="form-check-input"
                 type="radio"
-                name="price"
+               
                 id="veg"
-                value={"veg"}
-                onChange={(e) => handlePrice(e)}
+              name="lunchlist" value="veg"
+                 onChange={(e) => handledatalist(e)}
               />
               <label className="form-check-label  " for="price">
                 Veg 
@@ -114,10 +141,11 @@ const Datalist = (props) => {
               <input
                 className="form-check-input"
                 type="radio"
-                name="price"
+             
                 id="Nonveg"
-                value={"Non-veg"}
-                onChange={(e) => handlePrice(e)}
+               
+                 name="lunchlist" value="non-veg"
+                 onChange={(e) => handledatalist(e)}
               />
               <label className="form-check-label  " for="price">
                 Non veg 
@@ -126,7 +154,7 @@ const Datalist = (props) => {
           </div>
         </div>
 
-        <table className="table mt-3 p-4">
+        {Lunchlist==="veg"? <table className="table mt-3 p-4">
           <thead>
             <tr>
               <th scope="col" className="bs">
@@ -147,11 +175,13 @@ const Datalist = (props) => {
             <tr>
               <th scope="row">1</th>
               <td>
-                <div className="form-check">
+               <div className="form-check">
                   <input
                     className="form-check-input"
                     type="checkbox"
-                    id="flexCheckDefault"
+                    id="meals"
+                   name="meals product" value={datalist.mealsproduct}
+                    onClick={(e)=>handledatalist(e)}
                   />
                   <label className="form-check-label" for="flexCheckDefault">
                     Meals
@@ -159,7 +189,7 @@ const Datalist = (props) => {
                 </div>
               </td>
               <td>
-                <input className="form-control w-25" />
+                <input className="form-control w-25" type="number" name="mealsquantity" value={datalist.mealsquantity}  onChange={(e)=>handledatalist(e)} />
               </td>
               <td>120</td>
             </tr>
@@ -170,7 +200,9 @@ const Datalist = (props) => {
                   <input
                     className="form-check-input"
                     type="checkbox"
-                    id="flexCheckDefault"
+                    id="curd rice"
+                      name="curdriceproduct"      value={datalist.curdriceproduct}
+                    onClick={(e)=>handledatalist(e)}
                   />
                   <label className="form-check-label" for="flexCheckDefault">
                     Curd rice
@@ -178,7 +210,8 @@ const Datalist = (props) => {
                 </div>
               </td>
               <td>
-                <input className="form-control w-25" />
+                <input className="form-control w-25" type="number"
+                name="curdricequantity" value={datalist.curdricequantity} onChange={(e)=>handledatalist(e)}  />
               </td>
               <td>130</td>
             </tr>
@@ -189,7 +222,9 @@ const Datalist = (props) => {
                   <input
                     className="form-check-input"
                     type="checkbox"
-                    id="flexCheckDefault"
+                    id="veg rice"
+                     name="vegriceproduct"           value={datalist.vegriceproduct}
+                    onClick={(e)=>handledatalist(e)}
                   />
                   <label className="form-check-label" for="flexCheckDefault">
                     Veg rice
@@ -197,7 +232,7 @@ const Datalist = (props) => {
                 </div>
               </td>
               <td>
-                <input className="form-control w-25" />
+              <input className="form-control w-25" type="number" name="vegricequantity" value={datalist.vegricequantity} onChange={(e)=>handledatalist(e)} />
               </td>
               <td>140</td>
             </tr>
@@ -209,7 +244,9 @@ const Datalist = (props) => {
                   <input
                     className="form-check-input"
                     type="checkbox"
-                    id="flexCheckDefault"
+                    id="veg noodles"
+                    name="vegnoodlesproduct"       value={datalist.vegnoodlesproduct}
+                    onClick={(e)=>handledatalist(e)}
                   />
                   <label className="form-check-label" for="flexCheckDefault">
                     Veg noodles
@@ -217,34 +254,140 @@ const Datalist = (props) => {
                 </div>
               </td>
               <td>
-                <input className="form-control w-25" />
+                <input className="form-control w-25" type="number" name="vegnoodlesquantity" value={datalist.vegnoodlesquantity} onChange={(e)=>handledatalist(e)} />
               </td>
               <td>190</td>
             </tr>
           </tbody>
-        </table>
+        </table> :Lunchlist==="non-veg"?
+         <table className="table mt-3 p-4">
+          <thead>
+            <tr>
+              <th scope="col" className="bs">
+                S.no
+              </th>
+              <th scope="col" className="bs">
+                Product
+              </th>
+              <th scope="col" className="bs">
+                Quantity
+              </th>
+              <th scope="col" className="bs">
+                Price
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>
+               <div className="form-check">
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    id="meals"
+                   name="meals product" value={datalist.mealsproduct}
+                    onClick={(e)=>handledatalist(e)}
+                  />
+                  <label className="form-check-label" for="flexCheckDefault">
+                    Briyani
+                  </label>
+                </div>
+              </td>
+              <td>
+                <input className="form-control w-25" type="number" name="mealsquantity" value={datalist.mealsquantity}  onChange={(e)=>handledatalist(e)} />
+              </td>
+              <td>120</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>
+                <div className="form-check">
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    id="curd rice"
+                      name="curdriceproduct"      value={datalist.curdriceproduct}
+                    onClick={(e)=>handledatalist(e)}
+                  />
+                  <label className="form-check-label" for="flexCheckDefault">
+                    Chicken rice
+                  </label>
+                </div>
+              </td>
+              <td>
+                <input className="form-control w-25" type="number"
+                name="curdricequantity" value={datalist.curdricequantity} onChange={(e)=>handledatalist(e)}  />
+              </td>
+              <td>130</td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td>
+                <div className="form-check">
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    id="veg rice"
+                     name="vegriceproduct"           value={datalist.vegriceproduct}
+                    onClick={(e)=>handledatalist(e)}
+                  />
+                  <label className="form-check-label" for="flexCheckDefault">
+                    Chicken noodles
+                  </label>
+                </div>
+              </td>
+              <td>
+              <input className="form-control w-25" type="number" name="vegricequantity" value={datalist.vegricequantity} onChange={(e)=>handledatalist(e)} />
+              </td>
+              <td>140</td>
+            </tr>
+            <tr>
+              <th scope="row">4</th>
+
+              <td>
+                <div className="form-check">
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    id="veg noodles"
+                    name="vegnoodlesproduct"       value={datalist.vegnoodlesproduct}
+                    onClick={(e)=>handledatalist(e)}
+                  />
+                  <label className="form-check-label" for="flexCheckDefault">
+                   Chicken 65
+                  </label>
+                </div>
+              </td>
+              <td>
+                <input className="form-control w-25" type="number" name="vegnoodlesquantity" value={datalist.vegnoodlesquantity} onChange={(e)=>handledatalist(e)} />
+              </td>
+              <td>190</td>
+            </tr>
+          </tbody>
+        </table>:<></>}
      
 
 <h5 className="mt-2 bs">Address Details</h5>
       
         
       <label>Street :</label>
-      <textarea className=" form-control p-0 " />
+      <textarea className=" form-control p-0 " name="street" value={datalist.street}  onChange={(e)=>handledatalist(e)} />
   
     <div className="row">
     <div className="col-3 mt-3">
       <label>City :</label>
-      <input className=" form-control  " />
+      <input className=" form-control " name="city" value={datalist.city} onChange={(e)=>handledatalist(e)} />
       <div />
     </div>
     <div className="col-3 mt-3">
       <label>State :</label>
-      <input className="form-control  " />
+      <input className="form-control " name="state" value={datalist.state}  onChange={(e)=>handledatalist(e)} />
     </div>
   
     <div className="col-3 mt-3">
       <label >Zip :</label>
-      <input className=" form-control  " />
+      <input className=" form-control " name="zip" value={datalist.zip}  onChange={(e)=>handledatalist(e)} />
     </div>
     </div> 
   <div className="d-grid gap-2 d-md-flex justify-content-end">
