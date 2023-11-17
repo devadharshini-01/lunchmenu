@@ -9,7 +9,7 @@ const Sidebar = (props) => {
      <img src={logo} className=" d-flex justify-content-center logo mx-auto" ></img>
  
         <div className="list-group  ">
-          <a href="#" className={`${props.active==="breakfast"?"bg-white rounded-3 text-danger":"text-white"} p-2 url a:hover mt-2 `}  onClick={()=>props.setActive("breakfast")}><Icon className="me-2" icon="material-symbols-light:no-meals-rounded" width="20" height="20" />
+          <a href="#" className={`${props.active==="breakfast"?"bg-white rounded-3  text-danger":"text-white"} p-2 url a:hover mt-2 `}  onClick={()=>props.setActive("breakfast")}><Icon className="me-2" icon="material-symbols-light:no-meals-rounded" width="20" height="20" />
         
             Breakfast
           </a>

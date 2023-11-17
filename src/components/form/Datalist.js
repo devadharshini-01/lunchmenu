@@ -10,7 +10,7 @@ const [datalist, setDatalist] = useState({
  phoneNumber:"",
  dateofbirth:"",
  gender:"",
-lunchliat:"",
+ lunchlist:"",
 
 mealsproduct:"",
 curdriceproduct:"",
@@ -37,7 +37,7 @@ vegnoodlesquantity:"",
   const handledatalist = (e) => {
     setDatalist({ ...datalist, [e.target.name]: e.target.value });
   };
-
+console.log(datalist);
   
   return (
     <div className="row ">
@@ -126,10 +126,10 @@ vegnoodlesquantity:"",
               <input
                 className="form-check-input"
                 type="radio"
-               
+                name="lunchlist"
                 id="veg"
-              name="lunchlist" value="veg"
-                 onChange={(e) => handledatalist(e)}
+                value="veg"
+                 onClick={(e) => handledatalist(e)}
               />
               <label className="form-check-label  " for="price">
                 Veg 
@@ -141,11 +141,10 @@ vegnoodlesquantity:"",
               <input
                 className="form-check-input"
                 type="radio"
-             
+                name="lunchlist"
                 id="Nonveg"
-               
-                 name="lunchlist" value="non-veg"
-                 onChange={(e) => handledatalist(e)}
+                value="Non-veg"
+                 onClick={(e) => handledatalist(e)}
               />
               <label className="form-check-label  " for="price">
                 Non veg 
@@ -153,8 +152,8 @@ vegnoodlesquantity:"",
             </div>
           </div>
         </div>
-
-        {Lunchlist==="veg"? <table className="table mt-3 p-4">
+       
+      {datalist.lunchlist==="veg"? <table className="table mt-3 p-4">
           <thead>
             <tr>
               <th scope="col" className="bs">
@@ -175,33 +174,36 @@ vegnoodlesquantity:"",
             <tr>
               <th scope="row">1</th>
               <td>
-               <div className="form-check">
+              { <div className="form-check">
                   <input
                     className="form-check-input"
                     type="checkbox"
                     id="meals"
-                   name="meals product" value={datalist.mealsproduct}
+                   name="mealsproduct" value={"datalist.mealsproduct"}
                     onClick={(e)=>handledatalist(e)}
                   />
-                  <label className="form-check-label" for="flexCheckDefault">
+                <label className="form-check-label" for="flexCheckDefault">
                     Meals
                   </label>
                 </div>
-              </td>
+}
+              </td> 
+              
               <td>
                 <input className="form-control w-25" type="number" name="mealsquantity" value={datalist.mealsquantity}  onChange={(e)=>handledatalist(e)} />
+                   
               </td>
               <td>120</td>
             </tr>
             <tr>
               <th scope="row">2</th>
               <td>
-                <div className="form-check">
+            <div className="form-check">
                   <input
                     className="form-check-input"
                     type="checkbox"
                     id="curd rice"
-                      name="curdriceproduct"      value={datalist.curdriceproduct}
+                      name="curdriceproduct"      value={"datalist.curdriceproduct"}
                     onClick={(e)=>handledatalist(e)}
                   />
                   <label className="form-check-label" for="flexCheckDefault">
@@ -210,6 +212,7 @@ vegnoodlesquantity:"",
                 </div>
               </td>
               <td>
+              
                 <input className="form-control w-25" type="number"
                 name="curdricequantity" value={datalist.curdricequantity} onChange={(e)=>handledatalist(e)}  />
               </td>
@@ -218,12 +221,12 @@ vegnoodlesquantity:"",
             <tr>
               <th scope="row">3</th>
               <td>
-                <div className="form-check">
+               <div className="form-check">
                   <input
                     className="form-check-input"
                     type="checkbox"
                     id="veg rice"
-                     name="vegriceproduct"           value={datalist.vegriceproduct}
+                     name="vegriceproduct"           value={"datalist.vegriceproduct"}
                     onClick={(e)=>handledatalist(e)}
                   />
                   <label className="form-check-label" for="flexCheckDefault">
@@ -245,7 +248,7 @@ vegnoodlesquantity:"",
                     className="form-check-input"
                     type="checkbox"
                     id="veg noodles"
-                    name="vegnoodlesproduct"       value={datalist.vegnoodlesproduct}
+                    name="vegnoodlesproduct"       value={"datalist.vegnoodlesproduct"}
                     onClick={(e)=>handledatalist(e)}
                   />
                   <label className="form-check-label" for="flexCheckDefault">
@@ -259,7 +262,7 @@ vegnoodlesquantity:"",
               <td>190</td>
             </tr>
           </tbody>
-        </table> :Lunchlist==="non-veg"?
+        </table> :datalist.lunchlist==="Non-veg"?
          <table className="table mt-3 p-4">
           <thead>
             <tr>
@@ -286,7 +289,7 @@ vegnoodlesquantity:"",
                     className="form-check-input"
                     type="checkbox"
                     id="meals"
-                   name="meals product" value={datalist.mealsproduct}
+                   name="meals product" value={"datalist.mealsproduct"}
                     onClick={(e)=>handledatalist(e)}
                   />
                   <label className="form-check-label" for="flexCheckDefault">
@@ -307,7 +310,7 @@ vegnoodlesquantity:"",
                     className="form-check-input"
                     type="checkbox"
                     id="curd rice"
-                      name="curdriceproduct"      value={datalist.curdriceproduct}
+                      name="curdriceproduct"      value={"datalist.curdriceproduct"}
                     onClick={(e)=>handledatalist(e)}
                   />
                   <label className="form-check-label" for="flexCheckDefault">
@@ -329,7 +332,7 @@ vegnoodlesquantity:"",
                     className="form-check-input"
                     type="checkbox"
                     id="veg rice"
-                     name="vegriceproduct"           value={datalist.vegriceproduct}
+                     name="vegriceproduct"           value={"datalist.vegriceproduc"}
                     onClick={(e)=>handledatalist(e)}
                   />
                   <label className="form-check-label" for="flexCheckDefault">
@@ -351,7 +354,7 @@ vegnoodlesquantity:"",
                     className="form-check-input"
                     type="checkbox"
                     id="veg noodles"
-                    name="vegnoodlesproduct"       value={datalist.vegnoodlesproduct}
+                    name="vegnoodlesproduct"       value={"datalist.vegnoodlesproduct"}
                     onClick={(e)=>handledatalist(e)}
                   />
                   <label className="form-check-label" for="flexCheckDefault">
@@ -365,7 +368,7 @@ vegnoodlesquantity:"",
               <td>190</td>
             </tr>
           </tbody>
-        </table>:<></>}
+        </table>:null}
      
 
 <h5 className="mt-2 bs">Address Details</h5>
