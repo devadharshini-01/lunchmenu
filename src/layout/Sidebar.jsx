@@ -1,4 +1,4 @@
-import logo from "../image/Frame 55481 .png";
+import logo from "../assets/image/logo.png";
 import { Icon } from "@iconify/react";
 const Sidebar = (props) => {
   console.log(props.active)

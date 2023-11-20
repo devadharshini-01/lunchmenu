@@ -15,7 +15,7 @@
   width: 300px;
 }
 .homebanner {
-  background-image: url("./components/image/background.jpg");
+  background-image: url("./assets/image/background.jpg");
   height: 100vh;
   background-position: center;
   background-size: cover;

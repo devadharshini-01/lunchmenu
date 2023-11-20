@@ -1,13 +1,12 @@
-import Sidebor from "./Sidebar";
+
 import { Icon } from "@iconify/react";
+import Sidebor from "../layout/Sidebar";
 import { Navigate, useNavigate } from "react-router-dom";
-
-const Breakfast = () => {
-  const navigate = useNavigate();
-
-  return (
-    <>
-      <div className="row">
+const Dinner = () =>{
+    const navigate = useNavigate();
+    return(
+        <>
+        <div className="row">
         <div className="col-2 ">
           <Sidebor />
         </div>
@@ -18,14 +17,14 @@ const Breakfast = () => {
             <div className="row">
               <div className="col-9">
                 <p href="#" className=" d-flex justify-content-start   ">
-                  <h5 className=" text-secondary me-1 ">Breakfast </h5>&#10095;
+                  <h5 className=" text-secondary me-1 ">Dinner </h5>&#10095;
                   <h5 className="text-black ms-1 ">Customer Details</h5>{" "}
                 </p>
               </div>
               <div className="col-3">
                 <div className=" d-flex justify-content-end ">
                   <button 
-                    className="btn commit text-white mb-3 " onClick={()=>navigate("/Addbreakfast")}
+                    className="btn commit text-white mb-3 " onClick={()=>navigate("/Adddinner")}
                    
                     
                     type="button"
@@ -164,9 +163,7 @@ const Breakfast = () => {
           </div>
        </div>
         </div>
-    
-    </>
-  );
-};
-
-export default Breakfast;
+        </>
+    )
+}
+export default Dinner;

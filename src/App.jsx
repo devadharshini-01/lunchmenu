@@ -1,15 +1,13 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Foods from "./pages/Foods";
-import Login from "./login";
+import Login from "./pages/login";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Breakfast from "./components/breakfast/Breakfast";
-import Dinner from "./components/dinner/Dinner";
-import Lunch from "./components/lunch/Lunch";
-import Sidebor from "./components/breakfast/Sidebar";
-import Header from "./components/breakfast/Header";
-import AddBreakfast from "./components/breakfast/AddBreakfast";
-import AddLunch from "./components/lunch/AddLunch";
+import Breakfast from "./pages/Breakfast";
+import Dinner from "./pages/Dinner";
+import Lunch from "./pages/Lunch";
+import AddBreakfast from "./components/form/Addbreakfast";
+import AddLunch from "./components/form/AddLunch";
+import AddDinner from "./components/form/AddDinner";
 
 
 const App = () => {
@@ -22,12 +20,14 @@ const App = () => {
           <Route path="login" element={<Login />} />
           <Route path="breakfast" element={<Breakfast />} />
           <Route path="lunch" element={<Lunch />} />
-     
+     <Route path="addlunch" element={<AddLunch/>}/>
           <Route path="Addbreakfast" element={<AddBreakfast/>}/>
           <Route path="dinner" element={<Dinner />} />
+          <Route path="Adddinner" element={<AddDinner />} />
         </Routes>
       </BrowserRouter>
      
+    
     
     </>
   );

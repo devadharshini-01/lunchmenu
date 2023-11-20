@@ -1,5 +1,6 @@
 import React from "react";
-import logo from "../src/components/image/Frame 55481 .png";
+import  logo from "../assets/image/logo.png";
+
 import { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 const Login = () => {
