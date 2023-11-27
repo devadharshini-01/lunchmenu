@@ -8,22 +8,24 @@ import Lunch from "./pages/Lunch";
 import AddBreakfast from "./components/form/Addbreakfast";
 import AddLunch from "./components/form/AddLunch";
 import AddDinner from "./components/form/AddDinner";
-
+import { useState } from "react";
 
 const App = () => {
+  const [active, setActive] = useState();
   return (
     <>
       {/* <Foods />   */}
 
       <BrowserRouter>
         <Routes>
-          <Route path="login" element={<Login />} />
-          <Route path="breakfast" element={<Breakfast />} />
-          <Route path="lunch" element={<Lunch />} />
-     <Route path="addlunch" element={<AddLunch/>}/>
-          <Route path="Addbreakfast" element={<AddBreakfast/>}/>
-          <Route path="dinner" element={<Dinner />} />
-          <Route path="Adddinner" element={<AddDinner />} />
+          <Route path="/" element={<Login />} />
+        
+          <Route path="breakfast" element={< Breakfast active={active} setActive={setActive}/>} />
+          <Route path="lunch" element={<Lunch  active={active} setActive={setActive} />} />
+     <Route path="add-lunch" element={<AddLunch active={active} setActive={setActive} />}/>
+          <Route path="Add-breakfast" element={<AddBreakfast active={active} setActive={setActive}/>}/>
+          <Route path="dinner" element={<Dinner   active={active} setActive={setActive}/>} />
+          <Route path="Add-dinner" element={<AddDinner active={active} setActive={setActive} />} />
         </Routes>
       </BrowserRouter>
      

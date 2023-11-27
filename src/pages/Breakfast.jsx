@@ -2,18 +2,19 @@ import Sidebor from "../layout/Sidebar";
 import { Icon } from "@iconify/react";
 import { Navigate, useNavigate } from "react-router-dom";
 
-const Breakfast = () => {
+const Breakfast = (props) => {
   const navigate = useNavigate();
 
   return (
     <>
-      <div className="row">
+      <div className="row ">
         <div className="col-2 ">
-          <Sidebor />
+          <Sidebor 
+           active={props.active} setActive={props.setActive}/>
         </div>
         
        
-        <div className=" col-10 mix p-3 mb-5 rounded ">
+        <div className=" col-10 p-3 mb-5 rounded ">
           <div className="bg-white mt-4 p-3 ">
             <div className="row">
               <div className="col-9">
@@ -25,7 +26,7 @@ const Breakfast = () => {
               <div className="col-3">
                 <div className=" d-flex justify-content-end ">
                   <button 
-                    className="btn commit text-white mb-3 " onClick={()=>navigate("/Addbreakfast")}
+                    className="btn commit text-white mb-3 " onClick={()=>navigate("/Add-breakfast")}
                    
                     
                     type="button"

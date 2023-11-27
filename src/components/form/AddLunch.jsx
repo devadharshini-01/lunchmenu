@@ -1,7 +1,7 @@
 import Sidebar from "../../layout/Sidebar";
 import { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
-const Menulist =()=>{
+const Menulist =(props)=>{
     
 
     const [menulist, setMenulist] = useState({
@@ -12,37 +12,69 @@ const Menulist =()=>{
      gender:"",
      price:"",
     
-    tomotoriceproduct:"",
-    curdriceproduct:"",
-    sambarriceproduct:"",
-    coconutrice:"",
+     product:[],
+     quantity:[],
+  //   tomotoriceproduct:"",
+  //   gopiriceproduct:"",
+  //   sambarriceproduct:"",
+  //  mealsproduct:"",
     
-    tomotoquantity:"",
-    curdricequantity:"",
-    sambarricequantity:"",
-    coconutricequantity:"",
+  //   tomotoquantity:"",
+  //   gopiricequantity:"",
+  //   sambarricequantity:"",
+  //    mealsquantity:"",
     
+    //  Briyaniproduct:"",
+    //  chickenshawarmaproduct:"",
+    //  chickenfriedrice:"",
+    //  prawnpulao:"",
+
+    //  Briyaniquantity:"",
+    //  chickenshawarmaquantity:"",
+    //  chickenfriedricequantity:"",
+    //  prawnpulaoquantity:"",     
+
      street:"",
      city:"",
      state:"",
      zip:"",
     
     });
-    const [active, setActive] = useState();
+    // const [active, setActive] = useState();
   
     const navigate = useNavigate();
     const handlemenulist = (e) => {
         setMenulist({ ...menulist, [e.target.name]: e.target.value });
+      };
+      const handleproduct = (event) => {
+        if (event.target.checked)
+          setMenulist({...menulist, product:[...menulist.product,event.target.value]});
+        else {
+          const temp = menulist.product.filter(
+            (item) => item !== event.target.value
+          );
+          setMenulist({...menulist,product:temp});
+        }
+      };
+      const handlequantity= (event) => {
+        if (event.target.checked)
+          setMenulist({...menulist, quantity:[...menulist.quantity,event.target.value]});
+        else {
+          const temp = menulist.quantity.filter(
+            (item) => item !== event.target.value
+          );
+          setMenulist({...menulist,quantity:temp});
+        }
       };
     return(
      <>
       <div className="row ">
       
       <div className="col-2 ">
-        <Sidebar active={active} setActive={setActive} />
+        <Sidebar active={props.active} setActive={props.setActive} />
       </div>
 
-      <div className="col-10  p-3 edit ">
+      <div className="col-10  p-3  ">
         
 <div className="mx-5">
         <div className="row ">
@@ -175,11 +207,11 @@ const Menulist =()=>{
                     className="form-check-input"
                     type="checkbox"
                     id="tomoto rice"
-                   name="tomotoriceproduct" value={"tomotorice.tomotoriceproduct"}
-                    onClick={(e)=>handlemenulist(e)}
+                   name="tomotoriceproduct" value={"tomotorice"}
+                    onClick={(e)=>handleproduct(e)}
                   />
                 <label className="form-check-label" for="flexCheckDefault">
-                    Meals
+                    Tomoto rice
                   </label>
                 </div>
 
@@ -187,7 +219,7 @@ const Menulist =()=>{
               </td> 
               
               <td>
-                <input className="form-control w-25" type="number" name="tomotoricequantity" value={menulist.tomotoquantity}  onChange={(e)=>handlemenulist(e)} />
+              {menulist.product.includes('tomotorice')&& <input className="form-control w-25" type="number" name="tomotoricequantity" value={menulist.tomotoquantity}  onChange={(e)=>handlemenulist(e)} />}
                       
               </td>
               <td>120</td>
@@ -199,19 +231,19 @@ const Menulist =()=>{
                   <input
                     className="form-check-input"
                     type="checkbox"
-                    id="curd rice"
-                      name="curdriceproduct"      value={"menulist.curdriceproduct"}
-                    onClick={(e)=>handlemenulist(e)}
+                    id="gopi rice"
+                      name="gopiriceproduct"      value={"gopirice"}
+                    onClick={(e)=>handleproduct(e)}
                   />
                   <label className="form-check-label" for="flexCheckDefault">
-                    Curd rice
+                    Gopi rice
                   </label>
                 </div>
               </td>
               <td>
               
-                <input className="form-control w-25" type="number"
-                name="curdricequantity" value={menulist.curdricequantity} onChange={(e)=>handlemenulist(e)}  />
+              {menulist.product.includes('gopirice')&& <input className="form-control w-25" type="number"
+                name="gopiricequantity" value={menulist.gopiricequantity} onChange={(e)=>handlemenulist(e)}  />}
               </td>
               <td>130</td>
             </tr>
@@ -222,17 +254,17 @@ const Menulist =()=>{
                   <input
                     className="form-check-input"
                     type="checkbox"
-                    id="veg rice"
-                     name="vegriceproduct"           value={"menulist.vegriceproduct"}
-                    onClick={(e)=>handlemenulist(e)}
+                    id="sambar rice"
+                     name="sambarriceproduct"           value={"sambarrice"}
+                    onClick={(e)=>handleproduct(e)}
                   />
                   <label className="form-check-label" for="flexCheckDefault">
-                    Veg rice
+                    Sambar rice
                   </label>
                 </div>
               </td>
               <td>
-              <input className="form-control w-25" type="number" name="vegricequantity" value={menulist.vegricequantity} onChange={(e)=>handlemenulist(e)} />
+              {menulist.product.includes('sambarrice')&&<input className="form-control w-25" type="number" name="curdricequantity" value={menulist.curdricequantity} onChange={(e)=>handlemenulist(e)} />}
               </td>
               <td>140</td>
             </tr>
@@ -244,17 +276,17 @@ const Menulist =()=>{
                   <input
                     className="form-check-input"
                     type="checkbox"
-                    id="veg noodles"
-                    name="vegnoodlesproduct"       value={"menulist.vegnoodlesproduct"}
-                    onClick={(e)=>handlemenulist(e)}
+                    id="meals"
+                    name="mealsproduct"       value={"meals"}
+                    onClick={(e)=>handleproduct(e)}
                   />
                   <label className="form-check-label" for="flexCheckDefault">
-                    Veg noodles
+                    Meals
                   </label>
                 </div>
               </td>
               <td>
-                <input className="form-control w-25" type="number" name="vegnoodlesquantity" value={menulist.vegnoodlesquantity} onChange={(e)=>handlemenulist(e)} />
+              {menulist.product.includes('meals')&& <input className="form-control w-25" type="number" name="vegnoodlesquantity" value={menulist.vegnoodlesquantity} onChange={(e)=>handlemenulist(e)} />}
               </td>
               <td>190</td>
             </tr>
@@ -285,9 +317,9 @@ const Menulist =()=>{
                   <input
                     className="form-check-input"
                     type="checkbox"
-                    id="meals"
-                   name="meals product" value={"menulist.mealsproduct"}
-                    onClick={(e)=>handlemenulist(e)}
+                    id="briyani"
+                   name="Briyani quantity" value={"Briyani"}
+                    onClick={(e)=>handlequantity(e)}
                   />
                   <label className="form-check-label" for="flexCheckDefault">
                     Briyani
@@ -295,7 +327,7 @@ const Menulist =()=>{
                 </div>
               </td>
               <td>
-                <input className="form-control w-25" type="number" name="mealsquantity" value={menulist.mealsquantity}  onChange={(e)=>handlemenulist(e)} />
+              {menulist.quantity.includes('Briyani')&& <input className="form-control w-25" type="number" name="Briyaniquantity" value={menulist.Briyaniquantity}  onChange={(e)=>handlemenulist(e)} />}
               </td>
               <td>120</td>
             </tr>
@@ -306,18 +338,18 @@ const Menulist =()=>{
                   <input
                     className="form-check-input"
                     type="checkbox"
-                    id="curd rice"
-                      name="curdriceproduct"      value={"menulist.curdriceproduct"}
-                    onClick={(e)=>handlemenulist(e)}
+                    id="chicken shawarma"
+                      name="chickenshawarmaquantity"      value={"chickenshawarma"}
+                    onClick={(e)=>handlequantity(e)}
                   />
                   <label className="form-check-label" for="flexCheckDefault">
-                    Chicken rice
+                    Chicken shawarma
                   </label>
                 </div>
               </td>
               <td>
-                <input className="form-control w-25" type="number"
-                name="curdricequantity" value={menulist.curdricequantity} onChange={(e)=>handlemenulist(e)}  />
+                {menulist.quantity.includes('chickenshawarma')&& <input className="form-control w-25" type="number"
+                name="chickenshawarmaquantity" value={menulist.chickenshawarmaquantity} onChange={(e)=>handlemenulist(e)}  />}
               </td>
               <td>130</td>
             </tr>
@@ -328,17 +360,17 @@ const Menulist =()=>{
                   <input
                     className="form-check-input"
                     type="checkbox"
-                    id="veg rice"
-                     name="vegriceproduct"           value={"menulist.vegriceproduc"}
-                    onClick={(e)=>handlemenulist(e)}
+                    id="chicken fried rice"
+                     name="chickenfriedriceproduct"           value={"chickenfriedrice"}
+                    onClick={(e)=>handlequantity(e)}
                   />
                   <label className="form-check-label" for="flexCheckDefault">
-                    Chicken noodles
+                    Chicken fried rice
                   </label>
                 </div>
               </td>
               <td>
-              <input className="form-control w-25" type="number" name="vegricequantity" value={menulist.vegricequantity} onChange={(e)=>handlemenulist(e)} />
+             {menulist.quantity.includes('chickenfriedrice')&& <input className="form-control w-25" type="number" name="vegricequantity" value={menulist.vegricequantity} onChange={(e)=>handlemenulist(e)} />}
               </td>
               <td>140</td>
             </tr>
@@ -350,17 +382,17 @@ const Menulist =()=>{
                   <input
                     className="form-check-input"
                     type="checkbox"
-                    id="veg noodles"
-                    name="vegnoodlesproduct"       value={"menulist.vegnoodlesproduct"}
-                    onClick={(e)=>handlemenulist(e)}
+                    id="prawn pulao"
+                    name="prawnpulaoquantity"       value={"prawnpulao"}
+                    onClick={(e)=>handlequantity(e)}
                   />
                   <label className="form-check-label" for="flexCheckDefault">
-                   Chicken 65
+                  Prawn pulao
                   </label>
                 </div>
               </td>
               <td>
-                <input className="form-control w-25" type="number" name="vegnoodlesquantity" value={menulist.vegnoodlesquantity} onChange={(e)=>handlemenulist(e)} />
+               {menulist.quantity.includes('prawnpulao')&& <input className="form-control w-25" type="number" name="prawnpulaoquantity" value={menulist.prawnpulaoquantity} onChange={(e)=>handlemenulist(e)} />}
               </td>
               <td>190</td>
             </tr>

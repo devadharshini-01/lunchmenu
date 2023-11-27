@@ -1,3 +1,7 @@
+body
+{
+  background-color:#e4edf2 ;
+}
 .card {
   width: 520px;
 }
@@ -145,6 +149,8 @@ input:focus {
 .url {
   text-decoration-line: none !important ;
   font-size: 16px !important;
+
+ 
 }
 
 .all {
@@ -156,16 +162,20 @@ input:focus {
   font-size: 15px !important;
 }
 a:hover {
+   
+   background-color:lightsteelblue!important;
   color: #f0005f !important;
-  background-color:#e4edf2!important;
   border-radius: 5px !important;
+  
  }
-.edit {
+ body{
   background-color:#e4edf2  !important;
+ }
+/* .edit {
   height: 100% !important;
   box-shadow: black !important;
 
-}
+} */
 .table
 {
   height: 50% !important;
@@ -173,7 +183,8 @@ a:hover {
 .message
 {
   background-color: #ff3285  !important;
-  height: 100% !important;
+  height: 100vh!important;
+
 }
 .box
 {
@@ -204,11 +215,11 @@ a:hover {
 {
   font-size: 24px !important;
 }
-.mix
+/* .mix
 {
   background-color: #f2f1f9 !important;
   height:100vh !important;
-}
+} */
 .day
 {
   font-size: 15px !important;
@@ -221,4 +232,9 @@ a:hover {
 .commit
 {
   background-color:#ff4b92!important;
+}
+.best
+{
+  text-decoration-line: none !important ;
+  
 }
