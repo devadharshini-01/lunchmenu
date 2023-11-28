@@ -2,15 +2,17 @@ import Sidebor from "../layout/Sidebar";
 import { Icon } from "@iconify/react";
 import { Navigate, useNavigate } from "react-router-dom";
 
-const Breakfast = (props) => {
+
+const Breakfast = ({datalist,active,setActive,inputArr}) => {
   const navigate = useNavigate();
+
 
   return (
     <>
       <div className="row ">
         <div className="col-2 ">
           <Sidebor 
-           active={props.active} setActive={props.setActive}/>
+           active={active} setActive={setActive}/>
         </div>
         
        
@@ -61,10 +63,10 @@ const Breakfast = (props) => {
                     S.NO
                   </th>
                   <th scope="col" className="all">
-                    E-MAIL
+                    NAME
                   </th>
                   <th scope="col" className="all">
-                    USERNAME
+                    E-MAIL
                   </th>
                   <th scope="col" className="all">
                     MOBILE NUMBER
@@ -77,8 +79,8 @@ const Breakfast = (props) => {
               <tbody>
                 <tr>
                   <th scope="row">1</th>
-                  <td className="idea">derhgyfg24@gmail.com</td>
-                  <td className="idea">bnjui</td>
+                  <td className="idea">Dharshini</td>
+                  <td className="idea">bjhgfg@gmail .com</td>
                   <td className="idea">8967542311</td>
                   <td>
                     <div className="row d-flex  justify-content-center  ">
@@ -103,10 +105,43 @@ const Breakfast = (props) => {
                     </div>
                   </td>
                 </tr>
+              { inputArr.map((val,i) => {
+                return(
+                  <tr key={i}>
+                  <th scope="row">{i}</th>
+                  <td className="idea">{val.name}</td>
+                  <td className="idea">{val.email}</td>
+                  <td className="idea">{val.phonenumber}</td>
+                  <td>
+                    <div className="row d-flex  justify-content-center  ">
+                      <Icon
+                        icon="tabler:edit"
+                        width="18"
+                        height="18"
+                        className="w-25  "
+                      />
+                      <Icon
+                        icon="pajamas:remove"
+                        width="18"
+                        height="18"
+                        className="w-25  "
+                      />
+                      <Icon
+                        icon="zondicons:view-show"
+                        width="18"
+                        height="18"
+                        className="w-25  "
+                      />
+                    </div>
+                  </td>
+                </tr>
+                )
+               })}
+
                 <tr>
                   <th scope="row">2</th>
+                  <td className="idea">kumar</td>
                   <td className="idea">jhgjfysa@gmail.com</td>
-                  <td className="idea">asdx</td>
                   <td className="idea">9087654321</td>
                   <td>
                     <div className=" d-flex  justify-content-center ">
@@ -133,8 +168,8 @@ const Breakfast = (props) => {
                 </tr>
                 <tr>
                   <th scope="row">3</th>
+                  <td className="idea">siva</td>
                   <td className="idea">jgbbcrse@gmail.com</td>
-                  <td className="idea">vbhcvf</td>
                   <td className="idea">4532087642</td>
                   <td>
                     <div className=" d-flex  justify-content-center ">

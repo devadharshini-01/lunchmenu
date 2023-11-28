@@ -11,31 +11,21 @@ const Dinnerlist=(props)=>{
        gender:"",
        menu:"",
        cost:"",
+       rupees:"",
+       coin:"",
+      image:"",
+      universe:"",
+      edit:"",
        
        product:[],
        quantity:[],
        price:"",
        value:"",
-      
-      //  parotaproduct:"",
-      //   chappathiproduct:"",
-      //  pooriproduct:"",
-      // paniyaramproduct:"",
-      
-      //  parotaquantity:"",
-      //  chapatiquantity:"",
-      //  pooriquantity:"",
-      //  paniyaramquantity:"",
-      
-      //  chickentikkaproduct:"",
-      //  chickenriceproduct:"",
-      //  chickennoodlesproduct:"",
-      //  grilledchickensandwichproduct:"",
-      
-      // chickentikkaquantity:"",
-      // chickenricequantity:"",
-      // chickennoodlesquantity:"",
-      // grilledchickensandwichquantity:"",
+       money:"",
+       test:"",
+       unit:"",
+       get:"",
+   
    
       
       
@@ -47,8 +37,6 @@ const Dinnerlist=(props)=>{
       });
       
   // const [active, setActive] = useState();
-
-  
   const navigate = useNavigate();
   const handledinnerlist = (e) => {
     setDinnerlist({ ...dinnerlist, [e.target.name]: e.target.value });
@@ -78,6 +66,30 @@ const Dinnerlist=(props)=>{
     setDinnerlist({...dinnerlist,price:temp});
       },[dinnerlist.cost])
 
+      useEffect(()=>{
+        const temp = dinnerlist.rupees*15;
+        setDinnerlist({...dinnerlist,value:temp});
+          },[dinnerlist.rupees])
+          
+      useEffect(()=>{
+        const temp = dinnerlist.coin*20;
+        setDinnerlist({...dinnerlist,money:temp});
+          },[dinnerlist.coin])
+
+      useEffect(()=>{
+      const temp = dinnerlist.image*20;
+       setDinnerlist({...dinnerlist,test:temp});
+       },[dinnerlist.image])
+
+       useEffect(()=>{
+        const temp = dinnerlist.universe*120;
+        setDinnerlist({...dinnerlist,unit:temp});
+        },[dinnerlist.universe])
+
+          useEffect(()=>{
+            const temp = dinnerlist.edit*120;
+            setDinnerlist({...dinnerlist,get:temp});
+            },[dinnerlist.edit])
 console.log(dinnerlist,"dinnerlist",dinnerlist.price!=="");
     return(
      <>
@@ -237,7 +249,7 @@ console.log(dinnerlist,"dinnerlist",dinnerlist.price!=="");
 
               </td>
 
-        {dinnerlist.price!==""&&<td>{dinnerlist.price}</td>}
+       {<td> {dinnerlist.price!==""&&dinnerlist.price}</td>}
             </tr>
             <tr>
               <th scope="row">2</th>
@@ -247,7 +259,7 @@ console.log(dinnerlist,"dinnerlist",dinnerlist.price!=="");
                     className="form-check-input"
                     type="checkbox"
                     id="chapati"
-                      name="chapatiproduct"      value={dinnerlist.cost}
+                      name="chapatiproduct"      value={"chapati"}
                     onClick={(e)=>handleproduct(e)}
                   />
                   <label className="form-check-label" for="flexCheckDefault">
@@ -258,10 +270,11 @@ console.log(dinnerlist,"dinnerlist",dinnerlist.price!=="");
               <td>
               
               {dinnerlist.product.includes('chapati')&&  <input className="form-control w-25" type="number"
-                name="chapatiquantity" value={dinnerlist.cost} onChange={(e)=>setDinnerlist({...dinnerlist,cost:e.target.value})} />}
+                name="chapatiquantity" value={dinnerlist.rupees} onChange={(e)=>setDinnerlist({...dinnerlist,rupees:e.target.value})} />}
               </td>
             
-        {dinnerlist.value!==""&&<td>{dinnerlist.value}</td>}
+        {<td>{dinnerlist.price!==""&&dinnerlist.price}</td>}
+            
             </tr>
             <tr>
               <th scope="row">3</th>
@@ -280,9 +293,9 @@ console.log(dinnerlist,"dinnerlist",dinnerlist.price!=="");
                 </div>
               </td>
               <td>
-              {dinnerlist.product.includes('poori')&& <input className="form-control w-25" type="number" name="pooriquantity" value={dinnerlist.pooriquantity} onChange={(e)=>handledinnerlist(e)} />}
+              {dinnerlist.product.includes('poori')&& <input className="form-control w-25" type="number" name="pooriquantity" value={dinnerlist.coin} onChange={(e)=>setDinnerlist({...dinnerlist,coin:e.target.value})} />}
               </td>
-              <td>140</td>
+              { <td>{dinnerlist.money!==""&&dinnerlist.money}</td>}
             </tr>
             <tr>
               <th scope="row">4</th>
@@ -302,9 +315,9 @@ console.log(dinnerlist,"dinnerlist",dinnerlist.price!=="");
                 </div>
               </td>
               <td>
-              {dinnerlist.product.includes('paniyaram')&& <input className="form-control w-25" type="number" name="paniyaramquantity" value={dinnerlist.paniyaramquantity} onChange={(e)=>handledinnerlist(e)} />}
+              {dinnerlist.product.includes('paniyaram')&& <input className="form-control w-25" type="number" name="paniyaramquantity" value={dinnerlist.image} onChange={(e)=>setDinnerlist({...dinnerlist,image:e.target.value})} />}
               </td>
-              <td>190</td>
+              { <td>{dinnerlist.test!==""&&dinnerlist.test}</td>}
             </tr>
           </tbody>
         </table> :dinnerlist.menu==="Non-veg"?
@@ -343,9 +356,9 @@ console.log(dinnerlist,"dinnerlist",dinnerlist.price!=="");
                 </div>
               </td>
               <td>
-              {dinnerlist.quantity.includes('chickentikka')&&<input className="form-control w-25" type="number" name="chickentikkaquantity" value={dinnerlist.chickentikkaquantity}  onChange={(e)=>handledinnerlist(e)} />}
+              {dinnerlist.quantity.includes('chickentikka')&&<input className="form-control w-25" type="number" name="chickentikkaquantity" value={dinnerlist.universe}  onChange={(e)=>setDinnerlist({...dinnerlist,universe:e.target.value})} />}
               </td>
-              <td>120</td>
+              { <td>{dinnerlist.unit!==""&&dinnerlist.unit}</td>}
             </tr>
             <tr>
               <th scope="row">2</th>
@@ -365,9 +378,11 @@ console.log(dinnerlist,"dinnerlist",dinnerlist.price!=="");
               </td>
               <td>
               {dinnerlist.quantity.includes('chickenrice')&& <input className="form-control w-25" type="number"
-                name="chickenricequantity" value={dinnerlist.chickenricequantity} onChange={(e)=>handledinnerlist(e)}  />}
+                name="chickenricequantity" value={dinnerlist.edit}  onChange={(e)=>setDinnerlist({...dinnerlist,edit:e.target.value})} />}
+      
               </td>
-              <td>130</td>
+              { <td>{dinnerlist.edit!==""&&dinnerlist.edit}</td>}
+             
             </tr>
             <tr>
               <th scope="row">3</th>
@@ -386,7 +401,8 @@ console.log(dinnerlist,"dinnerlist",dinnerlist.price!=="");
                 </div>
               </td>
               <td>
-              {dinnerlist.quantity.includes('chickennoodles')&& <input className="form-control w-25" type="number" name="vegricequantity" value={dinnerlist.vegricequantity} onChange={(e)=>handledinnerlist(e)} />}
+              {dinnerlist.quantity.includes('chickennoodles')&& <input className="form-control w-25" type="number" name="vegricequantity" value={dinnerlist.vegricequantity}  onChange={(e)=>setDinnerlist({...dinnerlist,universe:e.target.value})} />}
+      
               </td>
               <td>140</td>
             </tr>

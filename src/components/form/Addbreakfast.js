@@ -1,41 +1,9 @@
 import Sidebar from "../../layout/Sidebar";
 import { useState } from "react";
 import { Navigate,useNavigate } from "react-router-dom";
-const Datalist = (props) => {
-const [datalist, setDatalist] = useState({
-  
-  name:"",
- phoneNumber:"",
- dateofbirth:"",
- gender:"",
- lunchlist:"",
- cost:"",
 
-
-product:[],
-quantity:[],
-number:"",
-
-// chickenpastaproduct:"",
-// chillichickenproduct:"",
-// eggpulaoproduct:"",
-// gingerchickenproduct:"",
-
-// chickenpastaquantity:"",
-// chillichickenquantity:"",
-// eggpolaoquantity:"",
-// gingerchickenquantity:"",
-  
-
-
-
- street:"",
- city:"",
- state:"",
- zip:"",
-
-});
  
+const Datalist = ({datalist,setDatalist,active,setActive}) => {
 
 
   // const [active, setActive] = useState();
@@ -64,10 +32,7 @@ number:"",
       setDatalist({...datalist,quantity:temp});
     }
   };
-  // useEffect(()=>{
-  //   const temp = datalist.cost*15;
-  //   setDatalist({...datalist,price:temp});
-  //     },[datalist.cost])
+
 
   
 console.log(datalist);
@@ -76,7 +41,7 @@ console.log(datalist);
     <div className="row ">
       
       <div className="col-2 ">
-        <Sidebar active={props.active} setActive={props.setActive} />
+        <Sidebar active={active} setActive={setActive} />
       </div>
 
       <div className="col-10  p-3  ">
@@ -98,11 +63,18 @@ console.log(datalist);
             <label>Date of Birth :</label>
             <input type="date" className="form-control" name="dateofbirth" value={datalist.dateofbirth} onChange={(e)=>handledatalist(e)}/>
           </div>
+          <div className="col-3">
+              
+              <label>E-mail:</label>
+              <input className=" form-control box" name="email" value={datalist.email}
+              onChange={(e)=>handledatalist(e)} />
+              </div>
 
           <div className="row">
             <label className="mt-2 ">Gender :</label>
-            <div className="row w-50">
-              <div className="col-4">
+            
+              <div className="row w-50">
+           <div className="col-4">
                 <div className="form-check ">
                   <input
                     className="form-check-input "
@@ -118,7 +90,9 @@ console.log(datalist);
                     Male
                   </label>
                 </div>
-              </div>
+                </div>
+             
+             
               <div className="col-4">
                 <div className="form-check  ">
                   <input
@@ -134,7 +108,8 @@ console.log(datalist);
                   </label>
                 </div>
               </div>
-              <div className="col-4">
+       
+               <div className="col-4"> 
                 <div className="form-check  ">
                   <input
                     className="form-check-input"
@@ -149,9 +124,14 @@ console.log(datalist);
                   </label>
                 </div>
               </div>
-            </div>
+             
+           
+           
+
           </div>
-        </div>
+          </div>
+          </div>
+       
         <label className=" mt-3  ">Type of food like to have?</label>
         <div className="row w-50">
           <div className="col-6">
