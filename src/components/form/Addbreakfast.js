@@ -1,9 +1,11 @@
 import Sidebar from "../../layout/Sidebar";
 import { useState } from "react";
 import { Navigate,useNavigate } from "react-router-dom";
+import { Formik } from 'formik';
+import * as yup from 'yup';
 
  
-const Datalist = ({datalist,setDatalist,active,setActive}) => {
+const Datalist = ({datalist,setDatalist,active,setActive,inputArr,setInputArr}) => {
 
 
   // const [active, setActive] = useState();
@@ -11,6 +13,7 @@ const Datalist = ({datalist,setDatalist,active,setActive}) => {
   const navigate = useNavigate();
   const handledatalist = (e) => {
     setDatalist({ ...datalist, [e.target.name]: e.target.value });
+    
   };
   const handleproduct = (event) => {
     if (event.target.checked)
@@ -34,8 +37,14 @@ const Datalist = ({datalist,setDatalist,active,setActive}) => {
   };
 
 
-  
-console.log(datalist);
+const handleValue=()=>{
+  setInputArr([...inputArr,datalist])
+ navigate("/breakfast");
+
+}
+// console.log(datalist);
+
+
   
   return (
     <div className="row ">
@@ -45,11 +54,12 @@ console.log(datalist);
       </div>
 
       <div className="col-10  p-3  ">
-        
-<div className="mx-5">
+        <Formik>
+        <div className="mx-5">
         <div className="row ">
           <h5 className="bs">Personal Details</h5>
-          <div className="col-3">
+     
+           <div className="col-3">
             <label>Name :</label>
             <input className=" form-control box" name="name" value={datalist.name}
             onChange={(e)=>handledatalist(e)} />
@@ -57,7 +67,7 @@ console.log(datalist);
           </div>
           <div className="col-3">
             <label>Phone Number :</label>
-            <input type="number" className=" form-control box" name="phonenumber" value={datalist.phoneNumber} onChange={(e)=>handledatalist(e)} />
+            <input type="number" className=" form-control box" name="phoneNumber" value={datalist.phoneNumber} onChange={(e)=>handledatalist(e)} />
           </div>
           <div className="col-3">
             <label>Date of Birth :</label>
@@ -69,7 +79,7 @@ console.log(datalist);
               <input className=" form-control box" name="email" value={datalist.email}
               onChange={(e)=>handledatalist(e)} />
               </div>
-
+             
           <div className="row">
             <label className="mt-2 ">Gender :</label>
             
@@ -131,6 +141,8 @@ console.log(datalist);
           </div>
           </div>
           </div>
+          
+         
        
         <label className=" mt-3  ">Type of food like to have?</label>
         <div className="row w-50">
@@ -204,10 +216,10 @@ console.log(datalist);
               </td> 
               
               <td>
-               {datalist.product.includes('idely')&& <input className="form-control w-25" type="number" name="idelyquantity" value={datalist.idelyquantity}  onChange={(e)=>handledatalist(e)} />}
+                <input className="form-control w-25" type="number" name="idelyquantity" value={datalist.idelyquantity}  onChange={(e)=>handledatalist(e)} />}
          
               </td>
-              {/* {dinnerlist.number!==""&&<td>{dinnerlist.number}</td>} */}
+           <td>200</td>
             </tr>
             <tr>
               <th scope="row">2</th>
@@ -409,14 +421,22 @@ console.log(datalist);
     </div> 
   <div className="d-grid gap-2 d-md-flex justify-content-end">
   <button className="btn p-2 me-md-2  bg-white" onClick={()=>navigate("/breakfast")} type="button">Cancel</button>
-  <button className="btn p-2 me-md-2 pink text-white"  onClick={() => navigate("/breakfast")}  type="button">Submit</button>
+  <button className="btn p-2 me-md-2 pink text-white"  onClick={() => handleValue()}  type="button">Submit</button>
 
 </div>
+
+
   </div>
-  <div />
-    <div />
+        </Formik>
+
+  
+     </div >
+    
+   
     </div>
-    </div>
+
+   
   );
-};
+ 
+}
 export default Datalist;

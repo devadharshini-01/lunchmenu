@@ -1,6 +1,7 @@
 import Sidebar from "../../layout/Sidebar";
 import { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 const Menulist =(props)=>{
     
 
@@ -11,28 +12,11 @@ const Menulist =(props)=>{
      dateofbirth:"",
      gender:"",
      price:"",
+     menu:"",
     
      product:[],
      quantity:[],
-  //   tomotoriceproduct:"",
-  //   gopiriceproduct:"",
-  //   sambarriceproduct:"",
-  //  mealsproduct:"",
-    
-  //   tomotoquantity:"",
-  //   gopiricequantity:"",
-  //   sambarricequantity:"",
-  //    mealsquantity:"",
-    
-    //  Briyaniproduct:"",
-    //  chickenshawarmaproduct:"",
-    //  chickenfriedrice:"",
-    //  prawnpulao:"",
-
-    //  Briyaniquantity:"",
-    //  chickenshawarmaquantity:"",
-    //  chickenfriedricequantity:"",
-    //  prawnpulaoquantity:"",     
+    money:"",
 
      street:"",
      city:"",
@@ -66,6 +50,10 @@ const Menulist =(props)=>{
           setMenulist({...menulist,quantity:temp});
         }
       };
+      useEffect(()=>{
+        const temp = menulist.menu*15;
+        setMenulist({...menulist,money:temp});
+          },[menulist.menu])
     return(
      <>
       <div className="row ">
@@ -219,10 +207,10 @@ const Menulist =(props)=>{
               </td> 
               
               <td>
-              {menulist.product.includes('tomotorice')&& <input className="form-control w-25" type="number" name="tomotoricequantity" value={menulist.tomotoquantity}  onChange={(e)=>handlemenulist(e)} />}
+              {menulist.product.includes('tomotorice')&& <input className="form-control w-25" type="number" name="tomotoricequantity" value={menulist.menu}  onChange={(e)=>setMenulist({...menulist,menu:e.target.value})} />}
                       
               </td>
-              <td>120</td>
+              {<td> {menulist.money !== "" ? menulist.money : menulist.money= 0}</td>}
             </tr>
             <tr>
               <th scope="row">2</th>

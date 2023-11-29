@@ -16,6 +16,10 @@ const Dinnerlist=(props)=>{
       image:"",
       universe:"",
       edit:"",
+      max:"",
+      delete:"",
+      
+    
        
        product:[],
        quantity:[],
@@ -25,7 +29,8 @@ const Dinnerlist=(props)=>{
        test:"",
        unit:"",
        get:"",
-   
+       exam:"",
+      head:"",
    
       
       
@@ -90,6 +95,18 @@ const Dinnerlist=(props)=>{
             const temp = dinnerlist.edit*120;
             setDinnerlist({...dinnerlist,get:temp});
             },[dinnerlist.edit])
+
+            useEffect(()=>{
+              const temp = dinnerlist.max*120;
+              setDinnerlist({...dinnerlist,exam:temp});
+              },[dinnerlist.max])
+
+              useEffect(()=>{
+                const temp = dinnerlist.delete*120;
+                setDinnerlist({...dinnerlist,head:temp});
+                },[dinnerlist.delete])
+
+           
 console.log(dinnerlist,"dinnerlist",dinnerlist.price!=="");
     return(
      <>
@@ -214,7 +231,7 @@ console.log(dinnerlist,"dinnerlist",dinnerlist.price!=="");
                 S.no
               </th>
               <th scope="col" className="bs">
-                Product
+                Food
               </th>
               <th scope="col" className="bs">
                 Quantity
@@ -249,7 +266,8 @@ console.log(dinnerlist,"dinnerlist",dinnerlist.price!=="");
 
               </td>
 
-       {<td> {dinnerlist.price!==""&&dinnerlist.price}</td>}
+       {/* {<td> {dinnerlist.price!== "" &&dinnerlist.price}</td>} */}
+       {<td> {dinnerlist.price !== "" ? dinnerlist.price : dinnerlist.price = 0}</td>}
             </tr>
             <tr>
               <th scope="row">2</th>
@@ -273,7 +291,7 @@ console.log(dinnerlist,"dinnerlist",dinnerlist.price!=="");
                 name="chapatiquantity" value={dinnerlist.rupees} onChange={(e)=>setDinnerlist({...dinnerlist,rupees:e.target.value})} />}
               </td>
             
-        {<td>{dinnerlist.price!==""&&dinnerlist.price}</td>}
+        {<td>{dinnerlist.value!==""? dinnerlist.value:dinnerlist.value=0}</td>}
             
             </tr>
             <tr>
@@ -295,7 +313,7 @@ console.log(dinnerlist,"dinnerlist",dinnerlist.price!=="");
               <td>
               {dinnerlist.product.includes('poori')&& <input className="form-control w-25" type="number" name="pooriquantity" value={dinnerlist.coin} onChange={(e)=>setDinnerlist({...dinnerlist,coin:e.target.value})} />}
               </td>
-              { <td>{dinnerlist.money!==""&&dinnerlist.money}</td>}
+              { <td>{dinnerlist.money!==""? dinnerlist.money:dinnerlist.money=0}</td>}
             </tr>
             <tr>
               <th scope="row">4</th>
@@ -317,7 +335,7 @@ console.log(dinnerlist,"dinnerlist",dinnerlist.price!=="");
               <td>
               {dinnerlist.product.includes('paniyaram')&& <input className="form-control w-25" type="number" name="paniyaramquantity" value={dinnerlist.image} onChange={(e)=>setDinnerlist({...dinnerlist,image:e.target.value})} />}
               </td>
-              { <td>{dinnerlist.test!==""&&dinnerlist.test}</td>}
+              { <td>{dinnerlist.test!==""? dinnerlist.test:dinnerlist.test=0}</td>}
             </tr>
           </tbody>
         </table> :dinnerlist.menu==="Non-veg"?
@@ -328,7 +346,7 @@ console.log(dinnerlist,"dinnerlist",dinnerlist.price!=="");
                 S.no
               </th>
               <th scope="col" className="bs">
-                Product
+                Food
               </th>
               <th scope="col" className="bs">
                 Quantity
@@ -358,7 +376,7 @@ console.log(dinnerlist,"dinnerlist",dinnerlist.price!=="");
               <td>
               {dinnerlist.quantity.includes('chickentikka')&&<input className="form-control w-25" type="number" name="chickentikkaquantity" value={dinnerlist.universe}  onChange={(e)=>setDinnerlist({...dinnerlist,universe:e.target.value})} />}
               </td>
-              { <td>{dinnerlist.unit!==""&&dinnerlist.unit}</td>}
+              { <td>{dinnerlist.unit!==""? dinnerlist.unit:dinnerlist.unit=0}</td>}
             </tr>
             <tr>
               <th scope="row">2</th>
@@ -381,7 +399,7 @@ console.log(dinnerlist,"dinnerlist",dinnerlist.price!=="");
                 name="chickenricequantity" value={dinnerlist.edit}  onChange={(e)=>setDinnerlist({...dinnerlist,edit:e.target.value})} />}
       
               </td>
-              { <td>{dinnerlist.edit!==""&&dinnerlist.edit}</td>}
+              { <td>{dinnerlist.get!==""? dinnerlist.get:dinnerlist.get=0}</td>}
              
             </tr>
             <tr>
@@ -401,10 +419,10 @@ console.log(dinnerlist,"dinnerlist",dinnerlist.price!=="");
                 </div>
               </td>
               <td>
-              {dinnerlist.quantity.includes('chickennoodles')&& <input className="form-control w-25" type="number" name="vegricequantity" value={dinnerlist.vegricequantity}  onChange={(e)=>setDinnerlist({...dinnerlist,universe:e.target.value})} />}
+              {dinnerlist.quantity.includes('chickennoodles')&& <input className="form-control w-25" type="number" name="vegricequantity" value={dinnerlist.max}  onChange={(e)=>setDinnerlist({...dinnerlist,max:e.target.value})} />}
       
               </td>
-              <td>140</td>
+              { <td>{dinnerlist.exam!==""? dinnerlist.exam:dinnerlist.exam=0}</td>}
             </tr>
             <tr>
               <th scope="row">4</th>
@@ -424,9 +442,9 @@ console.log(dinnerlist,"dinnerlist",dinnerlist.price!=="");
                 </div>
               </td>
               <td>
-                {dinnerlist.quantity.includes('grilledchickensandwich')&&<input className="form-control w-25" type="number" name="grilledchickensandwichquantity" value={dinnerlist.grilledchickensandwichquantity} onChange={(e)=>handledinnerlist(e)} />}
+                {dinnerlist.quantity.includes('grilledchickensandwich')&&<input className="form-control w-25" type="number" name="grilledchickensandwichquantity" value={dinnerlist.delete} onChange={(e)=>setDinnerlist({...dinnerlist,delete:e.target.value})} />}
               </td>
-              <td>190</td>
+              { <td>{dinnerlist.head!==""? dinnerlist.head:dinnerlist.head=0}</td>}
             </tr>
           </tbody>
         </table>:null}

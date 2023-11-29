@@ -8,7 +8,7 @@ import Lunch from "./pages/Lunch";
 import AddBreakfast from "./components/form/Addbreakfast";
 import AddLunch from "./components/form/AddLunch";
 import AddDinner from "./components/form/AddDinner";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const App = () => {
   const [active, setActive] = useState();
@@ -34,10 +34,9 @@ const App = () => {
   
   });
   const [inputArr,setInputArr]= useState([]);
-  setInputArr([...inputArr,datalist])
-  // const navigate = useNavigate();
-  const [event,setEvent]= useState([]);
-  setEvent([...event,datalist])
+  // setInputArr([...inputArr,datalist])
+  
+  // // const navigate = useNavigate();
 
   return (
     <>
@@ -50,7 +49,7 @@ const App = () => {
           <Route path="breakfast" element={< Breakfast active={active} setActive={setActive} datalist={datalist} setDatalist={setDatalist}inputArr={inputArr}/>} />
           <Route path="lunch" element={<Lunch  active={active} setActive={setActive} />} />
          <Route path="add-lunch" element={<AddLunch active={active} setActive={setActive} />}/>
-          <Route path="Add-breakfast" element={<AddBreakfast active={active} setActive={setActive} datalist={datalist} setDatalist={setDatalist}event={event}/>}/>
+          <Route path="Add-breakfast" element={<AddBreakfast active={active} setActive={setActive} datalist={datalist} setDatalist={setDatalist}inputArr={inputArr}setInputArr={setInputArr}/>}/>
           <Route path="dinner" element={<Dinner   active={active} setActive={setActive}/>} />
           <Route path="Add-dinner" element={<AddDinner active={active} setActive={setActive} />} />
         </Routes>

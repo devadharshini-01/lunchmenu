@@ -77,41 +77,14 @@ const Breakfast = ({datalist,active,setActive,inputArr}) => {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td className="idea">Dharshini</td>
-                  <td className="idea">bjhgfg@gmail .com</td>
-                  <td className="idea">8967542311</td>
-                  <td>
-                    <div className="row d-flex  justify-content-center  ">
-                      <Icon
-                        icon="tabler:edit"
-                        width="18"
-                        height="18"
-                        className="w-25  "
-                      />
-                      <Icon
-                        icon="pajamas:remove"
-                        width="18"
-                        height="18"
-                        className="w-25  "
-                      />
-                      <Icon
-                        icon="zondicons:view-show"
-                        width="18"
-                        height="18"
-                        className="w-25  "
-                      />
-                    </div>
-                  </td>
-                </tr>
-              { inputArr.map((val,i) => {
-                return(
+             
+              { inputArr.map((val,i) => (
                   <tr key={i}>
-                  <th scope="row">{i}</th>
+                  <th scope="row">{i+1}</th>
+                 
                   <td className="idea">{val.name}</td>
                   <td className="idea">{val.email}</td>
-                  <td className="idea">{val.phonenumber}</td>
+                  <td className="idea">{val.phoneNumber}</td>
                   <td>
                     <div className="row d-flex  justify-content-center  ">
                       <Icon
@@ -136,64 +109,10 @@ const Breakfast = ({datalist,active,setActive,inputArr}) => {
                   </td>
                 </tr>
                 )
-               })}
+               )}
 
-                <tr>
-                  <th scope="row">2</th>
-                  <td className="idea">kumar</td>
-                  <td className="idea">jhgjfysa@gmail.com</td>
-                  <td className="idea">9087654321</td>
-                  <td>
-                    <div className=" d-flex  justify-content-center ">
-                      <Icon
-                        icon="tabler:edit"
-                        width="18"
-                        height="18"
-                        className="w-25  "
-                      />
-                      <Icon
-                        icon="pajamas:remove"
-                        width="18"
-                        height="18"
-                        className="w-25  "
-                      />
-                      <Icon
-                        icon="zondicons:view-show"
-                        width="18"
-                        height="18"
-                        className="w-25 "
-                      />
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td className="idea">siva</td>
-                  <td className="idea">jgbbcrse@gmail.com</td>
-                  <td className="idea">4532087642</td>
-                  <td>
-                    <div className=" d-flex  justify-content-center ">
-                      <Icon
-                        icon="tabler:edit"
-                        width="18"
-                        height="18"
-                        className="w-25  "
-                      />
-                      <Icon
-                        icon="pajamas:remove"
-                        width="18"
-                        height="18"
-                        className="w-25  "
-                      />
-                      <Icon
-                        icon="zondicons:view-show"
-                        width="18"
-                        height="18"
-                        className="w-25  "
-                      />
-                    </div>
-                  </td>
-                </tr>
+               
+              
               </tbody>
               <div />
             </table>
