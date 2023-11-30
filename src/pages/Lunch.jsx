@@ -2,14 +2,14 @@ import { Icon } from "@iconify/react";
 import Sidebor from "../layout/Sidebar";
 import { Navigate, useNavigate } from "react-router-dom";
 
- const Lunch = (props) => {
+ const Lunch = (datalist,active,setActive,tableArr,setTableArr) => {
   const navigate = useNavigate();
        
     return(
 <>
 <div className="row">
         <div className="col-2 ">
-          <Sidebor   active={props.active} setActive={props.setActive}/>
+          <Sidebor   active={active} setActive={setActive}/>
         </div>
         
        
@@ -74,7 +74,7 @@ import { Navigate, useNavigate } from "react-router-dom";
                 </tr>
               </thead>
               <tbody>
-                <tr>
+                {/* <tr>
                   <th scope="row">1</th>
                   <td className="idea">derhgyfg24@gmail.com</td>
                   <td className="idea">bnjui</td>
@@ -101,7 +101,40 @@ import { Navigate, useNavigate } from "react-router-dom";
                       />
                     </div>
                   </td>
+                </tr> */}
+  { tableArr.map((data,i) => (
+                  <tr key={i}>
+                  <th scope="row">{i+1}</th>
+                 
+                  <td className="idea">{data.name}</td>
+                  <td className="idea">{data.email}</td>
+                  <td className="idea">{data.phoneNumber}</td>
+                  <td>
+                    <div className="row d-flex  justify-content-center  ">
+                      <Icon
+                        icon="tabler:edit"
+                        width="18"
+                        height="18"
+                        className="w-25  "
+                      />
+                      <Icon
+                        icon="pajamas:remove"
+                        width="18"
+                        height="18"
+                        className="w-25  " 
+                      />
+                      <Icon
+                        icon="zondicons:view-show"
+                        width="18"
+                        height="18"
+                        className="w-25  "
+                      />
+                    </div>
+                  </td>
                 </tr>
+                )
+               )}
+
                 <tr>
                   <th scope="row">2</th>
                   <td className="idea">jhgjfysa@gmail.com</td>

@@ -1,10 +1,26 @@
 import Sidebor from "../layout/Sidebar";
 import { Icon } from "@iconify/react";
+import { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 
-
-const Breakfast = ({datalist,active,setActive,inputArr}) => {
+  const Breakfast = ({datalist,active,setActive,inputArr,setInputArr}) => {
   const navigate = useNavigate();
+
+
+const tableRowRemove = (i) => {
+  console.log(i);
+  const dataRow = [...inputArr];
+  dataRow.splice(i+1, 1);
+  setInputArr(dataRow);
+  console.log(dataRow)
+};
+
+
+
+
+
+
+
 
 
   return (
@@ -97,7 +113,7 @@ const Breakfast = ({datalist,active,setActive,inputArr}) => {
                         icon="pajamas:remove"
                         width="18"
                         height="18"
-                        className="w-25  "
+                        className="w-25  "  onClick={() => tableRowRemove()}
                       />
                       <Icon
                         icon="zondicons:view-show"
