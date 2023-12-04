@@ -2,9 +2,15 @@ import { Icon } from "@iconify/react";
 import Sidebor from "../layout/Sidebar";
 import { Navigate, useNavigate } from "react-router-dom";
 
- const Lunch = (datalist,active,setActive,tableArr,setTableArr) => {
+ const Lunch = ({active,setActive,changeArr,setChangeArr}) => {
   const navigate = useNavigate();
-       
+  const tableRowRemove = (i) => {
+    console.log(i);
+    const dataRow = [...changeArr];
+    dataRow.splice(i+1, 1);
+    setChangeArr(dataRow);
+    console.log(dataRow)
+  };
     return(
 <>
 <div className="row">
@@ -74,36 +80,10 @@ import { Navigate, useNavigate } from "react-router-dom";
                 </tr>
               </thead>
               <tbody>
-                {/* <tr>
-                  <th scope="row">1</th>
-                  <td className="idea">derhgyfg24@gmail.com</td>
-                  <td className="idea">bnjui</td>
-                  <td className="idea">8967542311</td>
-                  <td>
-                    <div className="row d-flex  justify-content-center  ">
-                      <Icon
-                        icon="tabler:edit"
-                        width="18"
-                        height="18"
-                        className="w-25  "
-                      />
-                      <Icon
-                        icon="pajamas:remove"
-                        width="18"
-                        height="18"
-                        className="w-25  "
-                      />
-                      <Icon
-                        icon="zondicons:view-show"
-                        width="18"
-                        height="18"
-                        className="w-25  "
-                      />
-                    </div>
-                  </td>
-                </tr> */}
-  { tableArr.map((data,i) => (
-                  <tr key={i}>
+              
+           
+                 {Array.isArray(changeArr)&& changeArr.map((data,i) => {
+               return( <tr key={i}>
                   <th scope="row">{i+1}</th>
                  
                   <td className="idea">{data.name}</td>
@@ -115,13 +95,14 @@ import { Navigate, useNavigate } from "react-router-dom";
                         icon="tabler:edit"
                         width="18"
                         height="18"
-                        className="w-25  "
-                      />
-                      <Icon
-                        icon="pajamas:remove"
-                        width="18"
-                        height="18"
                         className="w-25  " 
+                        onClick={() => navigate("/Add-lunch")}
+                      />
+                      <Icon
+                        icon="pajamas:remove"
+                        width="18"
+                        height="18"
+                        className="w-25  " onClick={() => tableRowRemove()}
                       />
                       <Icon
                         icon="zondicons:view-show"
@@ -132,65 +113,13 @@ import { Navigate, useNavigate } from "react-router-dom";
                     </div>
                   </td>
                 </tr>
-                )
-               )}
+                  )
+                })
+               }
 
-                <tr>
-                  <th scope="row">2</th>
-                  <td className="idea">jhgjfysa@gmail.com</td>
-                  <td className="idea">asdx</td>
-                  <td className="idea">9087654321</td>
-                  <td>
-                    <div className=" d-flex  justify-content-center ">
-                      <Icon
-                        icon="tabler:edit"
-                        width="18"
-                        height="18"
-                        className="w-25  "
-                      />
-                      <Icon
-                        icon="pajamas:remove"
-                        width="18"
-                        height="18"
-                        className="w-25  "
-                      />
-                      <Icon
-                        icon="zondicons:view-show"
-                        width="18"
-                        height="18"
-                        className="w-25 "
-                      />
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td className="idea">jgbbcrse@gmail.com</td>
-                  <td className="idea">vbhcvf</td>
-                  <td className="idea">4532087642</td>
-                  <td>
-                    <div className=" d-flex  justify-content-center ">
-                      <Icon
-                        icon="tabler:edit"
-                        width="18"
-                        height="18"
-                        className="w-25  "
-                      />
-                      <Icon
-                        icon="pajamas:remove"
-                        width="18"
-                        height="18"
-                        className="w-25  "
-                      />
-                      <Icon
-                        icon="zondicons:view-show"
-                        width="18"
-                        height="18"
-                        className="w-25  "
-                      />
-                    </div>
-                  </td>
-                </tr>
+
+             
+              
               </tbody>
               <div />
             </table>

@@ -1,14 +1,21 @@
-
 import { Icon } from "@iconify/react";
 import Sidebor from "../layout/Sidebar";
 import { Navigate, useNavigate } from "react-router-dom";
-const Dinner = (props) =>{
+const Dinner = ({active,setActive,arrList,setArrList}) =>{
     const navigate = useNavigate();
+    const tableRowRemove = (i) => {
+      console.log(i);
+      const dataRow = [...arrList];
+      dataRow.splice(i+1, 1);
+      setArrList(dataRow);
+      console.log(dataRow)
+    };
+
     return(
         <>
         <div className="row">
         <div className="col-2 ">
-          <Sidebor  active={props.active} setActive={props.setActive}/>
+          <Sidebor  active={active} setActive={setActive}/>
         </div>
         
        
@@ -73,24 +80,29 @@ const Dinner = (props) =>{
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td className="idea">derhgyfg24@gmail.com</td>
-                  <td className="idea">bnjui</td>
-                  <td className="idea">8967542311</td>
+             
+
+     {Array.isArray(arrList)&& arrList.map((data,i) => {
+               return( <tr key={i}>
+                  <th scope="row">{i+1}</th>
+                 
+                  <td className="idea">{data.name}</td>
+                  <td className="idea">{data.email}</td>
+                  <td className="idea">{data.phoneNumber}</td>
                   <td>
                     <div className="row d-flex  justify-content-center  ">
                       <Icon
                         icon="tabler:edit"
                         width="18"
                         height="18"
-                        className="w-25  "
+                        className="w-25  " 
+                        onClick={() => navigate("/Add-dinner")}
                       />
                       <Icon
                         icon="pajamas:remove"
                         width="18"
                         height="18"
-                        className="w-25  "
+                        className="w-25  " onClick={() => tableRowRemove()}
                       />
                       <Icon
                         icon="zondicons:view-show"
@@ -101,62 +113,11 @@ const Dinner = (props) =>{
                     </div>
                   </td>
                 </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td className="idea">jhgjfysa@gmail.com</td>
-                  <td className="idea">asdx</td>
-                  <td className="idea">9087654321</td>
-                  <td>
-                    <div className=" d-flex  justify-content-center ">
-                      <Icon
-                        icon="tabler:edit"
-                        width="18"
-                        height="18"
-                        className="w-25  "
-                      />
-                      <Icon
-                        icon="pajamas:remove"
-                        width="18"
-                        height="18"
-                        className="w-25  "
-                      />
-                      <Icon
-                        icon="zondicons:view-show"
-                        width="18"
-                        height="18"
-                        className="w-25 "
-                      />
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td className="idea">jgbbcrse@gmail.com</td>
-                  <td className="idea">vbhcvf</td>
-                  <td className="idea">4532087642</td>
-                  <td>
-                    <div className=" d-flex  justify-content-center ">
-                      <Icon
-                        icon="tabler:edit"
-                        width="18"
-                        height="18"
-                        className="w-25  "
-                      />
-                      <Icon
-                        icon="pajamas:remove"
-                        width="18"
-                        height="18"
-                        className="w-25  "
-                      />
-                      <Icon
-                        icon="zondicons:view-show"
-                        width="18"
-                        height="18"
-                        className="w-25  "
-                      />
-                    </div>
-                  </td>
-                </tr>
+                  )
+                })
+               }
+
+            
               </tbody>
               <div />
             </table>

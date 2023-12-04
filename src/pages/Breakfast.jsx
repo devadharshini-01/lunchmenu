@@ -1,37 +1,37 @@
 import Sidebor from "../layout/Sidebar";
 import { Icon } from "@iconify/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 
-  const Breakfast = ({datalist,active,setActive,inputArr,setInputArr}) => {
+const Breakfast = ({ datalist, active, setActive, inputArr, setInputArr }) => {
   const navigate = useNavigate();
 
+  const [inputArrValue, setInputArrValue] = useState();
+  const [index,setIndex]=useState();
 
-const tableRowRemove = (i) => {
-  console.log(i);
-  const dataRow = [...inputArr];
-  dataRow.splice(i+1, 1);
-  setInputArr(dataRow);
-  console.log(dataRow)
-};
+  const tableRowRemove = (i) => {
+    // console.log(i);
+    const dataRow = [...inputArr];
+    dataRow.splice(i + 1, 1);
+    setInputArr(dataRow);
+    console.log(dataRow);
+  };
 
+ 
+const handleChange = () =>{
 
-
-
-
-
-
-
-
+  const value = [...inputArr];
+  value[index] = inputArrValue;
+  setInputArrValue(value);
+}
+console.log(inputArrValue)
   return (
     <>
       <div className="row ">
         <div className="col-2 ">
-          <Sidebor 
-           active={active} setActive={setActive}/>
+          <Sidebor active={active} setActive={setActive} />
         </div>
-        
-       
+
         <div className=" col-10 p-3 mb-5 rounded ">
           <div className="bg-white mt-4 p-3 ">
             <div className="row">
@@ -43,13 +43,11 @@ const tableRowRemove = (i) => {
               </div>
               <div className="col-3">
                 <div className=" d-flex justify-content-end ">
-                  <button 
-                    className="btn commit text-white mb-3 " onClick={()=>navigate("/Add-breakfast")}
-                   
-                    
+                  <button
+                    className="btn commit text-white mb-3 "
+                    onClick={() => navigate("/Add-breakfast")}
                     type="button"
                   >
-                   
                     Add
                   </button>
                 </div>
@@ -93,49 +91,45 @@ const tableRowRemove = (i) => {
                 </tr>
               </thead>
               <tbody>
-             
-              { inputArr.map((val,i) => (
+              {Array.isArray(inputArr)&& inputArr.map((val, i) => (
                   <tr key={i}>
-                  <th scope="row">{i+1}</th>
-                 
-                  <td className="idea">{val.name}</td>
-                  <td className="idea">{val.email}</td>
-                  <td className="idea">{val.phoneNumber}</td>
-                  <td>
-                    <div className="row d-flex  justify-content-center  ">
-                      <Icon
-                        icon="tabler:edit"
-                        width="18"
-                        height="18"
-                        className="w-25  "
-                      />
-                      <Icon
-                        icon="pajamas:remove"
-                        width="18"
-                        height="18"
-                        className="w-25  "  onClick={() => tableRowRemove()}
-                      />
-                      <Icon
-                        icon="zondicons:view-show"
-                        width="18"
-                        height="18"
-                        className="w-25  "
-                      />
-                    </div>
-                  </td>
-                </tr>
-                )
-               )}
+                    <th scope="row">{i + 1}</th>
 
-               
-              
+                    <td className="idea">{val.name}</td>
+                    <td className="idea">{val.email}</td>
+                    <td className="idea">{val.phoneNumber}</td>
+                    <td>
+                      <div className="row d-flex  justify-content-center  ">
+                        <Icon
+                          icon="tabler:edit"
+                          width="18"
+                          height="18"
+                          className="w-25  "
+                          onClick={() => navigate("/Add-breakfast")}
+                        />
+                        <Icon
+                          icon="pajamas:remove"
+                          width="18"
+                          height="18"
+                          className="w-25  "
+                          onClick={() => tableRowRemove()}
+                        />
+                        <Icon
+                          icon="zondicons:view-show"
+                          width="18"
+                          height="18"
+                          className="w-25  "
+                        />
+                      </div>
+                    </td>
+                  </tr>
+                ))}
               </tbody>
               <div />
             </table>
           </div>
-       </div>
         </div>
-    
+      </div>
     </>
   );
 };

@@ -2,7 +2,7 @@ import logo from "../assets/image/logo.png";
 import { Icon } from "@iconify/react";
 import { Link } from "react-router-dom";
 const Sidebar = (props) => {
-  console.log(props.active)
+ 
   
   return (
     <div className="row message ">

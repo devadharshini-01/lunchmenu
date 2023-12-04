@@ -2,7 +2,7 @@ import Sidebar from "../../layout/Sidebar";
 import { useState } from "react";
 import { useEffect } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
-const Dinnerlist = (props) => {
+const Dinnerlist = ({active,setActive,arrList,setArrList}) => {
   const [dinnerlist, setDinnerlist] = useState({
     name: "",
     phoneNumber: "",
@@ -66,6 +66,14 @@ const Dinnerlist = (props) => {
       setDinnerlist({ ...dinnerlist, quantity: temp });
     }
   };
+
+  const handleChange = () => {
+    // console.log(menulist,"menulist");
+    setArrList((prev)=>[...prev, dinnerlist])
+   navigate("/dinner");
+  };
+
+
   useEffect(() => {
     const temp = dinnerlist.cost * 15;
     setDinnerlist({ ...dinnerlist, price: temp });
@@ -111,7 +119,7 @@ const Dinnerlist = (props) => {
     <>
       <div className="row ">
         <div className="col-2 ">
-          <Sidebar active={props.active} setActive={props.setActive} />
+          <Sidebar active={active} setActive={setActive} />
         </div>
 
         <div className="col-10  p-3  ">
@@ -132,7 +140,7 @@ const Dinnerlist = (props) => {
                 <input
                   type="number"
                   className=" form-control box"
-                  name="phonenumber"
+                  name="phoneNumber"
                   value={dinnerlist.phoneNumber}
                   onChange={(e) => handledinnerlist(e)}
                 />
@@ -147,6 +155,15 @@ const Dinnerlist = (props) => {
                   onChange={(e) => handledinnerlist(e)}
                 />
               </div>
+              <div className="col-3">
+              <label>E-mail:</label>
+              <input
+                className=" form-control box"
+                name="email"
+                value={dinnerlist.email}
+                onChange={(e) => handledinnerlist(e)}
+              />
+            </div>
 
               <div className="row">
                 <label className="mt-2 ">Gender :</label>
@@ -698,7 +715,8 @@ const Dinnerlist = (props) => {
               </button>
               <button
                 className="btn p-2 me-md-2 pink text-white"
-                onClick={() => navigate("/dinner")}
+                // onClick={() => navigate("/dinner")}
+                onClick={() => handleChange()}
                 type="button"
               >
                 Submit

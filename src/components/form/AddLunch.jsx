@@ -2,38 +2,45 @@ import Sidebar from "../../layout/Sidebar";
 import { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-const Menulist = (menulist,setMenulist,active,setActive,tableArr,setTableArr) => {
-  // const [menulist, setMenulist] = useState({
-  //   name: "",
-  //   phoneNumber: "",
-  //   dateofbirth: "",
-  //   gender: "",
-  //   price: "",
-  //   menu: "",
-  //   list: "",
-  //   lunch: "",
-  //   link: "",
-  //   put: "",
-  //   array:"",
-  //   object:"",
-  //   long:"",
+const AddLunch = (
+  { active,
+  setActive,
+changeArr,
+setChangeArr}
+) => {
 
-  //   product: [],
-  //   quantity: [],
-  //   money: "",
-  //   quality: "",
-  //   food: "",
-  //   image: "",
-  //   get: "",
-  //   input:"",
-  //   map:"",
-  //   double:"",
+  const [menulist, setMenulist] = useState({
+    name: "",
+    phoneNumber: "",
+    dateofbirth: "",
+    gender: "",
+    price: "",
+    menu: "",
+    list: "",
+    lunch: "",
+    link: "",
+    put: "",
+    array:"",
+    object:"",
+    long:"",
 
-  //   street: "",
-  //   city: "",
-  //   state: "",
-  //   zip: "",
-  // });
+    product: [],
+    quantity: [],
+    money: "",
+    quality: "",
+    food: "",
+    image: "",
+    get: "",
+    input:"",
+    map:"",
+    double:"",
+
+    street: "",
+    city: "",
+    state: "",
+    zip: "",
+  });
+  // const[changeArr,setChangeArr]=useState([]);
   // const [active, setActive] = useState();
 
   const navigate = useNavigate();
@@ -67,7 +74,11 @@ const Menulist = (menulist,setMenulist,active,setActive,tableArr,setTableArr) =>
     }
   };
 
- 
+  const handleInput = () => {
+    console.log(menulist,"menulist");
+    setChangeArr((prev)=>[...prev, menulist])
+   navigate("/lunch");
+  };
 
   useEffect(() => {
     const temp = menulist.menu * 15;
@@ -92,23 +103,17 @@ const Menulist = (menulist,setMenulist,active,setActive,tableArr,setTableArr) =>
   useEffect(() => {
     const temp = menulist.put * 90;
     setMenulist({ ...menulist, get: temp });
-  }, [menulist.put]);  
+  }, [menulist.put]);
 
   useEffect(() => {
     const temp = menulist.array * 15;
     setMenulist({ ...menulist, input: temp });
-  }, [menulist.array]); 
+  }, [menulist.array]);
 
   useEffect(() => {
     const temp = menulist.object * 15;
     setMenulist({ ...menulist, map: temp });
-  }, [menulist.object]); 
-
-  
-  const handleInput = () => {
-    setTableArr([...tableArr, menulist]);
-    navigate("/lunch");
-  };
+  }, [menulist.object]);
 
   return (
     <>
@@ -135,7 +140,7 @@ const Menulist = (menulist,setMenulist,active,setActive,tableArr,setTableArr) =>
                 <input
                   type="number"
                   className=" form-control box"
-                  name="phonenumber"
+                  name="phoneNumber"
                   value={menulist.phoneNumber}
                   onChange={(e) => handlemenulist(e)}
                 />
@@ -150,6 +155,15 @@ const Menulist = (menulist,setMenulist,active,setActive,tableArr,setTableArr) =>
                   onChange={(e) => handlemenulist(e)}
                 />
               </div>
+              <div className="col-3">
+              <label>E-mail:</label>
+              <input
+                className=" form-control box"
+                name="email"
+                value={menulist.email}
+                onChange={(e) => handlemenulist(e)}
+              />
+            </div>
 
               <div className="row">
                 <label className="mt-2 ">Gender :</label>
@@ -488,7 +502,13 @@ const Menulist = (menulist,setMenulist,active,setActive,tableArr,setTableArr) =>
                         />
                       )}
                     </td>
-                    {<td>{menulist.double!==""? menulist.double:menulist.double=0}</td>}
+                    {
+                      <td>
+                        {menulist.double !== ""
+                          ? menulist.double
+                          : (menulist.double = 0)}
+                      </td>
+                    }
                   </tr>
                   <tr>
                     <th scope="row">2</th>
@@ -523,7 +543,13 @@ const Menulist = (menulist,setMenulist,active,setActive,tableArr,setTableArr) =>
                         />
                       )}
                     </td>
-                    {<td>{menulist.get!==""? menulist.get:menulist.get=0}</td>}
+                    {
+                      <td>
+                        {menulist.get !== ""
+                          ? menulist.get
+                          : (menulist.get = 0)}
+                      </td>
+                    }
                   </tr>
                   <tr>
                     <th scope="row">3</th>
@@ -558,7 +584,13 @@ const Menulist = (menulist,setMenulist,active,setActive,tableArr,setTableArr) =>
                         />
                       )}
                     </td>
-                    {<td>{menulist.input!==""? menulist.input:menulist.input=0}</td>}
+                    {
+                      <td>
+                        {menulist.input !== ""
+                          ? menulist.input
+                          : (menulist.input = 0)}
+                      </td>
+                    }
                   </tr>
                   <tr>
                     <th scope="row">4</th>
@@ -594,7 +626,13 @@ const Menulist = (menulist,setMenulist,active,setActive,tableArr,setTableArr) =>
                         />
                       )}
                     </td>
-                    {<td>{menulist.map!==""? menulist.map:menulist.map=0}</td>}
+                    {
+                      <td>
+                        {menulist.map !== ""
+                          ? menulist.map
+                          : (menulist.map = 0)}
+                      </td>
+                    }
                   </tr>
                 </tbody>
               </table>
@@ -651,6 +689,7 @@ const Menulist = (menulist,setMenulist,active,setActive,tableArr,setTableArr) =>
               </button>
               <button
                 className="btn p-2 me-md-2 pink text-white"
+                // onClick={() => navigate("/lunch")}
                 onClick={() => handleInput()}
                 type="button"
               >
@@ -665,4 +704,4 @@ const Menulist = (menulist,setMenulist,active,setActive,tableArr,setTableArr) =>
     </>
   );
 };
-export default Menulist;
+export default AddLunch;
