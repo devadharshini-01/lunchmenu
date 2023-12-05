@@ -1,13 +1,14 @@
 import Sidebor from "../layout/Sidebar";
 import { Icon } from "@iconify/react";
 import { useEffect, useState } from "react";
+import ReactPaginate from "react-paginate";
 import { Navigate, useNavigate } from "react-router-dom";
 
-const Breakfast = ({ datalist, active, setActive, inputArr, setInputArr }) => {
+const Breakfast = ({ datalist, active, setActive, inputArr, setInputArr, }) => {
   const navigate = useNavigate();
 
-  const [inputArrValue, setInputArrValue] = useState();
-  const [index,setIndex]=useState();
+  // const [inputArrValue, setInputArrValue] = useState();
+  // const [index,setIndex]=useState();
 
   const tableRowRemove = (i) => {
     // console.log(i);
@@ -16,16 +17,14 @@ const Breakfast = ({ datalist, active, setActive, inputArr, setInputArr }) => {
     setInputArr(dataRow);
     console.log(dataRow);
   };
+const handlePageClick=(data)=>{
 
- 
-const handleChange = () =>{
-
-  const value = [...inputArr];
-  value[index] = inputArrValue;
-  setInputArrValue(value);
+  console.log(data.selected)
 }
-console.log(inputArrValue)
-  return (
+// const [data,setadata]=useState(10);
+
+
+  return (  
     <>
       <div className="row ">
         <div className="col-2 ">
@@ -124,8 +123,28 @@ console.log(inputArrValue)
                     </td>
                   </tr>
                 ))}
+                <div className="row d-flex justify-content-end w-100">
+                <ReactPaginate 
+            
+                previousLabel={'previous'}
+                nextLabel={'next'}
+                pageCount={2}
+                onPageChange={handlePageClick}
+                pageRangeDisplayed={10}
+                containerClassName={'pagination '}
+                pageClassName={'page-item px-0'}
+                pageLinkClassName={'page-link'}
+                previousClassName={'page-item px-0'}
+                previousLinkClassName={'page-link'}
+                nextClassName={'page-item px-0'}
+                nextLinkClassName={'page-link'}
+                activeClassName={'active'}
+              
+                />
+                </div>
+              
               </tbody>
-              <div />
+              {/* <div /> */}
             </table>
           </div>
         </div>

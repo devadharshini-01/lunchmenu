@@ -47,10 +47,13 @@ const Datalist = ({
   };
 
   const handleValue = () => {
+    console.log(datalist, "++++++++");
+    setDatalist({ ...Datalist, id: inputArr?.length + 1 });
     setInputArr([...inputArr, datalist]);
     navigate("/breakfast");
   };
-  // console.log(datalist);
+
+  console.log(inputArr, "4444444");
 
   useEffect(() => {
     const temp = datalist.cost * 15;
@@ -79,7 +82,7 @@ const Datalist = ({
 
   useEffect(() => {
     const temp = datalist.pin * 15;
-    setDatalist({ ...datalist,code: temp });
+    setDatalist({ ...datalist, code: temp });
   }, [datalist.pin]);
 
   useEffect(() => {
@@ -91,7 +94,7 @@ const Datalist = ({
     const temp = datalist.array * 30;
     setDatalist({ ...datalist, list: temp });
   }, [datalist.array]);
-  
+
   return (
     <div className="row ">
       <div className="col-2 ">
@@ -275,6 +278,7 @@ const Datalist = ({
                   </td>
 
                   <td>
+                  {datalist.product.includes("idely") &&
                     <input
                       className="form-control w-25"
                       type="number"
@@ -287,12 +291,13 @@ const Datalist = ({
                         })
                       }
                     />
+}
                   </td>
                   <td>
-                  {datalist.price !== ""
-                          ? datalist.price
-                          : (datalist.price= 0)}
-                          </td>
+                    {datalist.price !== ""
+                      ? datalist.price
+                      : (datalist.price = 0)}
+                  </td>
                 </tr>
                 <tr>
                   <th scope="row">2</th>
@@ -330,10 +335,10 @@ const Datalist = ({
                       />
                     )}
                   </td>
-                  <td> {datalist.test !== ""
-                          ? datalist.test
-                          : (datalist.test= 0)}</td>
-                  
+                  <td>
+                    {" "}
+                    {datalist.test !== "" ? datalist.test : (datalist.test = 0)}
+                  </td>
                 </tr>
                 <tr>
                   <th scope="row">3</th>
@@ -371,9 +376,12 @@ const Datalist = ({
                       />
                     )}
                   </td>
-                  <td> {datalist.array !== ""
-                          ? datalist.array
-                          : (datalist.array= 0)}</td>
+                  <td>
+                    {" "}
+                    {datalist.array !== ""
+                      ? datalist.array
+                      : (datalist.array = 0)}
+                  </td>
                 </tr>
                 <tr>
                   <th scope="row">4</th>
@@ -412,9 +420,10 @@ const Datalist = ({
                       />
                     )}
                   </td>
-                  <td> {datalist.map !== ""
-                          ? datalist.map
-                          : (datalist.map= 0)}</td>
+                  <td>
+                    {" "}
+                    {datalist.map !== "" ? datalist.map : (datalist.map = 0)}
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -473,9 +482,10 @@ const Datalist = ({
                       />
                     )}
                   </td>
-                  <td> {datalist.zip !== ""
-                          ? datalist.zip
-                          : (datalist.zip= 0)}</td>
+                  <td>
+                    {" "}
+                    {datalist.zip !== "" ? datalist.zip : (datalist.zip = 0)}
+                  </td>
                 </tr>
                 <tr>
                   <th scope="row">2</th>
@@ -513,9 +523,10 @@ const Datalist = ({
                       />
                     )}
                   </td>
-                  <td> {datalist.code !== ""
-                          ? datalist.code
-                          : (datalist.code= 0)}</td>
+                  <td>
+                    {" "}
+                    {datalist.code !== "" ? datalist.code : (datalist.code = 0)}
+                  </td>
                 </tr>
                 <tr>
                   <th scope="row">3</th>
@@ -558,9 +569,12 @@ const Datalist = ({
                       />
                     )}
                   </td>
-                  <td> {datalist.example !== ""
-                          ? datalist.example
-                          : (datalist.example= 0)}</td>
+                  <td>
+                    {" "}
+                    {datalist.example !== ""
+                      ? datalist.example
+                      : (datalist.example = 0)}
+                  </td>
                 </tr>
                 <tr>
                   <th scope="row">4</th>
@@ -599,9 +613,10 @@ const Datalist = ({
                       />
                     )}
                   </td>
-                  <td> {datalist.list !== ""
-                          ? datalist.list
-                          : (datalist.list= 0)}</td>
+                  <td>
+                    {" "}
+                    {datalist.list !== "" ? datalist.list : (datalist.list = 0)}
+                  </td>
                 </tr>
               </tbody>
             </table>

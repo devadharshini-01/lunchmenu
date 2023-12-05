@@ -13,7 +13,7 @@ import { useEffect, useState } from "react";
 const App = () => {
   const [active, setActive] = useState();
   const [datalist, setDatalist] = useState({
-    
+    id:1,id:2,id:3,
     name:"",
    phoneNumber:"",
    dateofbirth:"",
