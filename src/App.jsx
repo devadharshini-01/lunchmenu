@@ -9,11 +9,15 @@ import AddBreakfast from "./components/form/Addbreakfast";
 import AddLunch from "./components/form/AddLunch";
 import AddDinner from "./components/form/AddDinner";
 import { useEffect, useState } from "react";
+import { Breadcrumb } from "react-bootstrap";
+
 
 const App = () => {
+  const[show,setShow]=useState();
   const [active, setActive] = useState();
   const [datalist, setDatalist] = useState({
-    id:1,id:2,id:3,
+
+    // id:1,id:2,id:3,
     name:"",
    phoneNumber:"",
    dateofbirth:"",
@@ -61,12 +65,14 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Login />} />
-        <Route path="breakfast" element={< Breakfast active={active} setActive={setActive} datalist={datalist} setDatalist={setDatalist}inputArr={inputArr}setInputArr={setInputArr}/>} />
+          <Route path="breakfast" element={< Breakfast active={active} setActive={setActive} datalist={datalist} setDatalist={setDatalist}inputArr={inputArr}setInputArr={setInputArr}/>} />
           <Route path="lunch" element={<Lunch  active={active} setActive={setActive} changeArr={changeArr} setChangeArr={setChangeArr} inputArr={inputArr}/>} />
-         <Route path="add-lunch" element={<AddLunch active={active} setActive={setActive} changeArr={changeArr} setChangeArr={setChangeArr}  />}/>
+          <Route path="add-lunch" element={<AddLunch active={active} setActive={setActive} changeArr={changeArr} setChangeArr={setChangeArr}  />}/>
           <Route path="Add-breakfast" element={<AddBreakfast active={active} setActive={setActive} datalist={datalist} setDatalist={setDatalist}inputArr={inputArr}setInputArr={setInputArr}/>}/>
           <Route path="dinner" element={<Dinner   active={active} setActive={setActive} arrList={arrList} setArrList={setArrList}/>}   />
           <Route path="Add-dinner" element={<AddDinner active={active} setActive={setActive} arrList={arrList} setArrList={setArrList} />} />
+          <Route path="Breadcrums" element={<Breadcrumb/>} show={show} setshow={setShow} />
+
         </Routes>
       </BrowserRouter>
      

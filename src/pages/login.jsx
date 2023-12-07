@@ -1,8 +1,9 @@
 import React from "react";
 import  logo from "../assets/image/logo.png";
-
 import { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const Login = () => {
   const [login, setLogin] = useState({
     email: "",
@@ -11,6 +12,11 @@ const Login = () => {
 const navigate=useNavigate();
   const handlelogin = (event) => {
     setLogin({ ...login, [event.target.name]: event.target.value });
+   };
+   
+
+const displayLoginNotification = () => {
+    toast.success("Login Successful!"); 
   }; 
 
   return (
@@ -79,7 +85,9 @@ const navigate=useNavigate();
                 </span>
               </div>
             </div>
-            <button className="btn text-white" onClick={()=>navigate("/breakfast")} >Sign in</button>
+            <button className=" btn text-white" onClick={()=>navigate("/breakfast")} >Sign in</button>
+          
+     
           </div>
         </div>
       </div>

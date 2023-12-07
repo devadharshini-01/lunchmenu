@@ -71,6 +71,7 @@ const Dinnerlist = ({active,setActive,arrList,setArrList}) => {
     // console.log(menulist,"menulist");
     setArrList((prev)=>[...prev, dinnerlist])
    navigate("/dinner");
+   
   };
 
 
@@ -497,7 +498,7 @@ const Dinnerlist = ({active,setActive,arrList,setArrList}) => {
                           className="form-check-label"
                           for="flexCheckDefault"
                         >
-                          Chicken tikka
+                          Chicken kolampu
                         </label>
                       </div>
                     </td>
@@ -541,7 +542,7 @@ const Dinnerlist = ({active,setActive,arrList,setArrList}) => {
                           className="form-check-label"
                           for="flexCheckDefault"
                         >
-                          Chicken rice
+                          Matton kolampu
                         </label>
                       </div>
                     </td>
@@ -630,7 +631,7 @@ const Dinnerlist = ({active,setActive,arrList,setArrList}) => {
                           className="form-check-label"
                           for="flexCheckDefault"
                         >
-                          Grilledchickensandwich
+                          Chicken rice
                         </label>
                       </div>
                     </td>

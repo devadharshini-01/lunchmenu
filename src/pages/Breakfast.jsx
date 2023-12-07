@@ -3,12 +3,17 @@ import { Icon } from "@iconify/react";
 import { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 import { Navigate, useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
+import { Breadcrumb } from "react-bootstrap";
 
-const Breakfast = ({ datalist, active, setActive, inputArr, setInputArr, }) => {
+const Breakfast = ({ datalist, active, setActive, inputArr, setInputArr }) => {
   const navigate = useNavigate();
-
-  // const [inputArrValue, setInputArrValue] = useState();
-  // const [index,setIndex]=useState();
+  const [show, setShow] = useState(false);
+  const [open, setOpen] = useState(false); 
+ 
 
   const tableRowRemove = (i) => {
     // console.log(i);
@@ -16,15 +21,18 @@ const Breakfast = ({ datalist, active, setActive, inputArr, setInputArr, }) => {
     dataRow.splice(i + 1, 1);
     setInputArr(dataRow);
     console.log(dataRow);
+    toast.success("Deleted successfully!");
   };
-const handlePageClick=(data)=>{
+  const handlePageClick = (data) => {
+    console.log(data.selected);
+  };
+  const handleClose = () => setShow(false);
+  const handleShow = () => {setShow(true);  };
 
-  console.log(data.selected)
-}
-// const [data,setadata]=useState(10);
 
+  // const [data,setadata]=useState(10);
 
-  return (  
+  return (
     <>
       <div className="row ">
         <div className="col-2 ">
@@ -90,62 +98,85 @@ const handlePageClick=(data)=>{
                 </tr>
               </thead>
               <tbody>
-              {Array.isArray(inputArr)&& inputArr.map((val, i) => (
-                  <tr key={i}>
-                    <th scope="row">{i + 1}</th>
+                {Array.isArray(inputArr) &&
+                  inputArr.map((val, i) => (
+                    <tr key={i}>
+                      <th scope="row">{i + 1}</th>
 
-                    <td className="idea">{val.name}</td>
-                    <td className="idea">{val.email}</td>
-                    <td className="idea">{val.phoneNumber}</td>
-                    <td>
-                      <div className="row d-flex  justify-content-center  ">
-                        <Icon
-                          icon="tabler:edit"
-                          width="18"
-                          height="18"
-                          className="w-25  "
-                          onClick={() => navigate("/Add-breakfast")}
-                        />
-                        <Icon
-                          icon="pajamas:remove"
-                          width="18"
-                          height="18"
-                          className="w-25  "
-                          onClick={() => tableRowRemove()}
-                        />
-                        <Icon
-                          icon="zondicons:view-show"
-                          width="18"
-                          height="18"
-                          className="w-25  "
-                        />
-                      </div>
-                    </td>
-                  </tr>
-                ))}
+                      <td className="idea">{val.name}</td>
+                      <td className="idea">{val.email}</td>
+                      <td className="idea">{val.phoneNumber}</td>
+                      <td>
+                        <div className="row d-flex  justify-content-center  ">
+                          <Icon
+                            icon="tabler:edit"
+                            width="18"
+                            height="18"
+                            className="w-25 label "
+                            onClick={() => navigate("/Add-breakfast")}
+                          />
+                          <Icon
+                            icon="pajamas:remove"
+                            width="18"
+                            height="18"
+                            className="w-25 label "
+                            onClick={() => tableRowRemove()}
+                          />
+
+                          <Icon
+                            icon="zondicons:view-show"
+                            width="18"
+                            height="18"
+                            className="w-25 label "
+                            onClick={() => handleShow()}
+                          />
+      <Modal show={show} onHide={handleClose}>
+                            <Modal.Header closeButton>
+                              <Modal.Title>Modal heading</Modal.Title>
+                            </Modal.Header>
+                            <Modal.Body>
+                          <td className="idea">{val.name}</td>
+                      <td className="idea">{val.email}</td>
+                      <td className="idea">{val.phoneNumber}</td>
+                            </Modal.Body>
+                            <Modal.Footer>
+                              <Button variant="secondary" onClick={handleClose}>
+                                Close
+                              </Button>
+                              <Button variant="primary" onClick={handleClose}>
+                                Save Changes
+                              </Button>
+                            </Modal.Footer>
+                      
+                          </Modal>
+                         
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+             
                 <div className="row d-flex justify-content-end w-100">
-                <ReactPaginate 
-            
-                previousLabel={'previous'}
-                nextLabel={'next'}
-                pageCount={2}
-                onPageChange={handlePageClick}
-                pageRangeDisplayed={10}
-                containerClassName={'pagination '}
-                pageClassName={'page-item px-0'}
-                pageLinkClassName={'page-link'}
-                previousClassName={'page-item px-0'}
-                previousLinkClassName={'page-link'}
-                nextClassName={'page-item px-0'}
-                nextLinkClassName={'page-link'}
-                activeClassName={'active'}
-              
-                />
+                  <ReactPaginate
+                    previousLabel={"previous"}
+                    nextLabel={"next"}
+                    pageCount={2}
+                    onPageChange={handlePageClick}
+                    pageRangeDisplayed={10}
+                    containerClassName={"pagination "}
+                    pageClassName={"page-item px-0"}
+                    pageLinkClassName={"page-link"}
+                    previousClassName={"page-item px-0"}
+                    previousLinkClassName={"page-link"}
+                    nextClassName={"page-item px-0"}
+                    nextLinkClassName={"page-link"}
+                    activeClassName={"active"}
+                  />
                 </div>
-              
               </tbody>
+
               {/* <div /> */}
             </table>
+            <ToastContainer />
           </div>
         </div>
       </div>

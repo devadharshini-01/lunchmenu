@@ -2,8 +2,7 @@ import Sidebar from "../../layout/Sidebar";
 import { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-import { Formik } from "formik";
-import * as yup from "yup";
+
 
 const Datalist = ({
   datalist,
@@ -48,12 +47,13 @@ const Datalist = ({
 
   const handleValue = () => {
     console.log(datalist, "++++++++");
-    setDatalist({ ...Datalist, id: inputArr?.length + 1 });
+    // setDatalist({ ...Datalist, id: inputArr?.length + 1 });
     setInputArr([...inputArr, datalist]);
-    navigate("/breakfast");
+   navigate("/breakfast");
+   
   };
 
-  console.log(inputArr, "4444444");
+  //console.log(inputArr, "4444444");
 
   useEffect(() => {
     const temp = datalist.cost * 15;
@@ -462,7 +462,7 @@ const Datalist = ({
                         className="form-check-label"
                         for="flexCheckDefault"
                       >
-                        Chickenpasta
+                      Duck gravy 
                       </label>
                     </div>
                   </td>
@@ -503,7 +503,7 @@ const Datalist = ({
                         className="form-check-label"
                         for="flexCheckDefault"
                       >
-                        Chilli chicken
+                        Chicken gravy
                       </label>
                     </div>
                   </td>
@@ -549,7 +549,7 @@ const Datalist = ({
                         className="form-check-label"
                         for="flexCheckDefault"
                       >
-                        Egg pulao
+                        Paper Chicken
                       </label>
                     </div>
                   </td>
@@ -593,7 +593,7 @@ const Datalist = ({
                         className="form-check-label"
                         for="flexCheckDefault"
                       >
-                        Ginger chicken
+                        Chicken Tikka
                       </label>
                     </div>
                   </td>
@@ -674,10 +674,12 @@ const Datalist = ({
             <button
               className="btn p-2 me-md-2 pink text-white"
               onClick={() => handleValue()}
+            
               type="button"
             >
               Submit
             </button>
+          
           </div>
         </div>
       </div>

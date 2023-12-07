@@ -1,6 +1,10 @@
 import { Icon } from "@iconify/react";
 import Sidebor from "../layout/Sidebar";
 import { Navigate, useNavigate } from "react-router-dom";
+import ReactPaginate from "react-paginate";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const Dinner = ({active,setActive,arrList,setArrList}) =>{
     const navigate = useNavigate();
     const tableRowRemove = (i) => {
@@ -9,7 +13,11 @@ const Dinner = ({active,setActive,arrList,setArrList}) =>{
       dataRow.splice(i+1, 1);
       setArrList(dataRow);
       console.log(dataRow)
+      toast.success("Deleted successfully!")
     };
+    const handlePageClick=()=>{
+
+    }
 
     return(
         <>
@@ -95,20 +103,21 @@ const Dinner = ({active,setActive,arrList,setArrList}) =>{
                         icon="tabler:edit"
                         width="18"
                         height="18"
-                        className="w-25  " 
+                        className="w-25 label " 
                         onClick={() => navigate("/Add-dinner")}
                       />
                       <Icon
                         icon="pajamas:remove"
                         width="18"
                         height="18"
-                        className="w-25  " onClick={() => tableRowRemove()}
+                        className="w-25  label" onClick={() => tableRowRemove()}
                       />
                       <Icon
                         icon="zondicons:view-show"
                         width="18"
                         height="18"
-                        className="w-25  "
+                        className="w-25 label "
+                        on
                       />
                     </div>
                   </td>
@@ -116,11 +125,27 @@ const Dinner = ({active,setActive,arrList,setArrList}) =>{
                   )
                 })
                }
-
+               <ReactPaginate
+                   previousLabel={'previous'}
+                   nextLabel={'next'}
+                   pageCount={2}
+                   onPageChange={handlePageClick}
+                   pageRangeDisplayed={10}
+                   containerClassName={'pagination '}
+                   pageClassName={'page-item px-0'}
+                   pageLinkClassName={'page-link'}
+                   previousClassName={'page-item px-0'}
+                   previousLinkClassName={'page-link'}
+                   nextClassName={'page-item px-0'}
+                   nextLinkClassName={'page-link'}
+                   activeClassName={'active'}
+               
+               />
             
               </tbody>
               <div />
             </table>
+            <ToastContainer />
           </div>
        </div>
         </div>

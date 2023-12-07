@@ -73,11 +73,10 @@ body
   width: 290px !important;
   border: none !important;
 }
-.btn {
+.btn{
   background-color:  #406576  !important;
   width: 120px !important;
-
-   margin-top: 35px !important; 
+  margin-top: 35px !important; 
   font-size: 14px !important;
 }
 .user {
@@ -236,5 +235,8 @@ a:hover {
 .best
 {
   text-decoration-line: none !important ;
-  
+}
+.label
+{
+  cursor: pointer !important;
 }

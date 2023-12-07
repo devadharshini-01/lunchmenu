@@ -1,16 +1,31 @@
 import { Icon } from "@iconify/react";
 import Sidebor from "../layout/Sidebar";
 import { Navigate, useNavigate } from "react-router-dom";
+import ReactPaginate from "react-paginate";
+import { useState } from "react";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
 
  const Lunch = ({active,setActive,changeArr,setChangeArr}) => {
   const navigate = useNavigate();
+  const [show, setShow] = useState(false);
+
   const tableRowRemove = (i) => {
     console.log(i);
     const dataRow = [...changeArr];
     dataRow.splice(i+1, 1);
     setChangeArr(dataRow);
     console.log(dataRow)
+    toast.success("Deleted successfully!")
   };
+
+  const handlePageClick=()=>{
+
+  }
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
     return(
 <>
 <div className="row">
@@ -95,34 +110,68 @@ import { Navigate, useNavigate } from "react-router-dom";
                         icon="tabler:edit"
                         width="18"
                         height="18"
-                        className="w-25  " 
+                        className="w-25 label " 
                         onClick={() => navigate("/Add-lunch")}
                       />
                       <Icon
                         icon="pajamas:remove"
                         width="18"
                         height="18"
-                        className="w-25  " onClick={() => tableRowRemove()}
+                        className="w-25 label " onClick={() => tableRowRemove()}
                       />
                       <Icon
                         icon="zondicons:view-show"
                         width="18"
                         height="18"
-                        className="w-25  "
+                        className="w-25 label "
+                        onClick={handleShow}
                       />
+                       <Modal show={show} onHide={handleClose}>
+                            <Modal.Header closeButton>
+                              <Modal.Title>Modal heading</Modal.Title>
+                            </Modal.Header>
+                            <Modal.Body>
+                              Woohoo, you are reading this text in a modal!
+                            </Modal.Body>
+                            <Modal.Footer>
+                              <Button variant="secondary" onClick={handleClose}>
+                                Close
+                              </Button>
+                              <Button variant="primary" onClick={handleClose}>
+                                Save Changes
+                              </Button>
+                            </Modal.Footer>
+                          </Modal>
                     </div>
                   </td>
                 </tr>
                   )
                 })
                }
-
+               <ReactPaginate
+                   previousLabel={'previous'}
+                   nextLabel={'next'}
+                   pageCount={2}
+                   onPageChange={handlePageClick}
+                   pageRangeDisplayed={10}
+                   containerClassName={'pagination '}
+                   pageClassName={'page-item px-0'}
+                   pageLinkClassName={'page-link'}
+                   previousClassName={'page-item px-0'}
+                   previousLinkClassName={'page-link'}
+                   nextClassName={'page-item px-0'}
+                   nextLinkClassName={'page-link'}
+                   activeClassName={'active'}
+               
+               
+               />  
 
              
               
               </tbody>
               <div />
             </table>
+            <ToastContainer />
           </div>
        </div>
         </div>
