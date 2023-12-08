@@ -4,9 +4,14 @@ import { Navigate, useNavigate } from "react-router-dom";
 import ReactPaginate from "react-paginate";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
+import {  useState } from "react";
 
 const Dinner = ({active,setActive,arrList,setArrList}) =>{
     const navigate = useNavigate();
+    const [show, setShow] = useState(false);
+    const [open, setOpen] = useState(false); 
     const tableRowRemove = (i) => {
       console.log(i);
       const dataRow = [...arrList];
@@ -18,7 +23,8 @@ const Dinner = ({active,setActive,arrList,setArrList}) =>{
     const handlePageClick=()=>{
 
     }
-
+    const handleClose = () => setShow(false);
+    // const handleShow = () => setShow(true);  
     return(
         <>
         <div className="row">
@@ -111,6 +117,8 @@ const Dinner = ({active,setActive,arrList,setArrList}) =>{
                         width="18"
                         height="18"
                         className="w-25  label" onClick={() => tableRowRemove()}
+                       
+
                       />
                       <Icon
                         icon="zondicons:view-show"
@@ -119,6 +127,26 @@ const Dinner = ({active,setActive,arrList,setArrList}) =>{
                         className="w-25 label "
                         on
                       />
+                      
+                         <Modal show={show} onHide={handleClose}>
+                            <Modal.Header closeButton>
+                              <Modal.Title>Modal heading</Modal.Title>
+                            </Modal.Header>
+                            <Modal.Body>
+                            <label>Name:</label>
+                          <td className="idea">{data.name}</td>
+                          <label>Email:</label>
+                          <td className="idea">{data.email}</td>
+                          <label>Phone Number:</label>
+                          <td className="idea">{data.phoneNumber}</td>
+                            </Modal.Body>
+                            <Modal.Footer>
+                              <Button variant="secondary" onClick={handleClose}>
+                                OK
+                              </Button>
+                            
+                            </Modal.Footer>
+                          </Modal>
                     </div>
                   </td>
                 </tr>

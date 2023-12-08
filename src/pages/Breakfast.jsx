@@ -7,13 +7,14 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import { Breadcrumb } from "react-bootstrap";
+
 
 const Breakfast = ({ datalist, active, setActive, inputArr, setInputArr }) => {
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
-  const [open, setOpen] = useState(false); 
- 
+  const[view,setView]=useState(false);
+
+
 
   const tableRowRemove = (i) => {
     // console.log(i);
@@ -22,15 +23,16 @@ const Breakfast = ({ datalist, active, setActive, inputArr, setInputArr }) => {
     setInputArr(dataRow);
     console.log(dataRow);
     toast.success("Deleted successfully!");
+    
   };
   const handlePageClick = (data) => {
     console.log(data.selected);
   };
   const handleClose = () => setShow(false);
-  const handleShow = () => {setShow(true);  };
+  const handleShow = () =>  setShow(true);  
+ const hideModal=()=>setView(false);
+ const showModal=()=>setView(true);
 
-
-  // const [data,setadata]=useState(10);
 
   return (
     <>
@@ -121,8 +123,28 @@ const Breakfast = ({ datalist, active, setActive, inputArr, setInputArr }) => {
                             height="18"
                             className="w-25 label "
                             onClick={() => tableRowRemove()}
+                       
                           />
+              
+ 
+              <Modal showModal={showModal} onHide={hideModal}>
+        <Modal.Header closeButton>
+          <Modal.Title>Delete Confirmation</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+         Are you sure Delete 
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="default" onClick={hideModal}>
+            Cancel
+          </Button>
+          <Button variant="danger" onClick={() => inputArr(val, i) }>
+            Delete
+          </Button>
+        </Modal.Footer>
+      </Modal>
 
+                         
                           <Icon
                             icon="zondicons:view-show"
                             width="18"
@@ -130,25 +152,24 @@ const Breakfast = ({ datalist, active, setActive, inputArr, setInputArr }) => {
                             className="w-25 label "
                             onClick={() => handleShow()}
                           />
-      <Modal show={show} onHide={handleClose}>
-                            <Modal.Header closeButton>
+                         <Modal show={show} onHide={handleClose}>
+                            <Modal.Header closeButton >
                               <Modal.Title>Modal heading</Modal.Title>
                             </Modal.Header>
-                            <Modal.Body>
+                            <Modal.Body >
+                            <label>Name:</label>
                           <td className="idea">{val.name}</td>
-                      <td className="idea">{val.email}</td>
-                      <td className="idea">{val.phoneNumber}</td>
+                          <label>Email:</label>
+                          <td className="idea">{val.email}</td>
+                          <label>Phone Number:</label>
+                          <td className="idea">{val.phoneNumber}</td>
                             </Modal.Body>
-                            <Modal.Footer>
+                            <Modal.Footer >
                               <Button variant="secondary" onClick={handleClose}>
-                                Close
+                                ok
                               </Button>
-                              <Button variant="primary" onClick={handleClose}>
-                                Save Changes
-                              </Button>
-                            </Modal.Footer>
-                      
-                          </Modal>
+                             </Modal.Footer>
+                              </Modal>
                          
                         </div>
                       </td>

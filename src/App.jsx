@@ -71,7 +71,7 @@ const App = () => {
           <Route path="Add-breakfast" element={<AddBreakfast active={active} setActive={setActive} datalist={datalist} setDatalist={setDatalist}inputArr={inputArr}setInputArr={setInputArr}/>}/>
           <Route path="dinner" element={<Dinner   active={active} setActive={setActive} arrList={arrList} setArrList={setArrList}/>}   />
           <Route path="Add-dinner" element={<AddDinner active={active} setActive={setActive} arrList={arrList} setArrList={setArrList} />} />
-          <Route path="Breadcrums" element={<Breadcrumb/>} show={show} setshow={setShow} />
+      
 
         </Routes>
       </BrowserRouter>

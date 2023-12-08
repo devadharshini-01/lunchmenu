@@ -131,15 +131,18 @@ import Modal from "react-bootstrap/Modal";
                               <Modal.Title>Modal heading</Modal.Title>
                             </Modal.Header>
                             <Modal.Body>
-                              Woohoo, you are reading this text in a modal!
+                            <label>Name:</label>
+                          <td className="idea">{data.name}</td>
+                          <label>Email:</label>
+                          <td className="idea">{data.email}</td>
+                          <label>Phone Number:</label>
+                          <td className="idea">{data.phoneNumber}</td>
                             </Modal.Body>
                             <Modal.Footer>
                               <Button variant="secondary" onClick={handleClose}>
-                                Close
+                                OK
                               </Button>
-                              <Button variant="primary" onClick={handleClose}>
-                                Save Changes
-                              </Button>
+                              
                             </Modal.Footer>
                           </Modal>
                     </div>
