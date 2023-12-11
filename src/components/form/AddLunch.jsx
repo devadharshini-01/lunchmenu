@@ -13,6 +13,7 @@ setChangeArr}
     name: "",
     phoneNumber: "",
     dateofbirth: "",
+    email:"",
     gender: "",
     price: "",
     menu: "",

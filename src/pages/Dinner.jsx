@@ -117,15 +117,15 @@ const Dinner = ({active,setActive,arrList,setArrList}) =>{
                         width="18"
                         height="18"
                         className="w-25  label" onClick={() => tableRowRemove()}
-                       
+                 />
 
-                      />
+                      
                       <Icon
                         icon="zondicons:view-show"
                         width="18"
                         height="18"
                         className="w-25 label "
-                        on
+                        
                       />
                       
                          <Modal show={show} onHide={handleClose}>

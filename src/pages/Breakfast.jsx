@@ -5,15 +5,39 @@ import ReactPaginate from "react-paginate";
 import { Navigate, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
-
+import Model from "./Model";
+import DeleteModel from "./DeleteModel";
 
 const Breakfast = ({ datalist, active, setActive, inputArr, setInputArr }) => {
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
   const[view,setView]=useState(false);
 
+   const [modelData,setModelData]=useState({
+  name:"",
+  email:"",
+  phoneNumber:"",
+});
+const[deleteModel,setDeleteModel]=useState({})
+
+// console.log(modelData.name)
+// console.log(modelData.email)
+// console.log(modelData.phoneNumber,"phoneNumber")
+const handlemodeldata = (e) => {
+  setShow(true);
+  
+  
+  
+  // setModelData({ ...modelData, [e.target.name]: e.target.value });
+  // console.log(e.name)
+  setModelData((pre)=>({...pre,name:e.name}))
+  // console.log(e.email)
+
+
+setModelData((pre)=>({...pre,email:e.email}))
+  // console.log(e.phoneNumber)
+setModelData((pre)=>({...pre,phoneNumber:e.phoneNumber}))
+};
 
 
   const tableRowRemove = (i) => {
@@ -23,15 +47,15 @@ const Breakfast = ({ datalist, active, setActive, inputArr, setInputArr }) => {
     setInputArr(dataRow);
     console.log(dataRow);
     toast.success("Deleted successfully!");
-    
+    setView(true);
   };
   const handlePageClick = (data) => {
     console.log(data.selected);
   };
+
+  const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
-  const handleShow = () =>  setShow(true);  
- const hideModal=()=>setView(false);
- const showModal=()=>setView(true);
+
 
 
   return (
@@ -105,7 +129,8 @@ const Breakfast = ({ datalist, active, setActive, inputArr, setInputArr }) => {
                     <tr key={i}>
                       <th scope="row">{i + 1}</th>
 
-                      <td className="idea">{val.name}</td>
+                      <td onClick={()=>console.log(i,"jhgyhg")} className="idea">{val.name}</td>
+                        
                       <td className="idea">{val.email}</td>
                       <td className="idea">{val.phoneNumber}</td>
                       <td>
@@ -123,59 +148,25 @@ const Breakfast = ({ datalist, active, setActive, inputArr, setInputArr }) => {
                             height="18"
                             className="w-25 label "
                             onClick={() => tableRowRemove()}
-                       
                           />
-              
- 
-              <Modal showModal={showModal} onHide={hideModal}>
-        <Modal.Header closeButton>
-          <Modal.Title>Delete Confirmation</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-         Are you sure Delete 
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="default" onClick={hideModal}>
-            Cancel
-          </Button>
-          <Button variant="danger" onClick={() => inputArr(val, i) }>
-            Delete
-          </Button>
-        </Modal.Footer>
-      </Modal>
+                      
 
-                         
                           <Icon
                             icon="zondicons:view-show"
                             width="18"
                             height="18"
                             className="w-25 label "
-                            onClick={() => handleShow()}
+                            onClick={() => handlemodeldata(val)}
                           />
-                         <Modal show={show} onHide={handleClose}>
-                            <Modal.Header closeButton >
-                              <Modal.Title>Modal heading</Modal.Title>
-                            </Modal.Header>
-                            <Modal.Body >
-                            <label>Name:</label>
-                          <td className="idea">{val.name}</td>
-                          <label>Email:</label>
-                          <td className="idea">{val.email}</td>
-                          <label>Phone Number:</label>
-                          <td className="idea">{val.phoneNumber}</td>
-                            </Modal.Body>
-                            <Modal.Footer >
-                              <Button variant="secondary" onClick={handleClose}>
-                                ok
-                              </Button>
-                             </Modal.Footer>
-                              </Modal>
-                         
+                       
+                        
                         </div>
                       </td>
                     </tr>
                   ))}
-             
+                      
+                     <Model show={show} setShow={setShow} name={modelData.name} setName={modelData.name} email={modelData.email} setEmail={modelData.email} phoneNumber={modelData.phoneNumber} setPhoneNumber={modelData.phoneNumber}  />
+                     <DeleteModel view={view} setView={setView}/>
                 <div className="row d-flex justify-content-end w-100">
                   <ReactPaginate
                     previousLabel={"previous"}

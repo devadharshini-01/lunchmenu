@@ -8,12 +8,12 @@ import Lunch from "./pages/Lunch";
 import AddBreakfast from "./components/form/Addbreakfast";
 import AddLunch from "./components/form/AddLunch";
 import AddDinner from "./components/form/AddDinner";
-import { useEffect, useState } from "react";
-import { Breadcrumb } from "react-bootstrap";
+import { useState } from "react";
+
 
 
 const App = () => {
-  const[show,setShow]=useState();
+
   const [active, setActive] = useState();
   const [datalist, setDatalist] = useState({
 
@@ -71,7 +71,7 @@ const App = () => {
           <Route path="Add-breakfast" element={<AddBreakfast active={active} setActive={setActive} datalist={datalist} setDatalist={setDatalist}inputArr={inputArr}setInputArr={setInputArr}/>}/>
           <Route path="dinner" element={<Dinner   active={active} setActive={setActive} arrList={arrList} setArrList={setArrList}/>}   />
           <Route path="Add-dinner" element={<AddDinner active={active} setActive={setActive} arrList={arrList} setArrList={setArrList} />} />
-      
+          
 
         </Routes>
       </BrowserRouter>
