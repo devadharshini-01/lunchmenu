@@ -6,57 +6,63 @@ import { Navigate, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Model from "./Model";
-import DeleteModel from "./DeleteModel";
 
 const Breakfast = ({ datalist, active, setActive, inputArr, setInputArr }) => {
   const navigate = useNavigate();
-  const [show, setShow] = useState(false);
-  const[view,setView]=useState(false);
+  const [view, setView] = useState(false);
+ 
+  const [deleterecord, setDeleteRecord] = useState(false);
+  const[deletekey,setDeleteKey]=useState(false);
 
-   const [modelData,setModelData]=useState({
-  name:"",
-  email:"",
-  phoneNumber:"",
-});
-const[deleteModel,setDeleteModel]=useState({})
+  const [modelData, setModelData] = useState({
+    name: "",
+    email: "",
+    phoneNumber: "",
+    index: "",
+    deleteName: "",
+    deleteconform:"",
+  });
 
-// console.log(modelData.name)
-// console.log(modelData.email)
-// console.log(modelData.phoneNumber,"phoneNumber")
-const handlemodeldata = (e) => {
-  setShow(true);
-  
-  
-  
-  // setModelData({ ...modelData, [e.target.name]: e.target.value });
-  // console.log(e.name)
-  setModelData((pre)=>({...pre,name:e.name}))
-  // console.log(e.email)
+  // console.log(modelData.name)
+  // console.log(modelData.email)
+  // console.log(modelData.phoneNumber,"phoneNumber")
+  const handlemodeldata = (e) => {
+    setView(true) ;
+    console.log(view);
+   setDeleteKey(true);
+    // setModelData({ ...modelData, [e.target.name]: e.target.value });
+    // console.log(e.name)
+    setModelData((pre) => ({ ...pre, name: e.name }));
+    // console.log(e.email)
 
-
-setModelData((pre)=>({...pre,email:e.email}))
-  // console.log(e.phoneNumber)
-setModelData((pre)=>({...pre,phoneNumber:e.phoneNumber}))
-};
-
-
-  const tableRowRemove = (i) => {
-    // console.log(i);
-    const dataRow = [...inputArr];
-    dataRow.splice(i + 1, 1);
-    setInputArr(dataRow);
-    console.log(dataRow);
-    toast.success("Deleted successfully!");
-    setView(true);
+    setModelData((pre) => ({ ...pre, email: e.email }));
+    console.log(e.phoneNumber);
+    setModelData((pre) => ({ ...pre, phoneNumber: e.phoneNumber }));
   };
+
+  const handeldelete = (i, name) => {
+ 
+    setDeleteRecord (true) ;
+    console.log(i, "hai");
+    console.log(name, "hello");
+    setModelData((pre) => ({ ...pre, index: i }));
+
+    setModelData((pre) => ({ ...pre, deleteName: name }));
+    
+    console.log(view);
+    
+  };
+  // const tableRowRemove = (i) => {
+  //   console.log(i);
+  //   const dataRow = [...inputArr,i];
+  //  dataRow.splice(index + 1, 1);
+  //   setInputArr(dataRow);
+  //   console.log(dataRow);
+  //   toast.success("Deleted successfully!");
+
   const handlePageClick = (data) => {
     console.log(data.selected);
   };
-
-  const handleShow = () => setShow(true);
-  const handleClose = () => setShow(false);
-
-
 
   return (
     <>
@@ -129,10 +135,11 @@ setModelData((pre)=>({...pre,phoneNumber:e.phoneNumber}))
                     <tr key={i}>
                       <th scope="row">{i + 1}</th>
 
-                      <td onClick={()=>console.log(i,"jhgyhg")} className="idea">{val.name}</td>
-                        
+                      <td className="idea">{val.name}</td>
+
                       <td className="idea">{val.email}</td>
                       <td className="idea">{val.phoneNumber}</td>
+
                       <td>
                         <div className="row d-flex  justify-content-center  ">
                           <Icon
@@ -147,9 +154,8 @@ setModelData((pre)=>({...pre,phoneNumber:e.phoneNumber}))
                             width="18"
                             height="18"
                             className="w-25 label "
-                            onClick={() => tableRowRemove()}
+                            onClick={() => handeldelete(i, val.name)}
                           />
-                      
 
                           <Icon
                             icon="zondicons:view-show"
@@ -158,15 +164,29 @@ setModelData((pre)=>({...pre,phoneNumber:e.phoneNumber}))
                             className="w-25 label "
                             onClick={() => handlemodeldata(val)}
                           />
-                       
-                        
                         </div>
                       </td>
                     </tr>
                   ))}
-                      
-                     <Model show={show} setShow={setShow} name={modelData.name} setName={modelData.name} email={modelData.email} setEmail={modelData.email} phoneNumber={modelData.phoneNumber} setPhoneNumber={modelData.phoneNumber}  />
-                     <DeleteModel view={view} setView={setView}/>
+
+                <Model
+                  show={view || deleterecord}
+                  view={view}
+                  deleterecord={deleterecord}
+                  setView={setView }
+                  setDeleteKey={setDeleteKey}
+                  i={modelData.index}
+               
+                  deleteName={modelData.deleteName}
+                  setDeleteName={modelData.deleteName}
+                  name={modelData.name}
+                  setName={modelData.name}
+                  email={modelData.email}
+                  setEmail={modelData.email}
+                  phoneNumber={modelData.phoneNumber}
+                  setPhoneNumber={modelData.phoneNumber}
+                />
+
                 <div className="row d-flex justify-content-end w-100">
                   <ReactPaginate
                     previousLabel={"previous"}
