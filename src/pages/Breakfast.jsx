@@ -7,6 +7,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Model from "./Model";
 
+
 const Breakfast = ({ datalist, active, setActive, inputArr, setInputArr }) => {
   const navigate = useNavigate();
   const [view, setView] = useState(false);
@@ -135,7 +136,7 @@ const Breakfast = ({ datalist, active, setActive, inputArr, setInputArr }) => {
                     <tr key={i}>
                       <th scope="row">{i + 1}</th>
 
-                      <td className="idea">{val.name}</td>
+                      <td className="idea">{val.Name}</td>
 
                       <td className="idea">{val.email}</td>
                       <td className="idea">{val.phoneNumber}</td>
