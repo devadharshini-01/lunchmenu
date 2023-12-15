@@ -100,9 +100,10 @@ const Datalist = ({
   const schema = yup.object().shape({
     Name: yup.string().required("Name is a required field"),
     phoneNumber: yup.number().required("phone Number is a required field"),
-    dateofbirth: yup.number().required("Date of Birth is a required field"),
+    dateofbirth: yup.string().required("date of birth is a required field"),
     email: yup.string().email().required("E-mail is a required field"),
     gender: yup.string().required("Gender is a required field"),
+    list:yup.string().required("lunchlist is a required field"),
     street: yup.string().required("street is a required field"),
     city: yup.string().required("city is a required field"),
     state: yup.string().required("state is a required field"),
@@ -119,6 +120,7 @@ const Datalist = ({
         dateofbirth:"",
         email: "",
         gender:"",
+         list:"",
         street: "",
         city: "",
         state: "",
@@ -130,9 +132,8 @@ const Datalist = ({
         <Form noValidate onSubmit={handleSubmit}>
           <div className="row ">
             <div className="col-2 ">
-              <Sidebar active={active} setActive={setActive} />
+              <Sidebar active={active} setActive={setActive}  />
             </div>
-            {console.log(errors)}
 
             <div className="col-10  p-3  ">
               <div className="mx-5">
@@ -194,8 +195,9 @@ const Datalist = ({
                             type="radio"
                             id="male"
                             name="gender"
-                            value={values.gender}
+                            value={"male"}
                             onChange={handleChange}
+                            defaultChecked={values.gender=== "male"}
                           />
                         
                           <label
@@ -214,8 +216,9 @@ const Datalist = ({
                             type="radio"
                             id="female"
                             name="gender"
-                            value={values.gender}
-                            onChange={handleChange}
+                            value={"female"}
+                           onChange={handleChange}
+                            defaultChecked={values.gender=== "female"}
                           />
                           <label
                             className="form-check-label"
@@ -233,8 +236,9 @@ const Datalist = ({
                             type="radio"
                             id="others"
                             name="gender"
-                            value={values.gender}
+                            value={"others"}
                             onChange={handleChange}
+                            defaultChecked={values.gender=== "others"}
                           />
                           <label
                             className="form-check-label"
@@ -256,11 +260,13 @@ const Datalist = ({
                       <input
                         className="form-check-input"
                         type="radio"
-                        name="lunchlist"
+                        name="list"
                         id="veg"
-                        value="veg"
-                        onClick={(e) => handledatalist(e)}
+                        value={"veg"}
+                        onChange={handleChange}
+                            defaultChecked={values.list=== "veg"}
                       />
+                        
                       <label className="form-check-label  " for="price">
                         Veg
                       </label>
@@ -271,19 +277,22 @@ const Datalist = ({
                       <input
                         className="form-check-input"
                         type="radio"
-                        name="lunchlist"
-                        id="Nonveg"
-                        value="Non-veg"
-                        onClick={(e) => handledatalist(e)}
+                        name="list"
+                        id="nonveg"
+                        value={"Non-veg"}
+                        onChange={handleChange}
+                        defaultChecked={values.list=== "nonveg"}
                       />
+                       
                       <label className="form-check-label  " for="price">
                         Non veg
                       </label>
                     </div>
                   </div>
                 </div>
-
-                {datalist.lunchlist === "veg" ? (
+             
+                {<p className="formik">{errors.list}</p>}
+                {values.list === "veg" ? (
                   <table className="table mt-3 p-4">
                     <thead>
                       <tr>
@@ -477,7 +486,7 @@ const Datalist = ({
                       </tr>
                     </tbody>
                   </table>
-                ) : datalist.lunchlist === "Non-veg" ? (
+                ) : values.list === "Non-veg" ? (
                   <table className="table mt-3 p-4">
                     <thead>
                       <tr>

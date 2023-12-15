@@ -175,17 +175,17 @@ const Breakfast = ({ datalist, active, setActive, inputArr, setInputArr }) => {
                   view={view}
                   deleterecord={deleterecord}
                   setView={setView }
-                  setDeleteKey={setDeleteKey}
+                
                   i={modelData.index}
                
                   deleteName={modelData.deleteName}
-                  setDeleteName={modelData.deleteName}
+                  // setDeleteName={modelData.deleteName}
                   name={modelData.name}
-                  setName={modelData.name}
+                  // setName={modelData.name}
                   email={modelData.email}
-                  setEmail={modelData.email}
+                  // setEmail={modelData.email}
                   phoneNumber={modelData.phoneNumber}
-                  setPhoneNumber={modelData.phoneNumber}
+                  // setPhoneNumber={modelData.phoneNumber}
                 />
 
                 <div className="row d-flex justify-content-end w-100">

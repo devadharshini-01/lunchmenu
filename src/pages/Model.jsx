@@ -40,17 +40,17 @@ const Model = ({
          
            {deleterecord && <div>
               
-              <label>If you want delete this id <b>{i}</b></label>
+           
 
-              <label>with this name<b>{deleteName}</b> </label>
+              <label>If you delete  this name<b>{deleteName}</b> </label>
             </div>}
 
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={() => setView(false) } setView>
+          <Button variant="secondary" onClick={() => setView(false) } >
             OK
           </Button>
-          <Button variant="secondary"  onClick={() => setDeletekey(false) } setView >
+          <Button variant="secondary">
             Delete
           </Button>
         </Modal.Footer>
