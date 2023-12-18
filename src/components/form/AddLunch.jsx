@@ -1,7 +1,10 @@
 import Sidebar from "../../layout/Sidebar";
 import { useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import { Formik } from "formik";
+import Form from "react-bootstrap/Form";
+import * as yup from "yup"; 
 const AddLunch = (
   { active,
   setActive,
@@ -10,7 +13,7 @@ setChangeArr}
 ) => {
 
   const [menulist, setMenulist] = useState({
-    name: "",
+    Name: "",
     phoneNumber: "",
     dateofbirth: "",
     email:"",
@@ -75,9 +78,9 @@ setChangeArr}
     }
   };
 
-  const handleInput = () => {
-    console.log(menulist,"menulist");
-    setChangeArr((prev)=>[...prev, menulist])
+  const handleInput = (values) => {
+    console.log(values,"");
+    setChangeArr([...changeArr, values]);
    navigate("/lunch");
   };
 
@@ -116,9 +119,42 @@ setChangeArr}
     setMenulist({ ...menulist, map: temp });
   }, [menulist.object]);
 
+  const schema = yup.object().shape({
+    Name: yup.string().required("Name is a required field"),
+    phoneNumber: yup.number().required("phone Number is a required field"),
+    dateofbirth: yup.string().required("date of birth is a required field"),
+    email: yup.string().email().required("E-mail is a required field"),
+    gender: yup.string().required("Gender is a required field"),
+    coin:yup.string().required("lunchlist is a required field"),
+    street: yup.string().required("street is a required field"),
+    city: yup.string().required("city is a required field"),
+    state: yup.string().required("state is a required field"),
+    zip: yup.string().required("zip is a required field"),
+  });
+
+
   return (
     <>
-      <div className="row ">
+     <Formik
+      validationSchema={schema}
+      onSubmit= { handleInput}
+      initialValues={{
+        Name: "",
+        phoneNumber: "",
+        dateofbirth:"",
+        email: "",
+        gender:"",
+        coin:"",
+        street: "",
+        city: "",
+        state: "",
+        zip: "",
+      }}
+    >
+       {({ handleSubmit, handleChange, values, errors }) => (
+
+       <Form noValidate onSubmit={handleSubmit}>
+         <div className="row ">
         <div className="col-2 ">
           <Sidebar active={active} setActive={setActive} />
         </div>
@@ -131,10 +167,12 @@ setChangeArr}
                 <label>Name :</label>
                 <input
                   className=" form-control box"
-                  name="name"
-                  value={menulist.name}
-                  onChange={(e) => handlemenulist(e)}
+                  name="Name"
+              
+                  value={values.Name}
+                  onChange={handleChange}
                 />
+                 {<p className="formik">{errors.Name}</p>}
               </div>
               <div className="col-3">
                 <label>Phone Number :</label>
@@ -142,9 +180,10 @@ setChangeArr}
                   type="number"
                   className=" form-control box"
                   name="phoneNumber"
-                  value={menulist.phoneNumber}
-                  onChange={(e) => handlemenulist(e)}
+                  value={values.phoneNumber}
+                  onChange={handleChange}
                 />
+                 <p className="formik">{errors.phoneNumber}</p>
               </div>
               <div className="col-3">
                 <label>Date of Birth :</label>
@@ -152,18 +191,20 @@ setChangeArr}
                   type="date"
                   className="form-control"
                   name="dateofbirth"
-                  value={menulist.dateofbirth}
-                  onChange={(e) => handlemenulist(e)}
+                  value={values.dateofbirth}
+                   onChange={handleChange}
                 />
+                { <p className="formik">{errors.dateofbirth}</p>}
               </div>
               <div className="col-3">
               <label>E-mail:</label>
               <input
                 className=" form-control box"
                 name="email"
-                value={menulist.email}
-                onChange={(e) => handlemenulist(e)}
+                value={values.email}
+                onChange={handleChange}
               />
+              { <p className="formik">{errors.email}</p>}
             </div>
 
               <div className="row">
@@ -176,8 +217,9 @@ setChangeArr}
                         type="radio"
                         id="male"
                         name="gender"
-                        value="male"
-                        onClick={(e) => handlemenulist(e)}
+                        value={"male"}
+                        onChange={handleChange}
+                        defaultChecked={values.gender=== "gender"}
                       />
                       <label
                         className="form-check-label male "
@@ -194,8 +236,9 @@ setChangeArr}
                         type="radio"
                         id="female"
                         name="gender"
-                        value="female"
-                        onClick={(e) => handlemenulist(e)}
+                        value={"female"}
+                        onChange={handleChange}
+                        defaultChecked={values.gender=== "female"}
                       />
                       <label
                         className="form-check-label"
@@ -212,8 +255,9 @@ setChangeArr}
                         type="radio"
                         id="others"
                         name="gender"
-                        value="others"
-                        onClick={(e) => handlemenulist(e)}
+                        value={"others"}
+                        onChange={handleChange}
+                            defaultChecked={values.gender=== "others"}
                       />
                       <label
                         className="form-check-label"
@@ -225,6 +269,7 @@ setChangeArr}
                   </div>
                 </div>
               </div>
+              <p className="formik">{errors.gender}</p>
             </div>
             <label className=" mt-3  ">Type of food like to have?</label>
             <div className="row w-50">
@@ -233,10 +278,11 @@ setChangeArr}
                   <input
                     className="form-check-input"
                     type="radio"
-                    name="price"
+                    name="coin"
                     id="veg"
-                    value="veg"
-                    onClick={(e) => handlemenulist(e)}
+                    value={"veg"}
+                    onChange={handleChange}
+                        defaultChecked={values.coin=== "veg"}
                   />
                   <label className="form-check-label  " for="price">
                     Veg
@@ -248,10 +294,11 @@ setChangeArr}
                   <input
                     className="form-check-input"
                     type="radio"
-                    name="price"
+                    name="coin"
                     id="Nonveg"
-                    value="Non-veg"
-                    onClick={(e) => handlemenulist(e)}
+                    value={"Non-veg"}
+                    onChange={handleChange}
+                    defaultChecked={values.coin=== "Non-veg"}
                   />
                   <label className="form-check-label  " for="price">
                     Non veg
@@ -259,8 +306,8 @@ setChangeArr}
                 </div>
               </div>
             </div>
-
-            {menulist.price === "veg" ? (
+            <p className="formik">{errors.coin}</p>
+            {values.coin === "veg" ? (
               <table className="table mt-3 p-4">
                 <thead>
                   <tr>
@@ -451,7 +498,7 @@ setChangeArr}
                   </tr>
                 </tbody>
               </table>
-            ) : menulist.price === "Non-veg" ? (
+            ) : values.coin === "Non-veg" ? (
               <table className="table mt-3 p-4">
                 <thead>
                   <tr>
@@ -645,19 +692,21 @@ setChangeArr}
             <textarea
               className=" form-control p-0 "
               name="street"
-              value={menulist.street}
-              onChange={(e) => handlemenulist(e)}
+              value={values.street}
+              onChange={handleChange}
             />
-
+                {<p className="formik">{errors.street}</p>}
+           
             <div className="row">
               <div className="col-3 mt-3">
                 <label>City :</label>
                 <input
                   className=" form-control "
                   name="city"
-                  value={menulist.city}
-                  onChange={(e) => handlemenulist(e)}
+                  value={values.city}
+                  onChange={handleChange}
                 />
+                     {<p className="formik">{errors.city}</p>}
                 <div />
               </div>
               <div className="col-3 mt-3">
@@ -665,9 +714,10 @@ setChangeArr}
                 <input
                   className="form-control "
                   name="state"
-                  value={menulist.state}
-                  onChange={(e) => handlemenulist(e)}
+                  value={values.state}
+                  onChange={handleChange}
                 />
+                     {<p className="formik">{errors.state}</p>}
               </div>
 
               <div className="col-3 mt-3">
@@ -675,9 +725,10 @@ setChangeArr}
                 <input
                   className=" form-control "
                   name="zip"
-                  value={menulist.zip}
-                  onChange={(e) => handlemenulist(e)}
+                  value={values.zip}
+                  onChange={handleChange}
                 />
+                     {<p className="formik">{errors.zip}</p>}
               </div>
             </div>
             <div className="d-grid gap-2 d-md-flex justify-content-end">
@@ -690,9 +741,9 @@ setChangeArr}
               </button>
               <button
                 className="btn p-2 me-md-2 pink text-white"
-                // onClick={() => navigate("/lunch")}
-                onClick={() => handleInput()}
-                type="button"
+               
+              
+                type="submit"
               >
                 Submit
               </button>
@@ -702,7 +753,12 @@ setChangeArr}
           <div />
         </div>
       </div>
+</Form>
+)}
+   
+      </Formik>
     </>
+
   );
 };
 export default AddLunch;

@@ -9,6 +9,8 @@ import Model from "./Model";
 
 
 const Breakfast = ({ datalist, active, setActive, inputArr, setInputArr }) => {
+
+
   const navigate = useNavigate();
   const [view, setView] = useState(false);
  
@@ -41,10 +43,10 @@ const Breakfast = ({ datalist, active, setActive, inputArr, setInputArr }) => {
     setModelData((pre) => ({ ...pre, phoneNumber: e.phoneNumber }));
   };
 
-  const handeldelete = (i, name) => {
+  const handeldelete = ( i,name) => {
  
     setDeleteRecord (true) ;
-    console.log(i, "hai");
+    // console.log(i, "hai");
     console.log(name, "hello");
     setModelData((pre) => ({ ...pre, index: i }));
 
@@ -175,7 +177,7 @@ const Breakfast = ({ datalist, active, setActive, inputArr, setInputArr }) => {
                   view={view}
                   deleterecord={deleterecord}
                   setView={setView }
-                
+                   
                   i={modelData.index}
                
                   deleteName={modelData.deleteName}
@@ -186,6 +188,7 @@ const Breakfast = ({ datalist, active, setActive, inputArr, setInputArr }) => {
                   // setEmail={modelData.email}
                   phoneNumber={modelData.phoneNumber}
                   // setPhoneNumber={modelData.phoneNumber}
+                
                 />
 
                 <div className="row d-flex justify-content-end w-100">

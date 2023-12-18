@@ -10,7 +10,8 @@ import Modal from "react-bootstrap/Modal";
 
  const Lunch = ({active,setActive,changeArr,setChangeArr}) => {
   const navigate = useNavigate();
-  const [show, setShow] = useState(false);
+
+
 
   const tableRowRemove = (i) => {
     console.log(i);
@@ -19,13 +20,13 @@ import Modal from "react-bootstrap/Modal";
     setChangeArr(dataRow);
     console.log(dataRow)
     toast.success("Deleted successfully!")
+ 
   };
 
   const handlePageClick=()=>{
 
   }
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+
     return(
 <>
 <div className="row">
@@ -81,10 +82,10 @@ import Modal from "react-bootstrap/Modal";
                     S.NO
                   </th>
                   <th scope="col" className="all">
-                    E-MAIL
+                    NAME
                   </th>
                   <th scope="col" className="all">
-                    USERNAME
+                    E-MAIL
                   </th>
                   <th scope="col" className="all">
                     MOBILE NUMBER
@@ -101,7 +102,7 @@ import Modal from "react-bootstrap/Modal";
                return( <tr key={i}>
                   <th scope="row">{i+1}</th>
                  
-                  <td className="idea">{data.name}</td>
+                  <td className="idea">{data.Name}</td>
                   <td className="idea">{data.email}</td>
                   <td className="idea">{data.phoneNumber}</td>
                   <td>
@@ -117,7 +118,7 @@ import Modal from "react-bootstrap/Modal";
                         icon="pajamas:remove"
                         width="18"
                         height="18"
-                        className="w-25 label " onClick={() => tableRowRemove()}
+                        className="w-25 label " onClick={() => tableRowRemove(i)}
                       />
                       <Icon
                         icon="zondicons:view-show"
@@ -132,7 +133,9 @@ import Modal from "react-bootstrap/Modal";
                 </tr>
                   )
                 })}
-               
+         
+        
+     
       
                <ReactPaginate
                    previousLabel={'previous'}

@@ -1,6 +1,10 @@
 import Sidebar from "../../layout/Sidebar";
 import { useState } from "react";
 import { useEffect } from "react";
+import { Formik } from "formik";
+import Form from "react-bootstrap/Form";
+import * as yup from "yup"; 
+
 import { Navigate, useNavigate } from "react-router-dom";
 const Dinnerlist = ({active,setActive,arrList,setArrList}) => {
   const [dinnerlist, setDinnerlist] = useState({
@@ -67,9 +71,9 @@ const Dinnerlist = ({active,setActive,arrList,setArrList}) => {
     }
   };
 
-  const handleChange = () => {
+  const handleChange = (values) => {
     // console.log(menulist,"menulist");
-    setArrList((prev)=>[...prev, dinnerlist])
+    setArrList((prev)=>[...prev, values])
    navigate("/dinner");
    
   };
@@ -116,8 +120,40 @@ const Dinnerlist = ({active,setActive,arrList,setArrList}) => {
   }, [dinnerlist.delete]);
 
   console.log(dinnerlist, "dinnerlist", dinnerlist.price !== "");
+
+  const schema = yup.object().shape({
+    Name: yup.string().required("Name is a required field"),
+    phoneNumber: yup.number().required("phone Number is a required field"),
+    dateofbirth: yup.string().required("date of birth is a required field"),
+    email: yup.string().email().required("E-mail is a required field"),
+    gender: yup.string().required("Gender is a required field"),
+    test:yup.string().required("lunchlist is a required field"),
+    street: yup.string().required("street is a required field"),
+    city: yup.string().required("city is a required field"),
+    state: yup.string().required("state is a required field"),
+    zip: yup.string().required("zip is a required field"),
+  });
   return (
     <>
+      <Formik
+      validationSchema={schema}
+      onSubmit= { handleChange}
+      initialValues={{
+        Name: "",
+        phoneNumber: "",
+        dateofbirth:"",
+        email: "",
+        gender:"",
+        test:"",
+        street: "",
+        city: "",
+        state: "",
+        zip: "",
+      }}
+    >
+        {({ handleSubmit, handleChange, values, errors }) => (
+
+<Form noValidate onSubmit={handleSubmit}>
       <div className="row ">
         <div className="col-2 ">
           <Sidebar active={active} setActive={setActive} />
@@ -131,10 +167,11 @@ const Dinnerlist = ({active,setActive,arrList,setArrList}) => {
                 <label>Name :</label>
                 <input
                   className=" form-control box"
-                  name="name"
-                  value={dinnerlist.name}
-                  onChange={(e) => handledinnerlist(e)}
+                  name="Name"
+                  value={values.Name}
+                  onChange={handleChange}
                 />
+                 {<p className="formik">{errors.Name}</p>}
               </div>
               <div className="col-3">
                 <label>Phone Number :</label>
@@ -142,9 +179,10 @@ const Dinnerlist = ({active,setActive,arrList,setArrList}) => {
                   type="number"
                   className=" form-control box"
                   name="phoneNumber"
-                  value={dinnerlist.phoneNumber}
-                  onChange={(e) => handledinnerlist(e)}
+                  value={values.phoneNumber}
+                  onChange={handleChange}
                 />
+                 {<p className="formik">{errors.phoneNumber}</p>}
               </div>
               <div className="col-3">
                 <label>Date of Birth :</label>
@@ -152,18 +190,20 @@ const Dinnerlist = ({active,setActive,arrList,setArrList}) => {
                   type="date"
                   className="form-control"
                   name="dateofbirth"
-                  value={dinnerlist.dateofbirth}
-                  onChange={(e) => handledinnerlist(e)}
+                  value={values.dateofbirth}
+                  onChange={handleChange}
                 />
+                 {<p className="formik">{errors.dateofbirth}</p>}
               </div>
               <div className="col-3">
               <label>E-mail:</label>
               <input
                 className=" form-control box"
                 name="email"
-                value={dinnerlist.email}
-                onChange={(e) => handledinnerlist(e)}
+                value={values.email}
+                 onChange={handleChange}
               />
+               {<p className="formik">{errors.email}</p>}
             </div>
 
               <div className="row">
@@ -176,8 +216,9 @@ const Dinnerlist = ({active,setActive,arrList,setArrList}) => {
                         type="radio"
                         id="male"
                         name="gender"
-                        value="male"
-                        onClick={(e) => handledinnerlist(e)}
+                        value={"male"}
+                        onChange={handleChange}
+                        defaultChecked={values.gender=== "male"}
                       />
                       <label
                         className="form-check-label male "
@@ -194,8 +235,9 @@ const Dinnerlist = ({active,setActive,arrList,setArrList}) => {
                         type="radio"
                         id="female"
                         name="gender"
-                        value="female"
-                        onClick={(e) => handledinnerlist(e)}
+                        value={"female"}
+                        onChange={handleChange}
+                        defaultChecked={values.gender=== "female"}
                       />
                       <label
                         className="form-check-label"
@@ -212,8 +254,9 @@ const Dinnerlist = ({active,setActive,arrList,setArrList}) => {
                         type="radio"
                         id="others"
                         name="gender"
-                        value="others"
-                        onClick={(e) => handledinnerlist(e)}
+                        value={"others"}
+                        onChange={handleChange}
+                        defaultChecked={values.gender=== "others"}
                       />
                       <label
                         className="form-check-label"
@@ -225,6 +268,7 @@ const Dinnerlist = ({active,setActive,arrList,setArrList}) => {
                   </div>
                 </div>
               </div>
+              <p className="formik">{errors.gender}</p>
             </div>
             <label className=" mt-3  ">Type of food like to have?</label>
             <div className="row w-50">
@@ -233,10 +277,11 @@ const Dinnerlist = ({active,setActive,arrList,setArrList}) => {
                   <input
                     className="form-check-input"
                     type="radio"
-                    name="menu"
+                    name="test"
                     id="veg"
-                    value="veg"
-                    onClick={(e) => handledinnerlist(e)}
+                    value={"veg"}
+                    onChange={handleChange}
+                    defaultChecked={values.test=== "veg"}
                   />
                   <label className="form-check-label  " for="price">
                     Veg
@@ -248,10 +293,11 @@ const Dinnerlist = ({active,setActive,arrList,setArrList}) => {
                   <input
                     className="form-check-input"
                     type="radio"
-                    name="menu"
+                    name="test"
                     id="Nonveg"
-                    value="Non-veg"
-                    onClick={(e) => handledinnerlist(e)}
+                    value={"Non-veg"}
+                    onChange={handleChange}
+                        defaultChecked={values.test=== "Non-veg"}
                   />
                   <label className="form-check-label  " for="price">
                     Non veg
@@ -259,8 +305,8 @@ const Dinnerlist = ({active,setActive,arrList,setArrList}) => {
                 </div>
               </div>
             </div>
-
-            {dinnerlist.menu === "veg" ? (
+            <p className="formik">{errors.test}</p>
+            {values.test === "veg" ? (
               <table className="table mt-3 p-4">
                 <thead>
                   <tr>
@@ -463,7 +509,7 @@ const Dinnerlist = ({active,setActive,arrList,setArrList}) => {
                   </tr>
                 </tbody>
               </table>
-            ) : dinnerlist.menu === "Non-veg" ? (
+            ) : values.test === "Non-veg" ? (
               <table className="table mt-3 p-4">
                 <thead>
                   <tr>
@@ -671,19 +717,21 @@ const Dinnerlist = ({active,setActive,arrList,setArrList}) => {
             <textarea
               className=" form-control p-0 "
               name="street"
-              value={dinnerlist.street}
-              onChange={(e) => handledinnerlist(e)}
+              value={values.street}
+              onChange={handleChange}
+          
             />
-
+             {<p className="formik">{errors.street}</p>}
             <div className="row">
               <div className="col-3 mt-3">
                 <label>City :</label>
                 <input
                   className=" form-control "
                   name="city"
-                  value={dinnerlist.city}
-                  onChange={(e) => handledinnerlist(e)}
+                  value={values.city}
+                  onChange={handleChange}
                 />
+                 {<p className="formik">{errors.city}</p>}
                 <div />
               </div>
               <div className="col-3 mt-3">
@@ -691,9 +739,10 @@ const Dinnerlist = ({active,setActive,arrList,setArrList}) => {
                 <input
                   className="form-control "
                   name="state"
-                  value={dinnerlist.state}
-                  onChange={(e) => handledinnerlist(e)}
+                  value={values.state}
+                  onChange={handleChange}
                 />
+                 {<p className="formik">{errors.state}</p>}
               </div>
 
               <div className="col-3 mt-3">
@@ -701,9 +750,10 @@ const Dinnerlist = ({active,setActive,arrList,setArrList}) => {
                 <input
                   className=" form-control "
                   name="zip"
-                  value={dinnerlist.zip}
-                  onChange={(e) => handledinnerlist(e)}
+                  value={values.zip}
+                  onChange={handleChange}
                 />
+                 {<p className="formik">{errors.zip}</p>}
               </div>
             </div>
             <div className="d-grid gap-2 d-md-flex justify-content-end">
@@ -716,9 +766,9 @@ const Dinnerlist = ({active,setActive,arrList,setArrList}) => {
               </button>
               <button
                 className="btn p-2 me-md-2 pink text-white"
-                // onClick={() => navigate("/dinner")}
-                onClick={() => handleChange()}
-                type="button"
+                
+           
+                type="submit"
               >
                 Submit
               </button>
@@ -728,7 +778,11 @@ const Dinnerlist = ({active,setActive,arrList,setArrList}) => {
           <div />
         </div>
       </div>
+      </Form>
+        )}   
+          </Formik>
     </>
+   
   );
 };
 export default Dinnerlist;

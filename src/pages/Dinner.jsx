@@ -80,10 +80,10 @@ const Dinner = ({active,setActive,arrList,setArrList}) =>{
                     S.NO
                   </th>
                   <th scope="col" className="all">
-                    E-MAIL
+                    NAME
                   </th>
                   <th scope="col" className="all">
-                    USERNAME
+                    E-MAIL
                   </th>
                   <th scope="col" className="all">
                     MOBILE NUMBER
@@ -100,7 +100,7 @@ const Dinner = ({active,setActive,arrList,setArrList}) =>{
                return( <tr key={i}>
                   <th scope="row">{i+1}</th>
                  
-                  <td className="idea">{data.name}</td>
+                  <td className="idea">{data.Name}</td>
                   <td className="idea">{data.email}</td>
                   <td className="idea">{data.phoneNumber}</td>
                   <td>

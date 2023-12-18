@@ -11,7 +11,7 @@ const Model = ({
   email,
   phoneNumber,
   deleterecord,
-
+ tableRowRemove,
   setDeleteRecord,
   i,
   deleteName,
@@ -41,8 +41,8 @@ const Model = ({
            {deleterecord && <div>
               
            
-
-              <label>If you delete  this name<b>{deleteName}</b> </label>
+             <label>If you delete  this name<b>{i}</b></label>
+              <label>with name<b>{deleteName}</b> </label>
             </div>}
 
         </Modal.Body>
@@ -50,7 +50,7 @@ const Model = ({
           <Button variant="secondary" onClick={() => setView(false) } >
             OK
           </Button>
-          <Button variant="secondary">
+          <Button variant="secondary" onClick={() => tableRowRemove() } >
             Delete
           </Button>
         </Modal.Footer>

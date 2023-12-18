@@ -9,6 +9,8 @@ import AddBreakfast from "./components/form/Addbreakfast";
 import AddLunch from "./components/form/AddLunch";
 import AddDinner from "./components/form/AddDinner";
 import { useState } from "react";
+import Userdata from "./components/form/Userdata";
+import UserDataTable from "./pages/UserDataTable";
 
 
 
@@ -71,6 +73,8 @@ const App = () => {
           <Route path="Add-breakfast" element={<AddBreakfast active={active} setActive={setActive} datalist={datalist} setDatalist={setDatalist}inputArr={inputArr}setInputArr={setInputArr}/>}/>
           <Route path="dinner" element={<Dinner   active={active} setActive={setActive} arrList={arrList} setArrList={setArrList}/>}   />
           <Route path="Add-dinner" element={<AddDinner active={active} setActive={setActive} arrList={arrList} setArrList={setArrList} />} />
+          <Route path="userdata" element={<Userdata active={active} setActive={setActive}  />} />
+          <Route path="userDataTable" element={<UserDataTable active={active} setActive={setActive}  />} />
           
 
         </Routes>

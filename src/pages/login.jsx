@@ -85,8 +85,8 @@ const displayLoginNotification = () => {
                 </span>
               </div>
             </div>
-            <button className=" btn text-white" onClick={()=>navigate("/breakfast")} >Sign in</button>
-          
+       
+               <button className=" btn text-white" onClick={()=>navigate("/breakfast")} >Sign in</button>
      
           </div>
         </div>

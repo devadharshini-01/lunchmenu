@@ -1,6 +1,6 @@
 import Sidebar from "../../layout/Sidebar";
-import { useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+
+import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import * as yup from "yup";
 import { Formik } from "formik";
@@ -145,7 +145,6 @@ const Datalist = ({
                     <input
                       className=" form-control box"
                       name="Name"
-
                       value={values.Name}
                       onChange={handleChange}
                     />
@@ -281,7 +280,7 @@ const Datalist = ({
                         id="nonveg"
                         value={"Non-veg"}
                         onChange={handleChange}
-                        defaultChecked={values.list=== "nonveg"}
+                        defaultChecked={values.list=== "Non-veg"}
                       />
                        
                       <label className="form-check-label  " for="price">
