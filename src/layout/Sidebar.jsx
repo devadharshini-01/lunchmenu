@@ -73,9 +73,9 @@ const Sidebar = (props) => {
           <p
               className={`${
                 props.active === "userdata"
-                  ? " p-2 bg-white rounded-3  text-danger"
+                  ? " p-2 bg-white rounded-3  text-danger "
                   : "text-white"
-              } p-0 a:hover mt-2 git `}
+              } p-0 a:hover mt-2  `}
               onClick={() => props.setActive("userdata")}
             >
             

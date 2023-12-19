@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import axios from "axios";
 const Login = () => {
   const [login, setLogin] = useState({
     email: "",
@@ -12,12 +13,16 @@ const Login = () => {
 const navigate=useNavigate();
   const handlelogin = (event) => {
     setLogin({ ...login, [event.target.name]: event.target.value });
-   };
    
+   };
+   const handleSubmit=()=>{
+    // axios.post("https://fts-backend.onrender.com/admin/login",login)
+    // .then(response=>{console.log(response)})
+    // .catch(err=>{console.log(err)})
+    navigate("/breakfast")
+   }
 
-const displayLoginNotification = () => {
-    toast.success("Login Successful!"); 
-  }; 
+
 
   return (
     <div className="homebanner">
@@ -58,7 +63,7 @@ const displayLoginNotification = () => {
               />
               <div className="input-group ">
                 <input
-                  type="text"
+                  type="password"
                   className="user border-0 text-black flex-grow-1 "
                   name="password"
                   placeholder="Password"
@@ -86,7 +91,7 @@ const displayLoginNotification = () => {
               </div>
             </div>
        
-               <button className=" btn text-white" onClick={()=>navigate("/breakfast")} >Sign in</button>
+               <button className=" btn text-white" onClick={()=>handleSubmit()} >Sign in</button>
      
           </div>
         </div>

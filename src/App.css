@@ -146,7 +146,7 @@ input:focus {
   height: 600px !important;
 } */
 .url {
-  text-decoration-line: none !important ;
+  text-decoration: none !important ;
   font-size: 16px !important;
 
  
@@ -165,7 +165,7 @@ a:hover {
    background-color:lightsteelblue!important;
   color: #f0005f !important;
   border-radius: 5px !important;
-  
+
  }
  body{
   background-color:#e4edf2  !important;
@@ -243,7 +243,11 @@ a:hover {
 {
   color: red !important;
 }
-.git
+.block
 {
-  text-decoration-line: none !important ;
+  font-size: 15px !important;
+}
+.textarea
+{
+ resize:none !important;
 }

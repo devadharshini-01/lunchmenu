@@ -690,7 +690,7 @@ const Datalist = ({
 
                 <label>Street :</label>
                 <textarea
-                  className=" form-control p-0 "
+                  className=" form-control p-0 textarea "
                   name="street"
                   value={values.street}
                   onChange={handleChange}
