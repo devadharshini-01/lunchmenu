@@ -1,6 +1,6 @@
 import { Button } from "react-bootstrap";
 import Sidebar from "../../layout/Sidebar";
-import { Navigate,useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -11,16 +11,16 @@ const Userdata =({active,setActive})=>{
     const[update,setUpdate]=useState([]);
 
 
-  useEffect(()=>{
-    axios.post("https://fakestoreapi.com/products",)
-    .then((response)=>{
-    console.log(response.data);
+  // useEffect(()=>{
+  //   axios.post("https://fakestoreapi.com/products",)
+  //   .then((response)=>{
+  //   console.log(response.data);
    
-    })
-   .catch(()=>{
-   console.log()
-    })
-   },[])
+  //   })
+  //  .catch(()=>{
+  //  console.log()
+  //   })
+  //  },[])
 
    
     return( 
@@ -47,7 +47,7 @@ const Userdata =({active,setActive})=>{
          <label className="mt-2 block">Message</label>
          <textarea className="form-control textarea "/>
          <div className="d-grid gap-2 d-md-flex justify-content-end">
-         <button className=" btn text-white pink"  onClick={()=>Userdata()} >Submit</button>
+         <button className=" btn text-white pink"  onClick={()=>navigate("/userdatatable")} >Submit</button>
          <button className=" btn text-block bg-white" >Cancel</button>
         </div>
        </div>
