@@ -9,108 +9,132 @@ import axios from "axios";
 
 const Userdata = ({ active, setActive }) => {
   const navigate = useNavigate();
-  // const data = { name: "", email: "", phoneNumber: "", message: "" };
-  // const [inputdata, setInputData] = useState(data);
-
-  // const handledata = (e) => {
-  //   setInputData({ ...inputdata, [e.target.value]: e.target.value });
-  // };
-  // const handleSubmit = (e) => {
-  //   // e.preventDefault();
-  //   axios
-  //     .post("https://fakestoreapi.com/products", inputdata)
-  //     .then((response) => {
-  //       console.log(response.data);
-  //     });
-  // };
-  const handleSubmit=()=>{
-    navigate("/userdatatable");
- 
-  }
 
   const schema = yup.object().shape({
-    Name: yup.string().required("Name is a required field"),
-    email: yup.string().email().required("email is a required field"),
-    phoneNumber: yup.string().required("phoneNUmber is a required field"),
-    message: yup.string().required("message is a required field"),
+    Title: yup.string().required("Name is a required field"),
+    Price: yup.number().required("email is a required field"),
+    Description: yup.string().required("phoneNUmber is a required field"),
+    Image: yup.string().required("message is a required field"),
+    Select: yup.string().required("select is a required field"),
   });
+  const [post, setPost] = useState({
+    title: "",
+    price: "",
+    description: "",
+    image: "",
+    category: "",
+  });
+  const handleInput = (e) => {
+    setPost({ ...post, [e.target.value]: e.target.value });
+  };
+  const handleSubmit = (e) => {
+    // e.preventDefault();
+    axios.post("https://fakestoreapi.com/products", post).then((res) => {
+      navigate("/userdatatable");
+      console.log(res);
+    });
 
+
+  };
   return (
     <>
       <Formik
         validationSchema={schema}
         onSubmit={handleSubmit}
         initialValues={{
-          Name: "",
-          email: "",
-          phoneNumber: "",
-          message: "",
+          Title: "",
+          Price: "",
+          Description: "",
+          Image: "",
+          Select: "",
         }}
       >
-        {({ handleSubmit, handleChange, values, errors }) => (
+        {({ handleSubmit, handleChange, values, errors  }) => (
+         
           <Form noValidate onSubmit={handleSubmit}>
             <div className="row">
               <div className="col-2">
                 <Sidebar active={active} setActive={setActive} />
               </div>
-
+              {console.log(errors)}
               <div className="col-10">
-                <ol className="breadcrumb divider">
-                  <li className="breadcrumb-item">
-                    <a href="#">UserData</a>
-                  </li>
-                  <li className="breadcrumb-item active" aria-current="page">
-                    PersonalDetails
-                  </li>
-                </ol>
-
-                <div className="w-75">
-                  <label className="block mt-2">Name:</label>
-                  <input
-                    className="form-control "
-                 
-                    name="Name"
-                
-                    value={values.Name}
-                    onChange={handleChange}
-                  />
-                  {<p className="formik">{errors.Name}</p>}
-                  <label className="mt-2 block">E-mail</label>
-                  <input
-                    className="form-control "
-                   name="email"
-                    value={values.email}
-                    onChange={handleChange}
-                  />
-                  {<p className="formik">{errors.email}</p>}
-                  <label className="mt-2 block">PhoneNumber</label>
-                  <input
-                    phoneNumber="phoneNumber"
-                    type="number"
-                    className="form-control"
-                     name="phoneNumber"
-                    value={values.phoneNumber}
-                    onChange={handleChange}
-                  />
-                  {<p className="formik">{errors.phoneNumber}</p>}
-                  <label className="mt-2 block">Message</label>
-                  <textarea 
-                  className="form-control textarea " 
-                   name="message"
-                  value={values.message} 
-                  onChange={handleChange}
-                  />
-                  {<p className="formik">{errors.message}</p>}
-                  <div className="d-grid gap-2 d-md-flex justify-content-end">
-                    <button type="submit"
-                      className=" btn text-white pink"
-                      onClick={() => handleSubmit()}
+             
+                  <Form.Group
+                    className="mb-3"
+                    controlId="exampleForm.ControlInput1"
+                  >
+                    <Form.Label className=" mt-3">Title:</Form.Label>
+                    <Form.Control
+                      type="text"
+                      name="Title"
+                      value={values.Title}
+                      onChange={handleChange}
+                      isInvalid={!!errors.Title}
+                    />
+                    <Form.Label className=" mt-3">Price:</Form.Label>
+                    <Form.Control
+                      type="number"
+                      name="Price"
+                      value={values.Price}
+                      onChange={handleChange}
+                      isInvalid={!!errors.Price}
+                    />
+                  </Form.Group>
+                  <Form.Group
+                    className="mb-3 "
+                    controlId="exampleForm.ControlTextarea1"
+                  >
+                    <Form.Label>Description:</Form.Label>
+                    <Form.Control
+                      className="textarea"
+                      as="textarea"
+                      rows={3}
+                      type="text"
+                      name="Description"
+                      value={values.Description}
+                      onChange={handleChange}
+                      isInvalid={!!errors.Description}
+                    />
+                    <Form.Label className=" mt-3">Image:</Form.Label>
+                    <Form.Control
+                      type="text"
+                      name="Image"
+                      value={values.Image}
+                      onChange={handleChange}
+                      isInvalid={!!errors.Image}
+                    />
+                  </Form.Group>
+                  <Form.Group controlId="formBasicSelect">
+                    <Form.Label>Open selectMenu:</Form.Label>
+                    <Form.Control
+                      as="select"
+                      // id="select"
+                      type="text"
+                      name="Select"
+                      onChange={handleChange}
+                      // value={values.Select}
+                      // isInvalid={!!errors.Select}
                     >
-                      Submit
-                    </button>
-                    <button className=" btn text-block bg-white">Cancel</button>
+                      <option value="DICTUM">electronic</option>
+                      <option value="CONSTANCY">men's cloth</option>
+                      <option value="COMPLEMENT">jewelery</option>
+                    </Form.Control>
+                  </Form.Group>
+
+                  <div className="d-grid gap-2 d-md-flex justify-content-end">
+                    <Button
+                      type="submit"
+                      as="input"
+                      className="pink text-white "
+                    />
+                    <Button
+                      as="input"
+                      className="text-black bg-white"
+                      type="reset"
+                      value="Cancel"
+                    />
                   </div>
-                </div>
+          
               </div>
             </div>
           </Form>
