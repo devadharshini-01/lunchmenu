@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 const UserDataTable = ({ active, setActive }) => {
   const navigate = useNavigate();
   const [store, setStore] = useState([]);
-
+ const[save,setSave]=useState([]);
   useEffect(() => {
     axios
       .get("https://fakestoreapi.com/products")
@@ -19,6 +19,18 @@ const UserDataTable = ({ active, setActive }) => {
         console.log(err);
       });
   }, []);
+  useEffect(() => {
+  axios
+  .delete("https://fakestoreapi.com/products/6")
+  .then((response) => {
+   setSave(response.data);
+    console.log(response.data);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+}, []);
+
 
   return (
     <>
@@ -59,93 +71,7 @@ const UserDataTable = ({ active, setActive }) => {
                   </tr>
                 </thead>
                 <tbody>
-                  {/* <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>
-                      <div className="row d-flex  justify-content-center  ">
-                        <Icon
-                          icon="tabler:edit"
-                          width="18"
-                          height="18"
-                          className="w-25 label "
-                        />
-                        <Icon
-                          icon="pajamas:remove"
-                          width="18"
-                          height="18"
-                          className="w-25 label "
-                        />
-
-                        <Icon
-                          icon="zondicons:view-show"
-                          width="18"
-                          height="18"
-                          className="w-25 label "
-                        />
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                    <td>
-                      <div className="row d-flex  justify-content-center  ">
-                        <Icon
-                          icon="tabler:edit"
-                          width="18"
-                          height="18"
-                          className="w-25 label "
-                        />
-                        <Icon
-                          icon="pajamas:remove"
-                          width="18"
-                          height="18"
-                          className="w-25 label "
-                        />
-
-                        <Icon
-                          icon="zondicons:view-show"
-                          width="18"
-                          height="18"
-                          className="w-25 label "
-                        />
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Larry the Bird</td>
-                    <td>@twitter</td>
-                    <td>@twitter</td>
-                    <td>
-                      <div className="row d-flex  justify-content-center  ">
-                        <Icon
-                          icon="tabler:edit"
-                          width="18"
-                          height="18"
-                          className="w-25 label "
-                        />
-                        <Icon
-                          icon="pajamas:remove"
-                          width="18"
-                          height="18"
-                          className="w-25 label "
-                        />
-
-                        <Icon
-                          icon="zondicons:view-show"
-                          width="18"
-                          height="18"
-                          className="w-25 label "
-                        />
-                      </div>
-                    </td>
-                  </tr> */}
+               
                   {Array.isArray(store) &&
                     store.map((val, i) => {
                       return (

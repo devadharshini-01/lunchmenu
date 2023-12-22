@@ -29,11 +29,18 @@ const Userdata = ({ active, setActive }) => {
   };
   const handleSubmit = (e) => {
     // e.preventDefault();
-    axios.post("https://fakestoreapi.com/products", post).then((res) => {
+    console.log(e);
+    axios.post("https://fakestoreapi.com/products", e).then((res) => {
       navigate("/userdatatable");
-      console.log(res);
+     
+console.log(res);
     });
-
+axios.put("https://fakestoreapi.com/products/7",e)
+.then((res)=>{
+  navigate("/userdatatable");
+  console.log(res);
+})
+.catch();
 
   };
   return (
@@ -71,6 +78,8 @@ const Userdata = ({ active, setActive }) => {
                       onChange={handleChange}
                       isInvalid={!!errors.Title}
                     />
+                    
+                    {<p className="formik">{errors.Title}</p>}
                     <Form.Label className=" mt-3">Price:</Form.Label>
                     <Form.Control
                       type="number"
@@ -79,6 +88,8 @@ const Userdata = ({ active, setActive }) => {
                       onChange={handleChange}
                       isInvalid={!!errors.Price}
                     />
+                    
+                    {<p className="formik">{errors.Price}</p>}
                   </Form.Group>
                   <Form.Group
                     className="mb-3 "
@@ -95,6 +106,8 @@ const Userdata = ({ active, setActive }) => {
                       onChange={handleChange}
                       isInvalid={!!errors.Description}
                     />
+                    
+                    {<p className="formik">{errors.Description}</p>}
                     <Form.Label className=" mt-3">Image:</Form.Label>
                     <Form.Control
                       type="text"
@@ -103,9 +116,11 @@ const Userdata = ({ active, setActive }) => {
                       onChange={handleChange}
                       isInvalid={!!errors.Image}
                     />
+                    
+                    {<p className="formik">{errors.Image}</p>}
                   </Form.Group>
                   <Form.Group controlId="formBasicSelect">
-                    <Form.Label>Open selectMenu:</Form.Label>
+                    <Form.Label>Category:</Form.Label>
                     <Form.Control
                       as="select"
                       // id="select"

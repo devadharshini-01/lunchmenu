@@ -70,30 +70,32 @@ const Sidebar = (props) => {
             </p>
           </Link>
         <Link to="/userdata">
+          
           <p
               className={`${
                 props.active === "userdata"
                   ? " p-2 bg-white rounded-3  text-danger "
                   : "text-white"
-              } p-0 a:hover mt-2  `}
+              } p-0  a:hover mt-2  `}
               onClick={() => props.setActive("userdata")}
             >
             
                FTS user data
             </p>
             </Link>
+            <Link to="/userdatatable">
             <p
               className={`${
                 props.active === "userdatatable"
                   ? " p-2 bg-white rounded-3  text-danger"
                   : "text-white"
-              } p-0 a:hover mt-2   `}
+              } p-0 a:hover mt-2 url  `}
               onClick={() => props.setActive("userdatatable")}
             >
             
                FTS User DataTable
             </p>
-           
+            </Link>
         </div>
       </div>
     </div>

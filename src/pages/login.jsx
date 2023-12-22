@@ -9,6 +9,7 @@ const Login = () => {
   const [login, setLogin] = useState({
     email: "",
     password: "",
+    // body:"JSON.stringify",
   });
 const navigate=useNavigate();
   const handlelogin = (event) => {
@@ -16,10 +17,24 @@ const navigate=useNavigate();
    
    };
    const handleSubmit=()=>{
-    // axios.post("https://fts-backend.onrender.com/admin/login",login)
-    // .then(response=>{console.log(response)})
-    // .catch(err=>{console.log(err)})
+    axios.post("https://fts-backend.onrender.com/admin/login",login)
+    .then(response=>{console.log(response.data.accesstoken)
+       localStorage.setItem("accessToken",JSON.stringify (response.data.accesstoken.accessToken));
+     localStorage.setItem("refreshToken", response.data.refreshtoken);
+    })
+
+    .catch(err=>{console.log(err)
+
+    })
     navigate("/breakfast")
+    
+    // const access = response.data.accesstoken;
+    // const refresh = response.refreshtoken;
+    // console.log(access);
+    // localStorage.setItem("accessToken", access);
+    // localStorage.setItem("refreshToken", refresh);
+
+    
    }
 
 
@@ -89,6 +104,7 @@ const navigate=useNavigate();
                   </svg>
                 </span>
               </div>
+
             </div>
        
                <button className=" btn text-white" onClick={()=>handleSubmit()} >Sign in</button>
