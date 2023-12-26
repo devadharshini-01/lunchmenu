@@ -1,9 +1,9 @@
 import Sidebor from "../layout/Sidebar";
 import { Icon } from "@iconify/react";
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import ReactPaginate from "react-paginate";
-import { Navigate, useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
+import {  useNavigate } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Model from "./Model";
 

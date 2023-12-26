@@ -251,3 +251,7 @@ a:hover {
 {
  resize:none !important;
 }
+a:link
+{
+ text-decoration: none !important;
+}

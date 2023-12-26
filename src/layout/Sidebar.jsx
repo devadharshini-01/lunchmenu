@@ -69,18 +69,18 @@ const Sidebar = (props) => {
               Dinner
             </p>
           </Link>
-        <Link to="/userdata">
+        {/* <Link to="/userdata">
           
           <p
               className={`${
                 props.active === "userdata"
                   ? " p-2 bg-white rounded-3  text-danger "
                   : "text-white"
-              } p-0  a:hover mt-2  `}
+              } p-0  a:hover mt-2 a:link `}
               onClick={() => props.setActive("userdata")}
             >
             
-               FTS user data
+                user data
             </p>
             </Link>
             <Link to="/userdatatable">
@@ -89,13 +89,41 @@ const Sidebar = (props) => {
                 props.active === "userdatatable"
                   ? " p-2 bg-white rounded-3  text-danger"
                   : "text-white"
-              } p-0 a:hover mt-2 url  `}
+              } p-0 a:hover mt-2 a:link  `}
               onClick={() => props.setActive("userdatatable")}
             >
             
-               FTS User DataTable
+                User DataTable
             </p>
-            </Link>
+            </Link> */}
+              <Link to="/Adddata" >
+            {" "}
+            <p
+              className={`${
+                props.active === "Adddata"
+                  ? " p-2 bg-white rounded-3 text-danger"
+                  : "text-white"
+              } p-0 a:hover mt-2 a:link `}
+              onClick={() => props.setActive("Adddata")}
+            >
+           Addata
+            
+            </p>
+          </Link>
+          <Link to="" >
+            {" "}
+            <p
+              className={`${
+                props.active === ""
+                  ? " p-2 bg-white rounded-3 text-danger"
+                  : "text-white"
+              } p-0 a:hover mt-2 a:link `}
+              onClick={() => props.setActive("")}
+            >
+          
+           
+            </p>
+          </Link>
         </div>
       </div>
     </div>
