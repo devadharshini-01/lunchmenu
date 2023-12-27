@@ -19,14 +19,17 @@ const navigate=useNavigate();
    const handleSubmit=()=>{
     axios.post("https://fts-backend.onrender.com/admin/login",login)
     .then(response=>{console.log(response.data.accesstoken)
-       localStorage.setItem("accessToken",JSON.stringify (response.data.accesstoken.accessToken));
+       localStorage.setItem("accessToken",(response.data.accesstoken.accessToken));
      localStorage.setItem("refreshToken", response.data.refreshtoken);
+     navigate("/breakfast")
+  
+
     })
 
     .catch(err=>{console.log(err)
 
     })
-    navigate("/breakfast")
+
     
     // const access = response.data.accesstoken;
     // const refresh = response.refreshtoken;
@@ -86,7 +89,7 @@ const navigate=useNavigate();
                   onChange={(e) => handlelogin(e)}
                   aria-describedby="basic-addon2"
                 />
-
+                
                 <span
                   className="input-group-text border-0 bg-white  "
                   id="basic-addon2"
@@ -110,6 +113,7 @@ const navigate=useNavigate();
                <button className=" btn text-white" onClick={()=>handleSubmit()} >Sign in</button>
      
           </div>
+        
         </div>
       </div>
     </div>

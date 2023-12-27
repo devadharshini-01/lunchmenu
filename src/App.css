@@ -255,3 +255,7 @@ a:link
 {
  text-decoration: none !important;
 }
+.border
+{
+  border:none !important ;
+}

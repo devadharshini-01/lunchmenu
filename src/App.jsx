@@ -9,8 +9,8 @@ import AddBreakfast from "./components/form/Addbreakfast";
 import AddLunch from "./components/form/AddLunch";
 import AddDinner from "./components/form/AddDinner";
 import { useState } from "react";
-import Adddata  from "./components/form/Adddata";
-import UserDataTable from "./pages/Userdatatable";
+import Ftsuserdata  from "./components/form/Ftsuserdata";
+import Ftsdatatable from "./pages/Ftsdatatable";
 
 const App = () => {
   const [active, setActive] = useState();
@@ -134,10 +134,13 @@ const App = () => {
             }
           />
           <Route
-            path="Adddata"
-            element={<Adddata active={active} setActive={setActive} />}
+            path="Ftsuserdata"
+            element={<Ftsuserdata active={active} setActive={setActive} />}
           />
-               
+                 <Route
+            path="Ftsdatatable"
+            element={<Ftsdatatable active={active} setActive={setActive} />}
+          />
         
         </Routes>
       </BrowserRouter>

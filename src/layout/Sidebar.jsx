@@ -96,32 +96,33 @@ const Sidebar = (props) => {
                 User DataTable
             </p>
             </Link> */}
-              <Link to="/Adddata" >
+              <Link to="/Ftsuserdata" >
             {" "}
             <p
               className={`${
-                props.active === "Adddata"
+                props.active === "Ftsuserdata"
                   ? " p-2 bg-white rounded-3 text-danger"
                   : "text-white"
               } p-0 a:hover mt-2 a:link `}
-              onClick={() => props.setActive("Adddata")}
+              onClick={() => props.setActive("Ftsuserdata")}
             >
-           Addata
+            
+           Ftsuserdata
             
             </p>
           </Link>
-          <Link to="" >
+          <Link to="/Ftsdatatable" >
             {" "}
             <p
               className={`${
-                props.active === ""
+                props.active === "Ftsdatatable"
                   ? " p-2 bg-white rounded-3 text-danger"
                   : "text-white"
               } p-0 a:hover mt-2 a:link `}
-              onClick={() => props.setActive("")}
+              onClick={() => props.setActive("Ftsdatatable")}
             >
           
-           
+           Ftsdatatable
             </p>
           </Link>
         </div>
