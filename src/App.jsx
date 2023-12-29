@@ -99,7 +99,7 @@ const App = () => {
             }
           />
           <Route
-            path="Add-breakfast"
+            path="add-breakfast"
             element={
               <AddBreakfast
                 active={active}
@@ -123,7 +123,7 @@ const App = () => {
             }
           />
           <Route
-            path="Add-dinner"
+            path="add-dinner"
             element={
               <AddDinner
                 active={active}
@@ -134,11 +134,11 @@ const App = () => {
             }
           />
           <Route
-            path="Ftsuserdata"
+            path="/fts-user-data/:id"
             element={<Ftsuserdata active={active} setActive={setActive} />}
           />
                  <Route
-            path="Ftsdatatable"
+            path="fts-data-table"
             element={<Ftsdatatable active={active} setActive={setActive} />}
           />
         

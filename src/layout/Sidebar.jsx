@@ -111,7 +111,7 @@ const Sidebar = (props) => {
             
             </p>
           </Link>
-          <Link to="/Ftsdatatable" >
+          <Link to="/fts-data-table" >
             {" "}
             <p
               className={`${

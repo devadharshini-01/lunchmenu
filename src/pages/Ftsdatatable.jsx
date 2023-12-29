@@ -3,10 +3,13 @@ import Sidebar from "../layout/Sidebar";
 import Table from "react-bootstrap/Table";
 import { Icon } from "@iconify/react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Ftsdatatable = ({ active, setActive }) => {
+  const navigate=useNavigate();
   const [data, setadata] = useState([]);
   const token = localStorage.getItem("accessToken");
+
   useEffect(() => {
     axios
       .get(
@@ -63,7 +66,7 @@ const Ftsdatatable = ({ active, setActive }) => {
                             width="18"
                             height="18"
                             className="w-25 label "
-                           
+                           onClick={()=>navigate(`/fts-user-data/${val.id}`)}
                           />
                           <Icon
                             icon="pajamas:remove"

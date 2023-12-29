@@ -3,52 +3,81 @@ import Form from "react-bootstrap/Form";
 import * as yup from "yup";
 import { Formik } from "formik";
 import Button from "react-bootstrap/Button";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
 const Ftsuserdata = ({ active, setActive }) => {
   const token = localStorage.getItem("accessToken");
 
+
   const navigate = useNavigate();
 
   const schema = yup.object().shape({
-    Name: yup.string().required("Name is a required field"),
+    name: yup.string().required("Name is a required field"),
     email: yup.string().email().required("email is a required field"),
-    phoneNumber: yup.number().required("phoneNumber is a required field"),
+    phone_number: yup.number().required("phoneNumber is a required field"),
     message: yup.string().required("message is a required field"),
   });
+  const {id}=useParams();
 
-  const handleSubmit = () => {
+  useEffect(()=>{
+    axios.get(`https://fts-backend.onrender.com/admin/testing/getUserById?id=${id}`,
+    {headers:{"Authorization":`Bearer ${token}`}})
+    .then((response)=>{
+    })
+    .catch((errors)=>{
+
+    })
+  },[])
   
-        navigate("/Ftsdatatable");
-        axios.post("https://fts-backend.onrender.com/user/newRegistration",Name,email,phoneNumber,message)
-       
-      
-        .then((response)=>{
-        console.log(response.data);
-    
-        })
-       .catch(()=>{
-       console.log()
-        })
-      
-  };
-
   return (
     <Formik
-      validationSchema={schema}
-      onSubmit={handleSubmit}
-      initialValues={{
-        Name: "",
-        phoneNumber: "",
-        email: "",
-        message: "",
-      }}
+    validationSchema={schema}
+    onSubmit={values => {
+      values.phone_number=values.phone_number.toString();
+    if(id)
+    {
+      axios.put("https://fts-backend.onrender.com/admin/testing/editUserById?id=1",values,{
+        headers: { Authorization: `Bearer ${token}` },
+       
+      })
+      .then((res)=>{
+        navigate("/Fts-data-table")
+      })
+    }
+
+    else 
+    {
+      axios
+      .post("https://fts-backend.onrender.com/user/newRegistration", values, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+
+      .then((res) => {
+        navigate("/Fts-data-table");
+        console.log(res);
+      });
+    }
+    
+     
+
+     
+    }} 
+  
+  
+    initialValues={{
+      name: "",
+      phone_number: "",
+      email: "",
+      message: "",
+    
+    }}
     >
       {({ handleSubmit, handleChange, values, errors }) => (
         <Form noValidate onSubmit={handleSubmit}>
           <div className="row ">
+          {console.log(errors)}
             <div className="col-2 ">
               <Sidebar active={active} setActive={setActive} />
             </div>
@@ -57,12 +86,12 @@ const Ftsuserdata = ({ active, setActive }) => {
                 <Form.Label className="mt-2">Name :</Form.Label>
                 <Form.Control
                   type="text"
-                  name="Name"
-                  value={values.Name}
+                  name="name"
+                  value={values.name}
                   onChange={handleChange}
-                  isInvalid={!!errors.Name}
+                  isInvalid={!!errors.name}
                 />
-                {<p className="formik">{errors.Name}</p>}
+                {<p className="formik">{errors.name}</p>}
                 <Form.Label className="mt-2">E-mail :</Form.Label>
                 <Form.Control
                   type="text"
@@ -75,12 +104,12 @@ const Ftsuserdata = ({ active, setActive }) => {
                 <Form.Label className="mt-2">phoneNumber :</Form.Label>
                 <Form.Control
                   type="number"
-                  name="phoneNumber"
-                  value={values.phoneNumber}
+                  name="phone_number"
+                  value={values.phone_number}
                   onChange={handleChange}
-                  isInvalid={!!errors.phoneNumber}
+                  isInvalid={!!errors.phone_number}
                 />
-                {<p className="formik">{errors.phoneNumber}</p>}
+                {<p className="formik">{errors.phone_number}</p>}
               </Form.Group>
               <Form.Group className="mb-3">
                 <Form.Label className="mt-2">Message</Form.Label>
@@ -98,7 +127,7 @@ const Ftsuserdata = ({ active, setActive }) => {
                 <Button
                   type="submit"
                   className="pink text-black border"
-                  onClick={() => handleSubmit()}
+                  // onClick={() => handleSubmit()}
                 >
                   Submit
                 </Button>
