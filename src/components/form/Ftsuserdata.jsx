@@ -9,7 +9,8 @@ import { useEffect, useState } from "react";
 
 const Ftsuserdata = ({ active, setActive }) => {
   const token = localStorage.getItem("accessToken");
-
+  
+  const [getData, setGetData] = useState();
 
   const navigate = useNavigate();
 
@@ -19,65 +20,68 @@ const Ftsuserdata = ({ active, setActive }) => {
     phone_number: yup.number().required("phoneNumber is a required field"),
     message: yup.string().required("message is a required field"),
   });
-  const {id}=useParams();
+  const { id } = useParams();
 
-  useEffect(()=>{
-    axios.get(`https://fts-backend.onrender.com/admin/testing/getUserById?id=${id}`,
-    {headers:{"Authorization":`Bearer ${token}`}})
-    .then((response)=>{
-    })
-    .catch((errors)=>{
-
-    })
-  },[])
-  
+  useEffect(() => {
+    if (id) {
+      axios
+        .get(
+          `https://fts-backend.onrender.com/admin/testing/getUserById?id=${id}`,
+          { headers: { Authorization: `Bearer ${token}` } }
+        )
+        .then((response) => {
+          console.log(response, "55555");
+          setGetData(response.data.response.user);
+        })
+        .catch((errors) => {});
+    }
+  }, []);
+  console.log(getData, "454545454");
   return (
     <Formik
-    validationSchema={schema}
-    onSubmit={values => {
-      values.phone_number=values.phone_number.toString();
-    if(id)
-    {
-      axios.put("https://fts-backend.onrender.com/admin/testing/editUserById?id=1",values,{
-        headers: { Authorization: `Bearer ${token}` },
-       
-      })
-      .then((res)=>{
-        navigate("/Fts-data-table")
-      })
-    }
+      validationSchema={schema}
+      onSubmit={(values) => {
+        values.phone_number = values.phone_number.toString();
+        if (id) {
+          axios
+            .put(
+              `https://fts-backend.onrender.com/admin/testing/editUserById?id=${id}`,
+              values,
+              {
+                headers: { Authorization: `Bearer ${token}` },
+              }
+            )
+            .then((res) => {
+              navigate("/Fts-data-table");
+            });
+        } else {
+          axios
+            .post(
+              "https://fts-backend.onrender.com/user/newRegistration",
+              values,
+              {
+                headers: { Authorization: `Bearer ${token}` },
+              }
+            )
 
-    else 
-    {
-      axios
-      .post("https://fts-backend.onrender.com/user/newRegistration", values, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-
-      .then((res) => {
-        navigate("/Fts-data-table");
-        console.log(res);
-      });
-    }
-    
-     
-
-     
-    }} 
-  
-  
-    initialValues={{
-      name: "",
-      phone_number: "",
-      email: "",
-      message: "",
-    
-    }}
+            .then((res) => {
+              navigate("/Fts-data-table");
+              console.log(res);
+            });
+        }
+      }}
+      initialValues={{
+        name: getData?.name || "",
+        phone_number: getData?.phone_number || "",
+        email: getData?.email || "",
+        message: getData?.message || "",
+      }}
+      enableReinitialize={true}
     >
       {({ handleSubmit, handleChange, values, errors }) => (
         <Form noValidate onSubmit={handleSubmit}>
           <div className="row ">
-          {console.log(errors)}
+            {console.log(errors)}
             <div className="col-2 ">
               <Sidebar active={active} setActive={setActive} />
             </div>
@@ -131,7 +135,12 @@ const Ftsuserdata = ({ active, setActive }) => {
                 >
                   Submit
                 </Button>
-                <Button className="bg-white text-black border">Cancel</Button>
+                <Button
+                  onClick={() => navigate("/Fts-data-table")}
+                  className="bg-white text-black border"
+                >
+                  Cancel
+                </Button>
               </div>
             </div>
           </div>

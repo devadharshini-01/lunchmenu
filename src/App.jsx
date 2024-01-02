@@ -134,7 +134,7 @@ const App = () => {
             }
           />
           <Route
-            path="/fts-user-data/:id"
+            path="/fts-user-data/:id?"
             element={<Ftsuserdata active={active} setActive={setActive} />}
           />
                  <Route

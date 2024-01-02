@@ -3,30 +3,26 @@ import Button from "react-bootstrap/Button";
 import { logDOM } from "@testing-library/react";
 
 const Model = ({
-  view,
-
   show,
   setView,
-  name,
-  email,
-  phoneNumber,
+  body,
+  button1Value,
+  button2Value,
+  title,
   deleterecord,
- tableRowRemove,
-  setDeleteRecord,
-  i,
-  deleteName,
+  tableRowRemove,
+  closeButton,
 }) => {
-  console.log(view,"show");
-  console.log(deleterecord,"view");
   return (
     <>
-      <Modal show={show } >
+      <Modal show={show } onHide={closeButton} >
         
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>{title}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {view&&      
+          {body}
+          {/* {view&&      
     
             <div>
               <label>Name:</label>
@@ -43,15 +39,15 @@ const Model = ({
            
              <label>If you delete  this name<b>{i}</b></label>
               <label>with name<b>{deleteName}</b> </label>
-            </div>}
+            </div>} */}
 
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={() => setView(false) } >
-            OK
+            {button1Value}
           </Button>
           <Button variant="secondary" onClick={() => tableRowRemove() } >
-            Delete
+            {button2Value}
           </Button>
         </Modal.Footer>
       </Modal>
