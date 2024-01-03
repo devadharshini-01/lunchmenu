@@ -8,6 +8,9 @@ const Model = ({
   body,
   button1Value,
   button2Value,
+  button1Click,
+  button2Click,
+
   title,
   deleterecord,
   tableRowRemove,
@@ -43,10 +46,10 @@ const Model = ({
 
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={() => setView(false) } >
+          <Button variant="secondary" onClick={button1Click } >
             {button1Value}
           </Button>
-          <Button variant="secondary" onClick={() => tableRowRemove() } >
+          <Button variant="secondary" onClick={button2Click} >
             {button2Value}
           </Button>
         </Modal.Footer>
