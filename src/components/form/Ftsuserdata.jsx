@@ -86,6 +86,7 @@ const Ftsuserdata = ({ active, setActive }) => {
               <Sidebar active={active} setActive={setActive} />
             </div>
             <div className="col-10">
+            <h5 className="bs">FTS userdata</h5>
               <Form.Group className="mb-3">
                 <Form.Label className="mt-2">Name :</Form.Label>
                 <Form.Control

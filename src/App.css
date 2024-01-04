@@ -259,3 +259,11 @@ a:link
 {
   border:none !important ;
 }
+.header
+{
+  background-color: #f0f6f6  !important;
+}
+.model
+{
+  color: #99a3c5 !important;
+}

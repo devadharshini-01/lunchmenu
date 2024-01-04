@@ -16,8 +16,7 @@ const Ftsdatatable = ({ active, setActive }) => {
   const [deleteInfo, setDeleteInfo] = useState();
   const[showdata,setShowData]=useState();
 
-  // const handleClose = () => setShow(false);
-  // const handleShow = () => setShow(true);
+
 
   const [data, setdata] = useState([]);
   const token = localStorage.getItem("accessToken");
@@ -31,7 +30,7 @@ const Ftsdatatable = ({ active, setActive }) => {
       )
       .then((response) => {
         console.log(response, "********");
-        setdata(response?.data?.response?.paginationOutput?.results);
+        setdata(response?.data?.response?.paginationOutput);
       })
       .catch((err) => {
         console.log(err);
@@ -55,7 +54,7 @@ const Ftsdatatable = ({ active, setActive }) => {
             { headers: { Authorization: `Bearer ${token}` } }
           )
           .then((response) => {
-            setdata(response?.data?.response?.paginationOutput?.results);
+            setdata(response?.data?.response?.paginationOutput);
           })
           .catch((err) => {
             console.log(err);
@@ -76,10 +75,23 @@ const handleShow=(id)=>{
 
 
 
-  // console.log(deleteInfo, "delete");
-  // const handlePageClick = () => {
-    
-  // };
+  console.log(deleteInfo, "delete");
+  const handlePageClick = (event) => {
+    console.log(event,"event");
+    axios
+      .get(
+        ` https://fts-backend.onrender.com/admin/testing/getallusers?page=${event.selected+1}&size=10`,
+
+        { headers: { Authorization: `Bearer ${token}` } }
+      )
+      .then((response) => {
+        console.log(response, "********");
+        setdata(response?.data?.response?.paginationOutput);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
     <>
       <div className="row">
@@ -87,6 +99,13 @@ const handleShow=(id)=>{
           <Sidebar active={active} setActive={setActive} />
         </div>
         <div className="col-10">
+        <div className="col-9">
+                <p href="#" className=" d-flex justify-content-start   ">
+                  <h5 className=" text-secondary me-1 ">FTS datatable </h5>&#10095;
+                  <h5 className="text-black ms-1 ">Customer Details</h5>{" "}
+                </p>
+              </div>
+          
           <Table className="mt-4">
             <thead>
               <tr>
@@ -101,9 +120,9 @@ const handleShow=(id)=>{
               </tr>
             </thead>
             <tbody>
-              {data.map((val, i) => (
+              {data?.results?.map((val, i) => (
                 <tr key={i}>
-                  <th scope="row">{i + 1}</th>
+                  <th scope="row">{i+1}</th>
 
                   <td className="idea">{val.name}</td>
 
@@ -142,7 +161,7 @@ const handleShow=(id)=>{
                         // setShowData(val);}}
                              onClick={() => {setView(true);
                               handleShow(val.id)
-                              // setShowData(val.id);
+                             
                          }}
 
                       />
@@ -150,11 +169,15 @@ const handleShow=(id)=>{
                   </td>
                 </tr>
               ))}
-               {/* <div className="row d-flex justify-content-end w-100 ">
+          
+            </tbody>
+         
+          </Table>
+          <div className="row d-flex justify-content-end w-100 ms-1 ">
                   <ReactPaginate
                     previousLabel={"previous"}
                     nextLabel={"next"}
-                    pageCount={4}
+                    pageCount={data.totalPages}
                     onPageChange={handlePageClick}
                     pageRangeDisplayed={10}
                     containerClassName={"pagination "}
@@ -166,34 +189,36 @@ const handleShow=(id)=>{
                     nextLinkClassName={"page-link"}
                     activeClassName={"active"}
                   />
-                </div> */}
-            </tbody>
-         
-          </Table>
-         
+                </div>
         </div>
       </div>
       <Model
         show={show}
-        title={"deleteModel"}
-        body={"Are you sure you want to delete?"}
+        title={"Model"}
+        body={<p className="model">Are you sure you want to delete this?</p>}
         button1Value={"delete"}
         button1Click={handleDelete}
         button2Click={() => setShow(false)}
         closeButton={() => setShow(false)}
         button2Value={"cancel"}
       />
+     { console.log(show,"show")}
+     {console.log(view,"view")}
       <Model
         show={view}
-        title={"showModel"}
+        title={"Model"}
    
-       body={<p>name:{showdata?.name} email:{showdata?.email} phone_number:{showdata?.phone_number} message:{showdata?.message} createdAt:{showdata?.createdAt} updatedAt:{showdata?.updatedAt}</p> }
-      
+        body={<p><span className=" model">Name:</span><br></br>{showdata?.name}<br></br>
+        <span className="model">Email:</span><br></br>{showdata?.email}<br></br>
+         <span className="model">Phone_number:</span><br></br>{showdata?.phone_number} <br></br>
+         <span className="model">Message:</span><br></br>{showdata?.message}<br></br>
+         <span className="model">CreatedAt:</span><br></br> {showdata?.createdAt}<br></br><span className="model">UpdatedAt:</span><br></br> {showdata?.updatedAt}</p> }
+
         button1Value={"ok"}
         button1Click={() => setView(false)}
-        button2Click={() => setView(false)}
+        // button2Click={() => setView(false)}
         closeButton={() => setView(false)}
-        button2Value={"cancel"}
+        // button2Value={"cancel"}
       />
     </>
   );

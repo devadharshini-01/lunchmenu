@@ -4,7 +4,7 @@ import { logDOM } from "@testing-library/react";
 
 const Model = ({
   show,
-  setView,
+ view,
   body,
   button1Value,
   button2Value,
@@ -12,15 +12,14 @@ const Model = ({
   button2Click,
 
   title,
-  deleterecord,
-  tableRowRemove,
+ 
   closeButton,
 }) => {
   return (
     <>
-      <Modal show={show } onHide={closeButton} >
+      <Modal  show={show } onHide={closeButton} >
         
-        <Modal.Header closeButton>
+        <Modal.Header closeButton className="header">
           <Modal.Title>{title}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -45,13 +44,15 @@ const Model = ({
             </div>} */}
 
         </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={button1Click } >
+        <Modal.Footer className="header">
+   
+     {button1Value&& <Button variant="secondary" onClick={button1Click } >
             {button1Value}
-          </Button>
-          <Button variant="secondary" onClick={button2Click} >
+          </Button>}
+          {button2Value&&<Button variant="secondary" onClick={button2Click} >
             {button2Value}
-          </Button>
+          </Button>}
+        
         </Modal.Footer>
       </Modal>
     </>

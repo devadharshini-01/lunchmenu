@@ -18,7 +18,7 @@ const Sidebar = (props) => {
                 props.active === "breakfast"
                   ? "p-2 bg-white rounded-3  text-danger"
                   : "text-white"
-              } p-0 url a:hover mt-2 `}
+              } p-0 url a:hover  `}
               onClick={() => props.setActive("breakfast")}
             >
               <Icon
@@ -106,6 +106,7 @@ const Sidebar = (props) => {
               } p-0 a:hover mt-2 a:link `}
               onClick={() => props.setActive("Ftsuserdata")}
             >
+           <Icon icon="uis:user-nurse" className="mb-1 me-2" width="20" height="20" />
             
            Ftsuserdata
             
@@ -121,6 +122,7 @@ const Sidebar = (props) => {
               } p-0 a:hover mt-2 a:link `}
               onClick={() => props.setActive("Ftsdatatable")}
             >
+              <Icon icon="gridicons:multiple-users" className="mb-1 me-2" width="20" height="20" />
           
            Ftsdatatable
             </p>
