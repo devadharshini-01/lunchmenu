@@ -110,7 +110,7 @@ const navigate=useNavigate();
 
             </div>
        
-               <button className=" btn text-white" onClick={()=>handleSubmit()} >Sign in</button>
+               <button className=" btn text-white mt-4" onClick={()=>handleSubmit()} >Sign in</button>
      
           </div>
         

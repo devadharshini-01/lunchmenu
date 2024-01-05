@@ -6,9 +6,11 @@ import {  useNavigate } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Model from "./Model";
+import Search from "../layout/Searchbar";
+import Searchbar from "../layout/Searchbar";
 
 
-const Breakfast = ({ datalist, active, setActive, inputArr, setInputArr }) => {
+const Breakfast = ({ datalist, active, setActive, inputArr, setInputArr,Search }) => {
 
 
   const navigate = useNavigate();
@@ -77,13 +79,8 @@ const Breakfast = ({ datalist, active, setActive, inputArr, setInputArr }) => {
         <div className=" col-10 p-3 mb-5 rounded ">
           <div className="bg-white mt-4 p-3 ">
             <div className="row">
-              <div className="col-9">
-                <p href="#" className=" d-flex justify-content-start   ">
-                  <h5 className=" text-secondary me-1 ">Breakfast </h5>&#10095;
-                  <h5 className="text-black ms-1 ">Customer Details</h5>{" "}
-                </p>
-              </div>
-              <div className="col-3">
+           
+              <div className="col-12">
                 <div className=" d-flex justify-content-end ">
                   <button
                     className="btn commit text-white mb-3 "
@@ -101,14 +98,8 @@ const Breakfast = ({ datalist, active, setActive, inputArr, setInputArr }) => {
                 <p className="day">CUSTOMER DETAILS</p>
               </div>
               <div className="col-3">
-                <form className="d-flex " role="search">
-                  <input
-                    className="form-control ms-4 "
-                    type="search"
-                    placeholder="Search "
-                    aria-label="Search"
-                  />
-                </form>
+              
+                <Searchbar/>
               </div>
             </div>
 
@@ -191,7 +182,7 @@ const Breakfast = ({ datalist, active, setActive, inputArr, setInputArr }) => {
                 
                 />
 
-                <div className="row d-flex justify-content-end w-100">
+                {/* <div className="row d-flex justify-content-end w-100">
                   <ReactPaginate
                     previousLabel={"previous"}
                     nextLabel={"next"}
@@ -207,7 +198,7 @@ const Breakfast = ({ datalist, active, setActive, inputArr, setInputArr }) => {
                     nextLinkClassName={"page-link"}
                     activeClassName={"active"}
                   />
-                </div>
+                </div> */}
               </tbody>
 
               {/* <div /> */}

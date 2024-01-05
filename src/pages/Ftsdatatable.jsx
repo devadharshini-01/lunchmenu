@@ -6,6 +6,8 @@ import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import Model from "./Model";
 import ReactPaginate from "react-paginate";
+import Searchbar from "../layout/Searchbar";
+import { Spinner } from "react-bootstrap";
 
 const Ftsdatatable = ({ active, setActive }) => {
   const navigate = useNavigate();
@@ -15,20 +17,20 @@ const Ftsdatatable = ({ active, setActive }) => {
 
   const [deleteInfo, setDeleteInfo] = useState();
   const[showdata,setShowData]=useState();
-
-
-
   const [data, setdata] = useState([]);
   const token = localStorage.getItem("accessToken");
-
+ 
+  const[spinner,setSpinner]=useState(false);
   useEffect(() => {
+setSpinner(true);                      
     axios
       .get(
-        " https://fts-backend.onrender.com/admin/testing/getallusers?page=1&size=5",
+        " https://fts-backend.onrender.com/admin/testing/getallusers?page=1&size=10",
 
         { headers: { Authorization: `Bearer ${token}` } }
       )
       .then((response) => {
+        setSpinner(false);
         console.log(response, "********");
         setdata(response?.data?.response?.paginationOutput);
       })
@@ -49,7 +51,7 @@ const Ftsdatatable = ({ active, setActive }) => {
         setShow(false);
         axios
           .get(
-            " https://fts-backend.onrender.com/admin/testing/getallusers?page=1&size=5",
+            " https://fts-backend.onrender.com/admin/testing/getallusers?page=1&size=10",
 
             { headers: { Authorization: `Bearer ${token}` } }
           )
@@ -69,7 +71,7 @@ const handleShow=(id)=>{
   )
   .then((response)=>{
     setShowData(response.data.response.user);
-  
+
   })
 }
 
@@ -92,6 +94,8 @@ const handleShow=(id)=>{
         console.log(err);
       });
   };
+
+
   return (
     <>
       <div className="row">
@@ -99,14 +103,30 @@ const handleShow=(id)=>{
           <Sidebar active={active} setActive={setActive} />
         </div>
         <div className="col-10">
-        <div className="col-9">
-                <p href="#" className=" d-flex justify-content-start   ">
-                  <h5 className=" text-secondary me-1 ">FTS datatable </h5>&#10095;
-                  <h5 className="text-black ms-1 ">Customer Details</h5>{" "}
-                </p>
+        <div className="col-12">
+                <div className=" d-flex justify-content-end ">
+                  <button
+                    className="btn commit text-white mt-2 mb-2 "
+                    onClick={() => navigate("/Fts-user-data")}
+                    type="button"
+                  >
+                    Add
+                  </button>
+                </div>
               </div>
-          
-          <Table className="mt-4">
+            
+              <div className="row">
+              <div className="col-9">
+                <p className="day">CUSTOMER DETAILS</p>
+              </div>
+              <div className="col-3 mb-2">
+           
+                <Searchbar/>
+              </div>
+            </div>
+            
+          <Table >
+   
             <thead>
               <tr>
                 <th className="all">S.NO</th>
@@ -120,7 +140,8 @@ const handleShow=(id)=>{
               </tr>
             </thead>
             <tbody>
-              {data?.results?.map((val, i) => (
+              {data?.results?.length?
+              data?.results ?.map((val, i) => (
                 <tr key={i}>
                   <th scope="row">{i+1}</th>
 
@@ -168,7 +189,10 @@ const handleShow=(id)=>{
                     </div>
                   </td>
                 </tr>
-              ))}
+              ))
+             :spinner?   <Spinner animation="border" role="status" className=" spinner ">
+             <span className="visually-hidden">Loading...</span>
+           </Spinner>:"no data found"}
           
             </tbody>
          

@@ -7,6 +7,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import Searchbar from "../layout/Searchbar";
 
  const Lunch = ({active,setActive,changeArr,setChangeArr}) => {
   const navigate = useNavigate();
@@ -38,13 +39,8 @@ import Modal from "react-bootstrap/Modal";
         <div className=" col-10  p-3 mb-5 rounded ">
           <div className="bg-white mt-4 p-3 ">
             <div className="row">
-              <div className="col-9">
-                <p href="#" className=" d-flex justify-content-start   ">
-                  <h5 className=" text-secondary me-1 ">Lunch</h5>&#10095;
-                  <h5 className="text-black ms-1 ">Customer Details</h5>{" "}
-                </p>
-              </div>
-              <div className="col-3">
+           
+              <div className="col-12">
                 <div className=" d-flex justify-content-end ">
                   <button 
                     className="btn commit text-white mb-3 " onClick={()=>navigate("/Add-lunch")}
@@ -64,14 +60,7 @@ import Modal from "react-bootstrap/Modal";
                 <p className="day">CUSTOMER DETAILS</p>
               </div>
               <div className="col-3">
-                <form className="d-flex " role="search">
-                  <input
-                    className="form-control ms-4 "
-                    type="search"
-                    placeholder="Search "
-                    aria-label="Search"
-                  />
-                </form>
+              <Searchbar/>
               </div>
             </div>
 
@@ -136,7 +125,7 @@ import Modal from "react-bootstrap/Modal";
          
         
      
-      
+{/*       
                <ReactPaginate
                    previousLabel={'previous'}
                    nextLabel={'next'}
@@ -153,7 +142,7 @@ import Modal from "react-bootstrap/Modal";
                    activeClassName={'active'}
                
                
-               />  
+               />   */}
 
              
               

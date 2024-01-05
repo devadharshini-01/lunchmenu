@@ -11,14 +11,14 @@ const Sidebar = (props) => {
         ></img>
 
         <div className="list-group  ">
-          <Link to="/breakfast" className="best">
+          <Link to="/breakfast" >
             {" "}
             <p
               className={`${
                 props.active === "breakfast"
                   ? "p-2 bg-white rounded-3  text-danger"
                   : "text-white"
-              } p-0 url a:hover  `}
+              } p-2 url class mt-2 `}
               onClick={() => props.setActive("breakfast")}
             >
               <Icon
@@ -37,7 +37,7 @@ const Sidebar = (props) => {
                 props.active === "lunch"
                   ? " p-2 bg-white rounded-3  text-danger"
                   : "text-white"
-              } p-0 a:hover mt-2  url `}
+              } p-2 class mt-2  url `}
               onClick={() => props.setActive("lunch")}
             >
               <Icon
@@ -57,7 +57,7 @@ const Sidebar = (props) => {
                 props.active === "dinner"
                   ? " p-2 bg-white rounded-3 text-danger"
                   : "text-white"
-              } p-0 a:hover mt-2 url `}
+              } p-2 class mt-2 url `}
               onClick={() => props.setActive("dinner")}
             >
               <Icon
@@ -69,33 +69,34 @@ const Sidebar = (props) => {
               Dinner
             </p>
           </Link>
-        {/* <Link to="/userdata">
+        <Link to="/Userdata">
           
           <p
               className={`${
-                props.active === "userdata"
+                props.active === "Userdata"
                   ? " p-2 bg-white rounded-3  text-danger "
                   : "text-white"
-              } p-0  a:hover mt-2 a:link `}
-              onClick={() => props.setActive("userdata")}
+              } p-2  class mt-2 a:link `}
+              onClick={() => props.setActive("Userdata")}
             >
-            
-                user data
+          
+          <Icon icon="codicon:account" width="20" height="20" className="mb-1 me-2" />
+                userdata
             </p>
             </Link>
-            <Link to="/userdatatable">
+            <Link to="/User-data-table">
             <p
               className={`${
-                props.active === "userdatatable"
+                props.active === "User-data-table"
                   ? " p-2 bg-white rounded-3  text-danger"
                   : "text-white"
-              } p-0 a:hover mt-2 a:link  `}
-              onClick={() => props.setActive("userdatatable")}
+              } p-2 class mt-2 a:link  `}
+              onClick={() => props.setActive("User-data-table")}
             >
-            
+                 <Icon icon="uil:chat-bubble-user" width="20" height="20" className="me-2 mb-1"/>
                 User DataTable
             </p>
-            </Link> */}
+            </Link>
               <Link to="/fts-user-data" >
             {" "}
             <p
@@ -103,10 +104,11 @@ const Sidebar = (props) => {
                 props.active === "Ftsuserdata"
                   ? " p-2 bg-white rounded-3 text-danger"
                   : "text-white"
-              } p-0 a:hover mt-2 a:link `}
+              } p-2 class mt-2 a:link `}
               onClick={() => props.setActive("Ftsuserdata")}
             >
-           <Icon icon="uis:user-nurse" className="mb-1 me-2" width="20" height="20" />
+     
+        <Icon icon="uil:user" width="20" height="20" className="mb-1 me-2"/>
             
            Ftsuserdata
             
@@ -119,7 +121,7 @@ const Sidebar = (props) => {
                 props.active === "Ftsdatatable"
                   ? " p-2 bg-white rounded-3 text-danger"
                   : "text-white"
-              } p-0 a:hover mt-2 a:link `}
+              } p-2 class mt-2 a:link `}
               onClick={() => props.setActive("Ftsdatatable")}
             >
               <Icon icon="gridicons:multiple-users" className="mb-1 me-2" width="20" height="20" />

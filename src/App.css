@@ -76,7 +76,7 @@ body
 .btn{
   background-color:  #406576  !important;
   width: 120px !important;
-  margin-top: 35px !important; 
+
   font-size: 14px !important;
 }
 .user {
@@ -160,13 +160,19 @@ input:focus {
 .idea {
   font-size: 15px !important;
 }
-a:hover {
-   
-   background-color:lightsteelblue!important;
-  color: #f0005f !important;
-  border-radius: 5px !important;
+.class:hover
+{
 
- }
+    background-color:white !important;
+    color: #f0005f !important;
+    border-radius: 5px !important;
+
+  }
+
+  
+ 
+
+ 
  body{
   background-color:#e4edf2  !important;
  }
@@ -182,7 +188,7 @@ a:hover {
 .message
 {
   background-color: #ff3285  !important;
-  height: 100vh!important;
+  height: 100vh ;
 }
 .box
 {
@@ -231,10 +237,13 @@ a:hover {
 {
   background-color:#ff4b92!important;
 }
-.best
+/* .best
 {
   text-decoration-line: none !important ;
-}
+  /* background-color:lightsteelblue!important;
+  color: #f0005f !important;
+  border-radius: 5px !important; */
+ */
 .label
 {
   cursor: pointer !important;
@@ -258,6 +267,7 @@ a:link
 .border
 {
   border:none !important ;
+  
 }
 .header
 {
@@ -266,4 +276,16 @@ a:link
 .model
 {
   color: #99a3c5 !important;
+}
+.spinner
+{
+  color:#ff4b92 !important ;
+  position: absolute;
+  top: 60%;
+  left: 60%;
+  margin-top: -20px;
+  margin-left: -30px;
+  width: 50px;
+  height: 40px;
+  text-align: center;
 }

@@ -7,6 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import {  useState } from "react";
+import Searchbar from "../layout/Searchbar";
 
 const Dinner = ({active,setActive,arrList,setArrList}) =>{
     const navigate = useNavigate();
@@ -36,13 +37,8 @@ const Dinner = ({active,setActive,arrList,setArrList}) =>{
         <div className=" col-10  p-3 mb-5 rounded ">
           <div className="bg-white mt-4 p-3 ">
             <div className="row">
-              <div className="col-9">
-                <p href="#" className=" d-flex justify-content-start   ">
-                  <h5 className=" text-secondary me-1 ">Dinner </h5>&#10095;
-                  <h5 className="text-black ms-1 ">Customer Details</h5>{" "}
-                </p>
-              </div>
-              <div className="col-3">
+             
+              <div className="col-12">
                 <div className=" d-flex justify-content-end ">
                   <button 
                     className="btn commit text-white mb-3 " onClick={()=>navigate("/Add-dinner")}
@@ -62,14 +58,7 @@ const Dinner = ({active,setActive,arrList,setArrList}) =>{
                 <p className="day">CUSTOMER DETAILS</p>
               </div>
               <div className="col-3">
-                <form className="d-flex " role="search">
-                  <input
-                    className="form-control ms-4 "
-                    type="search"
-                    placeholder="Search "
-                    aria-label="Search"
-                  />
-                </form>
+            <Searchbar/>
               </div>
             </div>
 
@@ -153,7 +142,7 @@ const Dinner = ({active,setActive,arrList,setArrList}) =>{
                   )
                 })
                }
-               <ReactPaginate
+               {/* <ReactPaginate
                    previousLabel={'previous'}
                    nextLabel={'next'}
                    pageCount={2}
@@ -169,7 +158,7 @@ const Dinner = ({active,setActive,arrList,setArrList}) =>{
                    activeClassName={'active'}
                
                />
-            
+             */}
               </tbody>
               <div />
             </table>

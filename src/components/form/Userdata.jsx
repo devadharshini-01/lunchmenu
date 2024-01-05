@@ -30,40 +30,33 @@ return(
         </div>
         <div className="col-10">
     
-  <ol className="breadcrumb divider">
-    <li className="breadcrumb-item"><a href="#">UserData</a></li>
-    <li className="breadcrumb-item active" aria-current="page">PersonalDetails</li>
-  </ol>
-  </div>
-  <div className="card mt-3 p-4">
-         <label>Name:</label>
+  
+
+
+     
        <div className="w-75">
-       <label className="block mt-2">Name:</label>
+       <label className="block mt-4">Name:</label>
          <input className="form-control "/>
-         <label className="mt-2">E-mail</label>
+    
          <label className="mt-2 block">E-mail</label>
          <input className="form-control "/>
-         <label className="mt-2">phoneNumber</label>
-         <input className="form-control "/>
-         <label className="mt-2">message</label>
-         <textarea className="form-control "/>
+ 
          <label className="mt-2 block">PhoneNumber</label>
          <input type="number" className="form-control position"/>
          <label className="mt-2 block">Message</label>
          <textarea className="form-control textarea "/>
          <div className="d-grid gap-2 d-md-flex justify-content-end">
-         <button className=" btn text-white"  onClick={()=>navigate("/UserDataTable")} >Submit</button>
-         <button className=" btn text-white" >Cancel</button>
-         <button className=" btn text-white pink"  onClick={()=>Userdata()} >Submit</button>
-         <button className=" btn text-block bg-white" >Cancel</button>
+     
+         <button className=" btn text-white pink mt-2"  onClick={()=>Userdata()} >Submit</button>
+         <button className=" btn text-block bg-white mt-2" >Cancel</button>
         </div>
        </div>
 
-         </div>
+       
         </div>
 
      
-
+</div>
     </>
 )
 }

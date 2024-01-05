@@ -13,7 +13,7 @@ const UserDataTable = ({active,setActive})=>{
 
   useEffect(() => {
     axios
-      .get("https://fakestoreapi.com/products")
+      .get("https://fakestoreapi.com/products/?limit=10")
       .then((response) => {
         setStore(response.data);
         console.log(response.data);
@@ -25,25 +25,16 @@ const UserDataTable = ({active,setActive})=>{
 return(
  <>
      <div className="row">
-        <div className="col-2">
+        <div className="col-2 ">
         <Sidebor active={active} setActive={setActive}  />
-          <Sidebor active={active} setActive={setActive} />
+        
         </div>
         <div className=" col-10 p-2 mb-5 rounded ">
-          <div className="bg-white mt-4 p-3 ">
+          <div className="bg-white  p-3 ">
             <div className="row">
-              <div className="col-9">
-                <p href="#" className=" d-flex justify-content-start   ">
-                  <h5 className=" text-secondary me-1 ">UserDataTable </h5>&#10095;
-                  <h5 className=" text-secondary me-1 ">UserDataTable </h5>
-                  &#10095;
-                  <h5 className="text-black ms-1 ">Customer Details</h5>{" "}
-                </p>
-
-      </div> 
-      <div className="col-3">
-              </div>
-              <div className="col-3">
+      
+    
+              <div className="col-12">
                 <div className=" d-flex justify-content-end ">
                   <button
                     className="btn commit text-white mb-3 "
@@ -61,7 +52,7 @@ return(
                   <tr>
                     <th className="all">S.NO</th>
                     <th className="all">CATEGORY</th>
-                    <th className="all">TITTLE</th>
+                    <th className="all">TITLE</th>
                     <th className="all">RATING</th>
                     <th className="all">PRICE</th>
                     <th className="all me-2">ACTIONS</th>
