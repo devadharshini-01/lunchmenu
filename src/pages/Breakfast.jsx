@@ -11,8 +11,6 @@ import Searchbar from "../layout/Searchbar";
 
 
 const Breakfast = ({ datalist, active, setActive, inputArr, setInputArr,Search }) => {
-
-
   const navigate = useNavigate();
   const [view, setView] = useState(false);
  
@@ -27,7 +25,6 @@ const Breakfast = ({ datalist, active, setActive, inputArr, setInputArr,Search }
     deleteName: "",
     deleteconform:"",
   });
-
   // console.log(modelData.name)
   // console.log(modelData.email)
   // console.log(modelData.phoneNumber,"phoneNumber")
@@ -68,7 +65,8 @@ const Breakfast = ({ datalist, active, setActive, inputArr, setInputArr,Search }
   const handlePageClick = (data) => {
     console.log(data.selected);
   };
-
+  const a=process.env.REACT_APP_HAI;
+  console.log(a);
   return (
     <>
       <div className="row ">
@@ -92,7 +90,7 @@ const Breakfast = ({ datalist, active, setActive, inputArr, setInputArr,Search }
                 </div>
               </div>
             </div>
-
+            
             <div className="row">
               <div className="col-9">
                 <p className="day">CUSTOMER DETAILS</p>

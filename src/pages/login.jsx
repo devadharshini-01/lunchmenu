@@ -50,8 +50,8 @@ const navigate=useNavigate();
             <div className="d-flex flex-column mb-0 mb-0">
               <img className="pg" src={logo}></img>
             </div>
-            <p className="text-white align ">Welcome to foodingo</p>
-            <p className="image ">Deliver food instanly</p>
+            <p className="text-white align ">Welcome To Foodingo</p>
+            <p className="image ">Deliver Food Instanly</p>
             <div className="row mt-5">
               <div className="col-6 mt-5">
                 <p className="text-white text text-start ">
