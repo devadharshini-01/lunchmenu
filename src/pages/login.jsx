@@ -1,9 +1,9 @@
 import React from "react";
-import  logo from "../assets/image/logo.png";
+import logo from "../assets/image/logo.png";
 import { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 const Login = () => {
   const [login, setLogin] = useState({
@@ -11,36 +11,40 @@ const Login = () => {
     password: "",
     // body:"JSON.stringify",
   });
-const navigate=useNavigate();
+  const navigate = useNavigate();
   const handlelogin = (event) => {
     setLogin({ ...login, [event.target.name]: event.target.value });
-   
-   };
-   const handleSubmit=()=>{
-    axios.post("https://fts-backend.onrender.com/admin/login",login)
-    .then(response=>{console.log(response.data.accesstoken)
-       localStorage.setItem("accessToken",(response.data.accesstoken.accessToken));
-     localStorage.setItem("refreshToken", response.data.refreshtoken);
-     navigate("/breakfast")
-  
+  };
+  const handleSubmit = () => {
+    axios
+      .post("https://fts-backend.onrender.com/admin/login", login)
+      .then((response) => {
+        console.log(response.data.accesstoken);
+       
+        localStorage.setItem(
+          "accessToken",
+          response.data.accesstoken.accessToken
+        );
+        
+        localStorage.setItem("refreshToken", JSON.stringify(response.data.refreshtoken));
+        if (response.status === 200) {
+          navigate("/breakfast");
+        }
+      })
 
-    })
+      .catch((err) => {
+        console.log(err);
+        if (err.status === 400) {
+          navigate("/");
+        }
+      });
 
-    .catch(err=>{console.log(err)
-
-    })
-
-    
     // const access = response.data.accesstoken;
     // const refresh = response.refreshtoken;
     // console.log(access);
     // localStorage.setItem("accessToken", access);
     // localStorage.setItem("refreshToken", refresh);
-
-    
-   }
-
-
+  };
 
   return (
     <div className="homebanner">
@@ -89,7 +93,7 @@ const navigate=useNavigate();
                   onChange={(e) => handlelogin(e)}
                   aria-describedby="basic-addon2"
                 />
-                
+
                 <span
                   className="input-group-text border-0 bg-white  "
                   id="basic-addon2"
@@ -107,13 +111,15 @@ const navigate=useNavigate();
                   </svg>
                 </span>
               </div>
-
             </div>
-       
-               <button className=" btn text-white mt-4" onClick={()=>handleSubmit()} >Sign in</button>
-     
+
+            <button
+              className=" btn text-white mt-4"
+              onClick={() => handleSubmit()}
+            >
+              Sign in
+            </button>
           </div>
-        
         </div>
       </div>
     </div>

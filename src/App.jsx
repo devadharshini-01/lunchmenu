@@ -53,6 +53,12 @@ const App = () => {
   const [inputArr, setInputArr] = useState([]);
   const [changeArr, setChangeArr] = useState([]);
   const [arrList, setArrList] = useState([]);
+ const data = window.location.pathname
+ console.log(data);
+ if(data==="/")
+ {
+  localStorage.clear()
+ }
   // setInputArr([...inputArr,datalist])
 
   // // const navigate = useNavigate();

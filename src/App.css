@@ -1,6 +1,5 @@
-body
-{
-  background-color:#e4edf2 ;
+body {
+  background-color: #e4edf2;
 }
 .card {
   width: 520px;
@@ -73,8 +72,8 @@ body
   width: 290px !important;
   border: none !important;
 }
-.btn{
-  background-color:  #406576  !important;
+.btn {
+  background-color: #406576 !important;
   width: 120px !important;
 
   font-size: 14px !important;
@@ -119,7 +118,7 @@ body
   border-radius: 2px;
   font-size: 14px !important;
 }
-  /* .top 
+/* .top 
  {
   background-color: #ff4b92!important;
 }  */
@@ -133,14 +132,13 @@ input:focus {
 .red {
   background-color: #ff006b !important;
   height: 100vh;
-
 }
 /* .git {
   width: 70px !important;
 } */
- .width {
+.width {
   width: 60px !important;
-} 
+}
 /* .day {
   background-color: rgb(252, 179, 197) !important;
   height: 600px !important;
@@ -148,8 +146,6 @@ input:focus {
 .url {
   text-decoration: none !important ;
   font-size: 16px !important;
-
- 
 }
 
 .all {
@@ -160,63 +156,48 @@ input:focus {
 .idea {
   font-size: 15px !important;
 }
-.class:hover
-{
+.class:hover {
+  background-color: white !important;
+  color: #f0005f !important;
+  border-radius: 5px !important;
+}
 
-    background-color:white !important;
-    color: #f0005f !important;
-    border-radius: 5px !important;
-
-  }
-
-  
- 
-
- 
- body{
-  background-color:#e4edf2  !important;
- }
+body {
+  background-color: #e4edf2 !important;
+}
 /* .edit {
   height: 100% !important;
   box-shadow: black !important;
 
 } */
-.table
-{
+.table {
   height: 50% !important;
 }
-.message
-{
-  background-color: #ff3285  !important;
-  height: 100vh ;
+.message {
+  background-color: #ff3285 !important;
+  height: 100%;
 }
-.box
-{
-  border-radius:5px !important;
-  width:100% !important;
- outline: 0 none !important;
- }
-.male
-{
+.box {
+  border-radius: 5px !important;
+  width: 100% !important;
+  outline: 0 none !important;
+}
+.male {
   font-size: 15px !important;
 }
 
-.logo
-{
+.logo {
   width: 90px !important;
 }
 
-.bs
-{
+.bs {
   color: #99a3cc !important;
 }
-.divider
-{
-  --bs-breadcrumb-divider: '>' !important;
+.divider {
+  --bs-breadcrumb-divider: ">" !important;
   font-size: 22px !important;
 }
-.big
-{
+.big {
   font-size: 24px !important;
 }
 /* .mix
@@ -224,18 +205,15 @@ input:focus {
   background-color: #f2f1f9 !important;
   height:100vh !important;
 } */
-.day
-{
+.day {
   font-size: 15px !important;
   color: #99a3c5 !important;
 }
-.pink
-{
- background-color:  #f0005f !important;
+.pink {
+  background-color: #f0005f !important;
 }
-.commit
-{
-  background-color:#ff4b92!important;
+.commit {
+  background-color: #ff4b92 !important;
 }
 /* .best
 {
@@ -243,43 +221,32 @@ input:focus {
   /* background-color:lightsteelblue!important;
   color: #f0005f !important;
   border-radius: 5px !important; */
- */
-.label
-{
+*/ .label {
   cursor: pointer !important;
 }
-.formik
-{
+.formik {
   color: red !important;
 }
-.block
-{
+.block {
   font-size: 15px !important;
 }
-.textarea
-{
- resize:none !important;
+.textarea {
+  resize: none !important;
 }
-a:link
-{
- text-decoration: none !important;
+a:link {
+  text-decoration: none !important;
 }
-.border
-{
-  border:none !important ;
-  
+.border {
+  border: none !important ;
 }
-.header
-{
-  background-color: #f0f6f6  !important;
+.header {
+  background-color: #f0f6f6 !important;
 }
-.model
-{
+.model {
   color: #99a3c5 !important;
 }
-.spinner
-{
-  color:#ff4b92 !important ;
+.spinner {
+  color: #ff4b92 !important ;
   position: absolute;
   top: 60%;
   left: 60%;

@@ -1,0 +1,412 @@
+import { config } from "./config";
+import { common } from "./common";
+import fetchRefreshToken from "../pages/auth/fetchRefreshToken";
+
+// const
+//let refreshCall = false;
+const base_url = config.api.url;
+
+// services
+
+const services = {
+  // auth
+  authLogin: base_url + "/auth/login",
+  authOtpGenerate: base_url + "/forgot-password",
+  authOtpVerify: base_url + "/verify-otp",
+  authOtpResent: base_url + "/resend-otp",
+  authResetPassword: base_url + "/reset-password",
+  authRefreshToken: base_url + "/auth/refresh-tokens",
+  authLogout: base_url + "/auth/logout",
+
+  //Settings
+  authChangepassword: base_url + "/auth/change-password",
+
+  //Users
+  userListDownload: base_url + "/analytics/user/download",
+  userList: base_url + "/user/users/list",
+  userView: base_url + "/user/users/get",
+  userStatus: base_url + "/user/users/status",
+
+  //User Type
+  userTypeSelect: base_url + "/type/user-type/select",
+
+  // diagnosis
+  diagnosisList: base_url + "/diagnosis/diagnosis-reasons/list",
+  diagnosisAdd: base_url + "/diagnosis/diagnosis-reason/save",
+
+  //cancer Type
+  cancerList: base_url + "/cancer/cancer-type/list",
+  cancerSelect: base_url + "/cancer/cancer-type/select",
+  cancerTypeAdd: base_url + "/cancer/cancer-type/save",
+  cancerTypeEdit: base_url + "/cancer/cancer-type/edit",
+  cancerTypeUpdate: base_url + "/cancer/cancer-type/update",
+  cancerTypeStatusUpdate: base_url + "/cancer/cancer-type/status",
+  //device list
+  userDeviceList: base_url + "/device/user-device/list",
+  userTypeList: base_url + "/type/user-type/list",
+
+  //race Question
+  raceAdd: base_url + "/race/save",
+  raceUpdate: base_url + "/race/update/",
+  raceView: base_url + "/race/edit/",
+  raceList: base_url + "/race/list",
+  raceSelect: base_url + "/race/race-question/select",
+  raceDelete: base_url + "/race/delete/",
+  raceStatus: base_url + "/race/update-status/",
+
+  // Video
+  videoCSVDownload: base_url + "/analytics/video/download",
+  videoList: base_url + "/video/video-library/list",
+  videoGet: base_url + "/video/video-library/get/",
+  videoSave: base_url + "/video/video-library/save",
+  videoUpdate: base_url + "/video/video-library/update/",
+  videoSource: base_url + "/video/video-library/source-save",
+  videoDelete: base_url + "/video/video-library/delete/",
+  videoUnblock: base_url + "/video/video-library/block/",
+  videoBatchBlock: base_url + "/video/video-library/batch-block",
+  videoBatchUnBlock: base_url + "/video/video-library/batch-unblock",
+
+  //Tag for videos
+
+  tagList: base_url + "/tag/list/tag-group",
+  tagSelect: base_url + "/tag/list/tag-group",
+
+  //Tag Group List
+  tagGroupList: base_url + "/tag-group/list",
+  tagGroupSelect: base_url + "/tag-group/select",
+  tagGroupSave: base_url + "/tag-group/save",
+  tagGroupUpdate: base_url + "/tag-group/update/",
+  tagGroupGet: base_url + "/tag-group/get/",
+  tagGroupDelete: base_url + "/tag-group/delete/",
+  tagGroupStatus: base_url + "/tag-group/status/",
+
+  //Tags
+  tagsList: base_url + "/tag/list",
+  tagsGet: base_url + "/tag/edit/",
+  tagsUpdate: base_url + "/tag/update/",
+  tagsSelect: base_url + "/tag/select",
+  tagsSave: base_url + "/tag/save",
+  tagsDelete: base_url + "/tag/delete/",
+  tagsStatus: base_url + "/tag/status/",
+
+  //CancerTypes
+  cancerTypesList: base_url + "/cancer/cancer-type/list",
+  viewCancerType: base_url + "/cancer/cancer-type/edit/",
+  deleteCancerType: base_url + "/cancer/cancer-type/delete",
+
+  //Glossary
+  glossaryList: base_url + "/glossary/list",
+  glossaryView: base_url + "/glossary/get",
+  glossarySave: base_url + "/glossary/save",
+  glossaryGet: base_url + "/glossary/get/",
+  glossaryUpdate: base_url + "/glossary/update/",
+  glossaryStatusUpdate: base_url + "/glossary/status/",
+  glossaryDelete: base_url + "/glossary/",
+  glossaryVideoSource: base_url + "/glossary/source-save/",
+  //  userTypeStatus: base_url + "/type/user-type/status/",
+
+  //mobile dashboard 
+  mobileDashboardList: base_url + "/dashboard/paragraph-list",
+  mobileDashboard: base_url + "/dashboard/paragraph",
+  mobilsDashboardAdd: base_url + "/dashboard/paragraph-save",
+  mobileDashboardDelete: base_url +"/dashboard/paragraph-delete",
+  mobileDashboardStatus: base_url +"/dashboard/paragraph-status",
+  //sts validation
+  stsValidation: base_url + "/sts/file-validation",
+  stsTokenGenerate: base_url + "/sts/sts-token",
+
+  //Age Group
+  ageGroupList: base_url + "/agegroup/age-group-question/list",
+  ageGroupSelect: base_url + "/agegroup/age-group-question/select",
+
+  //Gender List
+
+  genderList: base_url + "/gender/gender-question/list",
+  genderSelect: base_url + "/gender/gender-question/select",
+
+  //Country:
+
+  countryList: base_url + "/countries/list",
+  countrySelect: base_url + "/countries/select",
+
+  //onBoarding Questions
+
+  onboardingList: base_url + "/onboarding/onboarding-question/list",
+  onboardingSave: base_url + "/onboarding/onboarding-question/save",
+  onboardingDelete: base_url + "/onboarding/onboarding-question/delete/",
+  onboardingGet: base_url + "/onboarding/onboarding-question/edit/",
+  onboardingUpdate: base_url + "/onboarding/onboarding-question/update/",
+  onboardingStatusUpdate: base_url + "/onboarding/onboarding-question/status/",
+
+  //User List
+
+  userTypesList: base_url + "/type/user-type/list",
+  userTypesSelect: base_url + "/type/user-type/select",
+  userTypesSave: base_url + "/type/user-type/save",
+  userTypeUpdate: base_url + "/type/user-type/update/",
+  userTypesGet: base_url + "/type/user-type/edit/",
+  userTypeDelete: base_url + "/type/user-type/delete/",
+  userTypeStatus: base_url + "/type/user-type/status/",
+  userDelete: base_url + "/user/users/account-delete/",
+
+  //Ads
+
+  adsList: base_url + "/ads/list",
+  adsDelete: base_url + "/ads/",
+  adsView: base_url + "/ads/edit/",
+  adsStatusUpdate: base_url + "/ads/update-status/",
+  adsVideoList: base_url + "/ads/videos",
+  adsSave: base_url + "/ads/save",
+  adsUpdate: base_url + "/ads/update/",
+
+  //Episode
+  episodeList: base_url + "/episode/list",
+  vedioSelect: base_url + "/episode/videos/list",
+  addEpisode: base_url + "/episode/save",
+  episodeDelete: base_url + "/episode/delete/",
+  episodeGet: base_url + "/episode/view/",
+  episodeUpdate: base_url + "/episode/update/",
+  episodeStatus: base_url + "/episode/update-status",
+
+  //Age Group
+
+  agegroupList: base_url + "/agegroup/list",
+  agegroupGet: base_url + "/agegroup/edit/",
+  ageGroupDelete: base_url + "/agegroup/delete/",
+  agegroupView: base_url + "/agegroup/edit/",
+  ageGroupStatus: base_url + "/agegroup/update-status/",
+  ageGroupSave: base_url + "/agegroup/save",
+  ageGroupUpdate: base_url + "/agegroup/update/",
+
+  // gender management
+
+  genderListData: base_url + "/gender/list",
+  genderDelete: base_url + "/gender/delete/",
+  genderSave: base_url + "/gender/save",
+  genderUpdate: base_url + "/gender/update/",
+  genderStatus: base_url + "/gender/update-status/",
+  genderView: base_url + "/gender/edit/",
+
+  //Video Recommendation
+  videoRecommendation: base_url + "/video-recomm-config/list",
+  saveVideoRecommendation: base_url + "/video-recomm-config/save",
+
+  //Dashboard
+  dashboardDetails: base_url + "/dashboard",
+  dashboardUsersTotal: base_url + "/dashboard/total-users",
+  videoGraph: base_url + "/analytics/video/graph",
+  sessionGraph: base_url + "/analytics/session/graph",
+  
+  //Notify User
+  notifyUser: base_url + "/video/notify-to-user/",
+
+  //Analytics 
+  sessionDuration: base_url + "/analytics/session/download",
+  myStoryCSV: base_url + "/analytics/mystory/download",
+  notesCSV: base_url + "/analytics/notes/download",
+  medicationReminderCSV: base_url + "/analytics/medication-reminder/download",
+  glossaryCSV: base_url + "/analytics/glossary/download",
+};
+
+// api call
+export const api = {
+  getServices(apiName) {
+    return services[apiName];
+  },
+  async call(data = {}, response, final) {
+    getData(data);
+    // server side rendering
+    if (data.ssr) {
+      let myPromise = new Promise(function (resolve, reject) {
+        fetch(data.url, getOptions(data))
+          .then((response) =>
+            response.text().then((data) => ({
+              status: response.status,
+              data: data,
+            }))
+          )
+          .then((res) => {
+            if (
+              config.api.isExpired !== "" &&
+              res.status === config.api.isExpired
+            ) {
+              fetchRefreshToken(() => {
+                window.location.href = "/dashboard"; 
+              });
+              // refreshToken(data).then((result) => {
+              //   result.data = JSON.parse(result.data);
+              //   notify(data, result);
+              //   resolve(result);
+              // });
+            } else {
+              try {
+                res.data = JSON.parse(res.data);
+              } catch (e) {
+                res.data = {
+                  error: e.toString(),
+                };
+              }
+              notify(data, res);
+              resolve(res);
+            }
+          })
+          .catch((err) => {
+            let result = {
+              status: 404,
+              data: {
+                error: err.toString(),
+              },
+            };
+            notify(data, result);
+            resolve(result);
+          });
+      });
+      return myPromise;
+    } else {
+      // client side rendering
+      fetch(data.url, getOptions(data))
+        .then((response) =>
+          response.text().then((data) => ({
+            status: response.status,
+            data: data,
+          }))
+        )
+        .then((res) => {
+          if (
+            config.api.isExpired !== "" &&
+            res.status === config.api.isExpired
+          ) {
+            fetchRefreshToken(() => {
+              window.location.href = "/dashboard";
+            });
+            // refreshToken(data).then((result) => {
+            //   result.data = JSON.parse(result.data);
+            //   notify(data, result);
+            //   response(result);
+            // });
+          } else {
+            try {
+              res.data = JSON.parse(res.data);
+            } catch (e) {
+              res.data = {
+                error: e.toString(),
+              };
+            }
+            notify(data, res);
+            response(res);
+          }
+        })
+        .catch((err) => {
+          let result = {
+            status: 404,
+            data: {
+              error: err.toString(),
+            },
+          };
+          notify(data, result);
+          response(result);
+        })
+        .finally(() => {
+          if (typeof final !== "undefined") {
+            final();
+          }
+        });
+    }
+  },
+};
+
+// support
+const getData = (data) => {
+  data.repeat = data.repeat || false;
+  if (!data.repeat) {
+    data.auth = data.auth || "token";
+    data.type = data.type || "standard";
+    data.method = data.method || "POST";
+    data.cType = data.cType || 1;
+    data.query = data.query || "";
+    data.body = data.body || "";
+    data.keyQuery = data.keyQuery || "";
+    data.notify = data.notify ?? true;
+    // set url
+    if (data.type === "third") {
+      data.url = data.url + data.query;
+    } else {
+      data.url = services[data.url] + data.query;
+      if (data.keyQuery !== "") {
+        for (var key in data.keyQuery) {
+          data.url = data.url.replace(`:${key}`, data.keyQuery[key]);
+        }
+      }
+    }
+    // set body
+    if (data.body) {
+      if (data.cType === 1) {
+        data.body = data.body ? JSON.stringify(data.body) : "";
+      } else if (data.cType === 2) {
+        let bodyParam = [];
+        for (var property in data.body) {
+          var encodedKey = encodeURIComponent(property);
+          var encodedValue = encodeURIComponent(data.body[property]);
+          bodyParam.push(encodedKey + "=" + encodedValue);
+        }
+        data.body = bodyParam.join("&");
+      }
+    }
+  }
+};
+
+function getOptions(data) {
+  let reqOptions = {
+    method: data.method,
+    headers: getHeaders(data),
+  };
+  if (data.body) {
+    reqOptions.body = data.body;
+  }
+  return reqOptions;
+}
+
+function getHeaders(data) {
+  // default
+  let headers = {};
+
+  // content types
+  let contentTypes = {
+    1: "application/json",
+    2: "application/x-www-form-urlencoded",
+    3: "application/vnd.oracle.adf.action+json",
+    4: "application/vnd.oracle.adf.resourceitem+json",
+    5: "application/vnd.oracle.adf.batch+json",
+    6: "multipart/form-data",
+  };
+  if (data.cType !== 6) {
+    headers["Content-Type"] = contentTypes[data.cType];
+  }
+
+  // extra content types
+  let moreHeaderList = {
+    rfv: "REST-Framework-Version",
+  };
+  if (data.moreHead) {
+    for (var item in data.moreHead) {
+      headers[moreHeaderList[item]] = data.moreHead[item];
+    }
+  }
+  if (data.auth === "token") {
+    let authData = localStorage.getItem("token");
+    headers.Authorization = "Bearer " + authData; //.token;
+  } else if (data.auth === "temp") {
+  } else if (data.auth === "basic") {
+  }
+
+  return headers;
+}
+
+const notify = (data, result) => {
+  if (data.notify) {
+    if (![200, 500, 400, 401].includes(result.status)) {
+      common.notify("E", result.data.error);
+    }
+  }
+};
+
