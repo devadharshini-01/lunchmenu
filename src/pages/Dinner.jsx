@@ -55,7 +55,7 @@ const Dinner = ({active,setActive,arrList,setArrList}) =>{
 
             <div className="row">
               <div className="col-9">
-                <p className="day">CUSTOMER DETAILS</p>
+                <p className="customerdetail">CUSTOMER DETAILS</p>
               </div>
               <div className="col-3">
             <Searchbar/>
@@ -65,19 +65,19 @@ const Dinner = ({active,setActive,arrList,setArrList}) =>{
             <table class="table">
               <thead>
                 <tr>
-                  <th scope="col" className="all">
+                  <th scope="col" className="tableheading">
                     S.NO
                   </th>
-                  <th scope="col" className="all">
+                  <th scope="col" className="tableheading">
                     NAME
                   </th>
-                  <th scope="col" className="all">
+                  <th scope="col" className="tableheading">
                     E-MAIL
                   </th>
-                  <th scope="col" className="all">
+                  <th scope="col" className="tableheading">
                     MOBILE NUMBER
                   </th>
-                  <th scope="col" className="text-center all">
+                  <th scope="col" className="text-center tableheading">
                     ACTIONS
                   </th>
                 </tr>

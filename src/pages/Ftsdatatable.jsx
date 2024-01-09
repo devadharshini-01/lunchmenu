@@ -8,6 +8,7 @@ import Model from "./Model";
 import ReactPaginate from "react-paginate";
 import Searchbar from "../layout/Searchbar";
 import { Spinner } from "react-bootstrap";
+import { ToastContainer, toast } from "react-toastify";
 
 const Ftsdatatable = ({ active, setActive }) => {
   const navigate = useNavigate();
@@ -19,15 +20,18 @@ const Ftsdatatable = ({ active, setActive }) => {
   const [showdata, setShowData] = useState();
   const [data, setdata] = useState([]);
   const [selected, setSelected] = useState(1);
+
+  const baseurl = process.env.REACT_APP_BASEURL;
+  const deleteurl = process.env.REACT_APP_DELETEURL;
+  const geturl = process.env.REACT_APP_GETURL;
+  const handlegeturl = process.env.REACT_APP_HANDLEGETURL;
+  const paginategeturl = process.env.REACT_APP_PAGINATEGETURL;
   const token = localStorage.getItem("accessToken");
+
   useEffect(() => {
     setSpinner(true);
     axios
-      .get(
-        " https://fts-backend.onrender.com/admin/testing/getallusers?page=1&size=10",
-
-        { headers: { Authorization: `Bearer ${token}` } }
-      )
+      .get(`${baseurl}admin/testing/getallusers?page=1&size=5`)
       .then((response) => {
         setSpinner(false);
 
@@ -39,17 +43,17 @@ const Ftsdatatable = ({ active, setActive }) => {
       });
   }, []);
   const handleDelete = () => {
+    toast.success("Deleted successfully!");
     console.log(id, "**********************");
     axios
-      .delete(
-        `https://fts-backend.onrender.com/admin/testing/deleteUserById?id=${deleteInfo}`,
-        { headers: { Authorization: `Bearer ${token}` } }
-      )
+      .delete(`${deleteurl}admin/testing/deleteUserById?id=${deleteInfo}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
       .then((res) => {
         setShow(false);
         axios
           .get(
-            " https://fts-backend.onrender.com/admin/testing/getallusers?page=1&size=10",
+            `${geturl} admin/testing/getallusers?page=1&size=5`,
 
             { headers: { Authorization: `Bearer ${token}` } }
           )
@@ -64,10 +68,9 @@ const Ftsdatatable = ({ active, setActive }) => {
   };
   const handleShow = (id) => {
     axios
-      .get(
-        `https://fts-backend.onrender.com/admin/testing/getUserById?id=${id}`,
-        { headers: { Authorization: `Bearer ${token}` } }
-      )
+      .get(`${handlegeturl}admin/testing/getUserById?id=${id}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
       .then((response) => {
         setShowData(response.data.response.user);
       });
@@ -78,9 +81,9 @@ const Ftsdatatable = ({ active, setActive }) => {
     console.log(event, "event");
     axios
       .get(
-        ` https://fts-backend.onrender.com/admin/testing/getallusers?page=${
+        ` ${paginategeturl}admin/testing/getallusers?page=${
           event.selected + 1
-        }&size=10`,
+        }&size=5`,
 
         { headers: { Authorization: `Bearer ${token}` } }
       )
@@ -112,15 +115,15 @@ const Ftsdatatable = ({ active, setActive }) => {
                 </button>
               </div>
             </div>
-          <div className="row">
+            <div className="row">
               <div className="col-9">
-              <p className="day">CUSTOMER DETAILS</p>
+                <p className="day">CUSTOMER DETAILS</p>
               </div>
               <div className="col-3 mb-2">
                 <Searchbar />
               </div>
             </div>
-           <Table>
+            <Table responsive>
               <thead>
                 <tr>
                   <th className="all">S.NO</th>
@@ -130,63 +133,59 @@ const Ftsdatatable = ({ active, setActive }) => {
                   <th className="all">MESSAGE</th>
                   <th className="all">CREATED AT</th>
                   <th className="all"> UPDATE AT</th>
-                  <th className="all"> ACTIONS</th>
+                  <th className="all center"> ACTIONS</th>
                 </tr>
               </thead>
-               <tbody>
+              <tbody>
                 {data?.results?.length ? (
-             
                   data?.results?.map((val, i) => (
                     <tr key={i}>
-                        <th scope="row">{(selected - 1) * 10 + i + 1}</th>
+                      <th scope="row">{(selected - 1) * 10 + i + 1}</th>
 
-                        <td className="idea">{val.name}</td>
+                      <td className="idea">{val.name}</td>
 
-                        <td className="idea">{val.email}</td>
-                        <td className="idea">{val.phone_number}</td>
-                        <td className="idea">{val.message}</td>
-                        <td className="idea">{val.createdAt}</td>
-                        <td className="idea">{val.updatedAt}</td>
+                      <td className="idea">{val.email}</td>
+                      <td className="idea">{val.phone_number}</td>
+                      <td className="idea">{val.message}</td>
+                      <td className="idea">{val.createdAt}</td>
+                      <td className="idea">{val.updatedAt}</td>
 
-                        <td>
-                          <div className="row d-flex  justify-content-center  ">
-                            <Icon
-                              icon="tabler:edit"
-                              width="18"
-                              height="18"
-                              className="w-25 label "
-                              onClick={() =>
-                                navigate(`/fts-user-data/${val.id}`)
-                              }
-                            />
-                            <Icon
-                              icon="pajamas:remove"
-                              width="18"
-                              height="18"
-                              className="w-25 label "
-                              onClick={() => {
-                                setShow(true);
-                                setDeleteInfo(val.id);
-                              }}
-                            />
-                            <Icon
-                              icon="zondicons:view-show"
-                              width="18"
-                              height="18"
-                              className="w-25 label "
-                              // onClick={() => {setView(true);
-                              // setShowData(val);}}
-                              onClick={() => {
-                                setView(true);
-                                handleShow(val.id);
-                              }}
-                            />
-                          </div>
-                        </td>
-                      </tr>
-                    ))
-                  )
-                 : spinner ? (
+                      <td>
+                        <div className="row d-flex  justify-content-center  ">
+                          <Icon
+                            icon="tabler:edit"
+                            width="30"
+                            height="30"
+                            className="w-25 label "
+                            onClick={() => navigate(`/fts-user-data/${val.id}`)}
+                          />
+                          <Icon
+                            icon="pajamas:remove"
+                            width="30"
+                            height="30"
+                            className="w-25 label "
+                            onClick={() => {
+                              setShow(true);
+                              setDeleteInfo(val.id);
+                            }}
+                          />
+                          <Icon
+                            icon="zondicons:view-show"
+                            width="30"
+                            height="30"
+                            className="w-25 label "
+                            // onClick={() => {setView(true);
+                            // setShowData(val);}}
+                            onClick={() => {
+                              setView(true);
+                              handleShow(val.id);
+                            }}
+                          />
+                        </div>
+                      </td>
+                    </tr>
+                  ))
+                ) : spinner ? (
                   <Spinner
                     animation="border"
                     role="status"
@@ -203,7 +202,7 @@ const Ftsdatatable = ({ active, setActive }) => {
               <ReactPaginate
                 previousLabel={"previous"}
                 nextLabel={"next"}
-                pageCount={data.totalPages}
+                pageCount={data && data.totalPages}
                 onPageChange={handlePageClick}
                 pageRangeDisplayed={10}
                 containerClassName={"pagination "}
@@ -216,24 +215,26 @@ const Ftsdatatable = ({ active, setActive }) => {
                 activeClassName={"active"}
               />
             </div>
+          <ToastContainer/>
+          
           </div>
         </div>
       </div>
       <Model
         show={show}
-        title={"Model"}
+        title={"Delete User"}
         body={<p className="model">Are you sure you want to delete this?</p>}
-        button1Value={"delete"}
+        button1Value={"Delete"}
         button1Click={handleDelete}
         button2Click={() => setShow(false)}
         closeButton={() => setShow(false)}
-        button2Value={"cancel"}
+        button2Value={"Cancel"}
       />
       {console.log(show, "show")}
       {console.log(view, "view")}
       <Model
         show={view}
-        title={"View Model"}
+        title={"User Detail"}
         body={
           <p>
             <span className=" model">Name:</span>

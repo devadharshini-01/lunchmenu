@@ -137,12 +137,12 @@ const Datalist = ({
             <div className="col-10  p-3  ">
               <div className="mx-5">
                 <div className="row ">
-                  <h5 className="bs">Personal Details</h5>
+                  <h5 className="personaldetail">Personal Details</h5>
 
                   <div className="col-3">
                     <label>Name :</label>
                     <input
-                      className=" form-control box"
+                      className=" form-control inputfield"
                       name="Name"
                       value={values.Name}
                       onChange={handleChange}
@@ -153,7 +153,7 @@ const Datalist = ({
                     <label>Phone Number :</label>
                     <input
                       type="number"
-                      className=" form-control box"
+                      className=" form-control inputfield"
                       name="phoneNumber"
                       value={values.phoneNumber}
                       onChange={handleChange}
@@ -174,7 +174,7 @@ const Datalist = ({
                   <div className="col-3">
                     <label>E-mail:</label>
                     <input
-                      className=" form-control box"
+                      className=" form-control inputfield"
                       name="email"
                       value={values.email}
                       onChange={handleChange}
@@ -685,7 +685,7 @@ const Datalist = ({
                   </table>
                 ) : null}
 
-                <h5 className="mt-2 bs">Address Details</h5>
+                <h5 className="mt-2 addressdetail ">Address Details</h5>
 
                 <label>Street :</label>
                 <textarea

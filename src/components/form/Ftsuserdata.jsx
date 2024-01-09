@@ -9,10 +9,12 @@ import { useEffect, useState } from "react";
 
 const Ftsuserdata = ({ active, setActive }) => {
   const token = localStorage.getItem("accessToken");
-  
-  const [getData, setGetData] = useState();
-
-  const navigate = useNavigate();
+   const [getData, setGetData] = useState();
+    const navigate = useNavigate();
+    const userdatageturl = process.env.REACT_APP_USERDATAGETURL;
+    const puturl=process.env.REACT_APP_PUTURL;
+    const posturl=process.env.REACT_APP_POSTURL;
+ 
 
   const schema = yup.object().shape({
     name: yup.string().required("Name is a required field"),
@@ -26,7 +28,7 @@ const Ftsuserdata = ({ active, setActive }) => {
     if (id) {
       axios
         .get(
-          `https://fts-backend.onrender.com/admin/testing/getUserById?id=${id}`,
+          `${userdatageturl}admin/testing/getUserById?id=${id}`,
           { headers: { Authorization: `Bearer ${token}` } }
         )
         .then((response) => {
@@ -45,7 +47,7 @@ const Ftsuserdata = ({ active, setActive }) => {
         if (id) {
           axios
             .put(
-              `https://fts-backend.onrender.com/admin/testing/editUserById?id=${id}`,
+              `${puturl}admin/testing/editUserById?id=${id}`,
               values,
               {
                 headers: { Authorization: `Bearer ${token}` },
@@ -57,7 +59,7 @@ const Ftsuserdata = ({ active, setActive }) => {
         } else {
           axios
             .post(
-              "https://fts-backend.onrender.com/user/newRegistration",
+             `${posturl} user/newRegistration`,
               values,
               {
                 headers: { Authorization: `Bearer ${token}` },

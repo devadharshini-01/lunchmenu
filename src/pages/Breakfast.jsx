@@ -1,21 +1,27 @@
 import Sidebor from "../layout/Sidebar";
 import { Icon } from "@iconify/react";
-import {  useState } from "react";
+import { useState } from "react";
 import ReactPaginate from "react-paginate";
-import {  useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Model from "./Model";
 import Search from "../layout/Searchbar";
 import Searchbar from "../layout/Searchbar";
 
-
-const Breakfast = ({ datalist, active, setActive, inputArr, setInputArr,Search }) => {
+const Breakfast = ({
+  datalist,
+  active,
+  setActive,
+  inputArr,
+  setInputArr,
+  Search,
+}) => {
   const navigate = useNavigate();
   const [view, setView] = useState(false);
- 
+
   const [deleterecord, setDeleteRecord] = useState(false);
-  const[deletekey,setDeleteKey]=useState(false);
+  const [deletekey, setDeleteKey] = useState(false);
 
   const [modelData, setModelData] = useState({
     name: "",
@@ -23,15 +29,15 @@ const Breakfast = ({ datalist, active, setActive, inputArr, setInputArr,Search }
     phoneNumber: "",
     index: "",
     deleteName: "",
-    deleteconform:"",
+    deleteconform: "",
   });
   // console.log(modelData.name)
   // console.log(modelData.email)
   // console.log(modelData.phoneNumber,"phoneNumber")
   const handlemodeldata = (e) => {
-    setView(true) ;
+    setView(true);
     console.log(view);
-   setDeleteKey(true);
+    setDeleteKey(true);
     // setModelData({ ...modelData, [e.target.name]: e.target.value });
     // console.log(e.name)
     setModelData((pre) => ({ ...pre, name: e.name }));
@@ -42,17 +48,15 @@ const Breakfast = ({ datalist, active, setActive, inputArr, setInputArr,Search }
     setModelData((pre) => ({ ...pre, phoneNumber: e.phoneNumber }));
   };
 
-  const handeldelete = ( i,name) => {
- 
-    setDeleteRecord (true) ;
+  const handeldelete = (i, name) => {
+    setDeleteRecord(true);
     // console.log(i, "hai");
     console.log(name, "hello");
     setModelData((pre) => ({ ...pre, index: i }));
 
     setModelData((pre) => ({ ...pre, deleteName: name }));
-    
+
     console.log(view);
-    
   };
   // const tableRowRemove = (i) => {
   //   console.log(i);
@@ -65,23 +69,19 @@ const Breakfast = ({ datalist, active, setActive, inputArr, setInputArr,Search }
   const handlePageClick = (data) => {
     console.log(data.selected);
   };
-  const a=process.env.REACT_APP_HAI;
-  console.log(a);
   return (
     <>
       <div className="row ">
         <div className="col-2 ">
           <Sidebor active={active} setActive={setActive} />
         </div>
-
         <div className=" col-10 p-3 mb-5 rounded ">
           <div className="bg-white mt-4 p-3 ">
             <div className="row">
-           
               <div className="col-12">
                 <div className=" d-flex justify-content-end ">
                   <button
-                    className="btn commit text-white mb-3 "
+                    className="btn background color text-white mb-3 "
                     onClick={() => navigate("/Add-breakfast")}
                     type="button"
                   >
@@ -90,33 +90,30 @@ const Breakfast = ({ datalist, active, setActive, inputArr, setInputArr,Search }
                 </div>
               </div>
             </div>
-            
-            <div className="row">
+           <div className="row">
               <div className="col-9">
-                <p className="day">CUSTOMER DETAILS</p>
+                <p className="customerdetail">CUSTOMER DETAILS</p>
               </div>
               <div className="col-3">
-              
-                <Searchbar/>
+                <Searchbar />
               </div>
             </div>
-
             <table class="table">
               <thead>
                 <tr>
-                  <th scope="col" className="all">
+                  <th scope="col" className="tableheading">
                     S.NO
                   </th>
-                  <th scope="col" className="all">
+                  <th scope="col" className="tableheading">
                     NAME
                   </th>
-                  <th scope="col" className="all">
+                  <th scope="col" className="tableheading">
                     E-MAIL
                   </th>
-                  <th scope="col" className="all">
+                  <th scope="col" className="tableheading">
                     MOBILE NUMBER
                   </th>
-                  <th scope="col" className="text-center all">
+                  <th scope="col" className="text-center tableheading">
                     ACTIONS
                   </th>
                 </tr>
@@ -127,10 +124,10 @@ const Breakfast = ({ datalist, active, setActive, inputArr, setInputArr,Search }
                     <tr key={i}>
                       <th scope="row">{i + 1}</th>
 
-                      <td className="idea">{val.Name}</td>
+                      <td className="textsize">{val.Name}</td>
 
-                      <td className="idea">{val.email}</td>
-                      <td className="idea">{val.phoneNumber}</td>
+                      <td className="textsize">{val.email}</td>
+                      <td className="textsize">{val.phoneNumber}</td>
 
                       <td>
                         <div className="row d-flex  justify-content-center  ">
@@ -138,22 +135,21 @@ const Breakfast = ({ datalist, active, setActive, inputArr, setInputArr,Search }
                             icon="tabler:edit"
                             width="18"
                             height="18"
-                            className="w-25 label "
+                            className="w-25 pointer "
                             onClick={() => navigate("/Add-breakfast")}
                           />
                           <Icon
                             icon="pajamas:remove"
                             width="18"
                             height="18"
-                            className="w-25 label "
+                            className="w-25 pointer "
                             onClick={() => handeldelete(i, val.name)}
                           />
-
                           <Icon
                             icon="zondicons:view-show"
                             width="18"
                             height="18"
-                            className="w-25 label "
+                            className="w-25  pointer"
                             onClick={() => handlemodeldata(val)}
                           />
                         </div>
@@ -165,10 +161,8 @@ const Breakfast = ({ datalist, active, setActive, inputArr, setInputArr,Search }
                   show={view || deleterecord}
                   view={view}
                   deleterecord={deleterecord}
-                  setView={setView }
-                   
+                  setView={setView}
                   i={modelData.index}
-               
                   deleteName={modelData.deleteName}
                   // setDeleteName={modelData.deleteName}
                   name={modelData.name}
@@ -177,7 +171,6 @@ const Breakfast = ({ datalist, active, setActive, inputArr, setInputArr,Search }
                   // setEmail={modelData.email}
                   phoneNumber={modelData.phoneNumber}
                   // setPhoneNumber={modelData.phoneNumber}
-                
                 />
 
                 {/* <div className="row d-flex justify-content-end w-100">

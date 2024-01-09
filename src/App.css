@@ -143,41 +143,43 @@ input:focus {
   background-color: rgb(252, 179, 197) !important;
   height: 600px !important;
 } */
-.url {
+.fontsize
+{
   text-decoration: none !important ;
   font-size: 16px !important;
 }
 
-.all {
+.tableheading {
   font-size: 15px !important;
   color: #99a3c5 !important;
 }
 
-.idea {
+.textsize {
   font-size: 15px !important;
 }
-.class:hover {
+.hover:hover {
   background-color: white !important;
   color: #f0005f !important;
   border-radius: 5px !important;
 }
 
-body {
+body 
+{
   background-color: #e4edf2 !important;
 }
-/* .edit {
-  height: 100% !important;
-  box-shadow: black !important;
+.addressdetail
+{
+  color: #99a3cc !important;
+}
 
-} */
 .table {
   height: 50% !important;
 }
-.message {
+.sidebar {
   background-color: #ff3285 !important;
-  height: 100%;
+  height: 100vh !important;
 }
-.box {
+.inputfield {
   border-radius: 5px !important;
   width: 100% !important;
   outline: 0 none !important;
@@ -190,7 +192,7 @@ body {
   width: 90px !important;
 }
 
-.bs {
+.personaldetail {
   color: #99a3cc !important;
 }
 .divider {
@@ -205,14 +207,14 @@ body {
   background-color: #f2f1f9 !important;
   height:100vh !important;
 } */
-.day {
+.customerdetail {
   font-size: 15px !important;
   color: #99a3c5 !important;
 }
 .pink {
   background-color: #f0005f !important;
 }
-.commit {
+.backgroundcolor {
   background-color: #ff4b92 !important;
 }
 /* .best
@@ -221,7 +223,7 @@ body {
   /* background-color:lightsteelblue!important;
   color: #f0005f !important;
   border-radius: 5px !important; */
-*/ .label {
+ .pointer {
   cursor: pointer !important;
 }
 .formik {

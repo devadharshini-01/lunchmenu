@@ -4,15 +4,12 @@ import { logDOM } from "@testing-library/react";
 
 const Model = ({
   show,
-  view,
   body,
   button1Value,
   button2Value,
   button1Click,
   button2Click,
-
   title,
-
   closeButton,
 }) => {
   return (

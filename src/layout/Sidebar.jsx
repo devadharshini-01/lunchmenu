@@ -3,13 +3,12 @@ import { Icon } from "@iconify/react";
 import { Link } from "react-router-dom";
 const Sidebar = (props) => {
   return (
-    <div className="row message ">
+    <div className="row sidebar ">
       <div className=" p-3 mb-5   rounded">
         <img
           src={logo}
           className=" d-flex justify-content-center logo mx-auto"
         />
-
         <div className="list-group  ">
           <Link to="/breakfast">
             {" "}
@@ -18,7 +17,7 @@ const Sidebar = (props) => {
                 props.active === "breakfast"
                   ? "p-2 bg-white rounded-3  text-danger"
                   : "text-white"
-              } p-2 url class  `}
+              } p-2 fontsize hover  `}
               onClick={() => props.setActive("breakfast")}
             >
               <Icon
@@ -30,14 +29,14 @@ const Sidebar = (props) => {
               Breakfast
             </p>
           </Link>
-          <Link to="/lunch" className="best">
+          <Link to="/lunch" >
             {" "}
             <p
               className={`${
                 props.active === "lunch"
                   ? " p-2 bg-white rounded-3  text-danger"
                   : "text-white"
-              } p-2 class   url `}
+              } p-2 hover   fontsize `}
               onClick={() => props.setActive("lunch")}
             >
               <Icon
@@ -50,14 +49,14 @@ const Sidebar = (props) => {
             </p>
           </Link>
 
-          <Link to="/dinner" className="best">
+          <Link to="/dinner" >
             {" "}
             <p
               className={`${
                 props.active === "dinner"
                   ? " p-2 bg-white rounded-3 text-danger"
                   : "text-white"
-              } p-2 class  url `}
+              } p-2 hover  fontsize `}
               onClick={() => props.setActive("dinner")}
             >
               <Icon
@@ -76,7 +75,7 @@ const Sidebar = (props) => {
                 props.active === "User-data-table"
                   ? " p-2 bg-white rounded-3  text-danger"
                   : "text-white"
-              } p-2 class   `}
+              } p-2 hover   `}
               onClick={() => props.setActive("User-data-table")}
             >
               <Icon
@@ -96,7 +95,7 @@ const Sidebar = (props) => {
                 props.active === "Ftsdatatable"
                   ? " p-2 bg-white rounded-3 text-danger"
                   : "text-white"
-              } p-2 class   `}
+              } p-2 hover  `}
               onClick={() => props.setActive("Ftsdatatable")}
             >
               <Icon

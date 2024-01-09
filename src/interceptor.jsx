@@ -5,12 +5,12 @@ const Interceptor = () => {
   const refreshToken =JSON.parse( localStorage.getItem("refreshToken"));
   console.log(refreshToken);
   axios.interceptors.request.use(
-    (token) => {
+    (config) => {
       const accessToken = localStorage.getItem("accessToken");
       if (accessToken) {
-        token.headers.authorization = `accesstoken ${accessToken}`;
+        config.headers.authorization = `Bearer ${accessToken}`;
       }
-      return token;
+      return config;
     },
     (err) => {
       return Promise.reject(err);
