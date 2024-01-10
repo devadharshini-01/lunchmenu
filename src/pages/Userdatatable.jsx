@@ -13,7 +13,7 @@ const UserDataTable = ({active,setActive})=>{
 
   useEffect(() => {
     axios
-      .get("https://fakestoreapi.com/products/?limit=10")
+      .get("https://fakestoreapi.com/products/?limit=5")
       .then((response) => {
         setStore(response.data);
         console.log(response.data);
@@ -37,7 +37,7 @@ return(
               <div className="col-12">
                 <div className=" d-flex justify-content-end ">
                   <button
-                    className="btn commit text-white mb-3 "
+                    className="btn add-btn-color text-white mb-3 "
                     onClick={() => navigate("/userdata")}
                     type="button"
                   >
@@ -50,12 +50,12 @@ return(
               <table class="table">
                 <thead>
                   <tr>
-                    <th className="all">S.NO</th>
-                    <th className="all">CATEGORY</th>
-                    <th className="all">TITLE</th>
-                    <th className="all">RATING</th>
-                    <th className="all">PRICE</th>
-                    <th className="all me-2">ACTIONS</th>
+                    <th className="tableheading">S.NO</th>
+                    <th className="tableheading">CATEGORY</th>
+                    <th className="tableheading">TITLE</th>
+                    <th className="tableheading">RATING</th>
+                    <th className="tableheading">PRICE</th>
+                    <th className="tableheading me-2">ACTIONS</th>
                   </tr>
                 </thead>
                 <tbody>

@@ -107,7 +107,7 @@ const Ftsdatatable = ({ active, setActive }) => {
             <div className="col-12">
               <div className=" d-flex justify-content-end ">
                 <button
-                  className="btn commit text-white mt-2 mb-2 "
+                  className="btn add-btn-color text-white mt-2 mb-2 "
                   onClick={() => navigate("/Fts-user-data")}
                   type="button"
                 >
@@ -117,7 +117,7 @@ const Ftsdatatable = ({ active, setActive }) => {
             </div>
             <div className="row">
               <div className="col-9">
-                <p className="day">CUSTOMER DETAILS</p>
+                <p className="customerdetail">CUSTOMER DETAILS</p>
               </div>
               <div className="col-3 mb-2">
                 <Searchbar />
@@ -126,29 +126,29 @@ const Ftsdatatable = ({ active, setActive }) => {
             <Table responsive>
               <thead>
                 <tr>
-                  <th className="all">S.NO</th>
-                  <th className="all"> NAME</th>
-                  <th className="all">E-MAIL</th>
-                  <th className="all">PHONENUMBER</th>
-                  <th className="all">MESSAGE</th>
-                  <th className="all">CREATED AT</th>
-                  <th className="all"> UPDATE AT</th>
-                  <th className="all center"> ACTIONS</th>
+                  <th className="tableheading">S.NO</th>
+                  <th className="tableheading"> NAME</th>
+                  <th className="tableheading">E-MAIL</th>
+                  <th className="tableheading">PHONENUMBER</th>
+                  <th className="tableheading">MESSAGE</th>
+                  <th className="tableheading">CREATED AT</th>
+                  <th className="tableheading"> UPDATE AT</th>
+                  <th className="tableheading center"> ACTIONS</th>
                 </tr>
               </thead>
               <tbody>
                 {data?.results?.length ? (
                   data?.results?.map((val, i) => (
                     <tr key={i}>
-                      <th scope="row">{(selected - 1) * 10 + i + 1}</th>
+                      <th scope="row">{(selected - 1) * 5 + i + 1}</th>
 
-                      <td className="idea">{val.name}</td>
+                      <td className="textsize">{val.name}</td>
 
-                      <td className="idea">{val.email}</td>
-                      <td className="idea">{val.phone_number}</td>
-                      <td className="idea">{val.message}</td>
-                      <td className="idea">{val.createdAt}</td>
-                      <td className="idea">{val.updatedAt}</td>
+                      <td className="textsize">{val.email}</td>
+                      <td className="textsize">{val.phone_number}</td>
+                      <td className="textsize">{val.message}</td>
+                      <td className="textsize">{val.createdAt}</td>
+                      <td className="textsize">{val.updatedAt}</td>
 
                       <td>
                         <div className="row d-flex  justify-content-center  ">

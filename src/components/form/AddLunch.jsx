@@ -166,7 +166,7 @@ setChangeArr}
               <div className="col-3">
                 <label>Name :</label>
                 <input
-                  className=" form-control box"
+                  className=" form-control inputfield"
                   name="Name"
               
                   value={values.Name}
@@ -178,7 +178,7 @@ setChangeArr}
                 <label>Phone Number :</label>
                 <input
                   type="number"
-                  className=" form-control box"
+                  className=" form-control inputfield"
                   name="phoneNumber"
                   value={values.phoneNumber}
                   onChange={handleChange}
@@ -199,7 +199,7 @@ setChangeArr}
               <div className="col-3">
               <label>E-mail:</label>
               <input
-                className=" form-control box"
+                className=" form-control inputfield"
                 name="email"
                 value={values.email}
                 onChange={handleChange}
@@ -311,16 +311,16 @@ setChangeArr}
               <table className="table mt-3 p-4">
                 <thead>
                   <tr>
-                    <th scope="col" className="bs">
+                    <th scope="col" className="tableheading">
                       S.no
                     </th>
-                    <th scope="col" className="bs">
+                    <th scope="col" className="tableheading">
                       Product
                     </th>
-                    <th scope="col" className="bs">
+                    <th scope="col" className="tableheading">
                       Quantity
                     </th>
-                    <th scope="col" className="bs">
+                    <th scope="col" className="tableheading">
                       Price
                     </th>
                   </tr>
@@ -502,16 +502,16 @@ setChangeArr}
               <table className="table mt-3 p-4">
                 <thead>
                   <tr>
-                    <th scope="col" className="bs">
+                    <th scope="col" className="tableheading">
                       S.no
                     </th>
-                    <th scope="col" className="bs">
+                    <th scope="col" className="tableheading">
                       Product
                     </th>
-                    <th scope="col" className="bs">
+                    <th scope="col" className="tableheading">
                       Quantity
                     </th>
-                    <th scope="col" className="bs">
+                    <th scope="col" className="tableheading">
                       Price
                     </th>
                   </tr>
@@ -740,7 +740,7 @@ setChangeArr}
                 Cancel
               </button>
               <button
-                className="btn p-2 me-md-2 pink text-white"
+                className="btn p-2 me-md-2 buttoncolor text-white"
                
               
                 type="submit"

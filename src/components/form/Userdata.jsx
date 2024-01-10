@@ -47,7 +47,7 @@ return(
          <textarea className="form-control textarea "/>
          <div className="d-grid gap-2 d-md-flex justify-content-end">
      
-         <button className=" btn text-white pink mt-2"  onClick={()=>Userdata()} >Submit</button>
+         <button className=" btn text-white buttoncolor mt-2"  onClick={()=>Userdata()} >Submit</button>
          <button className=" btn text-block bg-white mt-2" >Cancel</button>
         </div>
        </div>

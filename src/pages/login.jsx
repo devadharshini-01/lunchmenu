@@ -1,8 +1,7 @@
 import React from "react";
 import logo from "../assets/image/logo.png";
 import { useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
+import {  useNavigate } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 const Login = () => {
@@ -39,46 +38,46 @@ const Login = () => {
         }
       });
 
-    // const access = response.data.accesstoken;
-    // const refresh = response.refreshtoken;
-    // console.log(access);
-    // localStorage.setItem("accessToken", access);
-    // localStorage.setItem("refreshToken", refresh);
-  };
+};
 
   return (
     <div className="homebanner">
       <div className="row h-100 ">
-        <div className="col-6 end">
-          <div className="card font p-4">
+        <div className="row">
+       
+        </div>
+        <div className="col-6 align-items">
+       
+          <div className="card card-color p-4">
             <div className="d-flex flex-column mb-0 mb-0">
-              <img className="pg" src={logo}></img>
+              <img className="logo-width" src={logo}></img>
             </div>
-            <p className="text-white align ">Welcome To Foodingo</p>
-            <p className="image ">Deliver Food Instanly</p>
+            <p className="text-white font-style ">Welcome To Foodingo</p>
+            <p className="fontcolor-style ">Deliver Food Instanly</p>
             <div className="row mt-5">
               <div className="col-6 mt-5">
-                <p className="text-white text text-start ">
+                <p className="text-white cursor-pointer text-start ">
                   ©2017. Foogingo. Inc
                 </p>
               </div>
               <div className="col-6 mt-5 ">
-                <p className="exam text-white ">About Terms Privacy</p>
+                <p className="word-spacing text-white ">About Terms Privacy</p>
               </div>
             </div>
           </div>
         </div>
-        <div className="col-6 start">
+
+        <div className="col-6 display-flex ">
           <div>
-            <p className="color">
-              <span className="top">Login</span> to your account to manage all
+            <p className="text-color">
+              <span className="login">Login</span> to your account to manage all
               the
               <br></br> service and explore our tools.
             </p>
-            <div className="card ug p-3">
+            <div className="card card-border p-3">
               <input
                 type="text"
-                className="user text-black "
+                className="outline-size-border text-black "
                 name="email"
                 placeholder="Email"
                 onChange={(e) => handlelogin(e)}
@@ -86,7 +85,7 @@ const Login = () => {
               <div className="input-group ">
                 <input
                   type="password"
-                  className="user border-0 text-black flex-grow-1 "
+                  className="outline-size-border border-0 text-black flex-grow-1 "
                   name="password"
                   placeholder="Password"
                   aria-label="Recipient's username"
@@ -112,17 +111,17 @@ const Login = () => {
                 </span>
               </div>
             </div>
-
             <button
               className=" btn text-white mt-4"
               onClick={() => handleSubmit()}
             >
-              Sign in
+              Login 
             </button>
           </div>
+   </div>
         </div>
       </div>
-    </div>
+  
   );
 };
 export default Login;

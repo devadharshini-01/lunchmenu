@@ -81,7 +81,7 @@ const Breakfast = ({
               <div className="col-12">
                 <div className=" d-flex justify-content-end ">
                   <button
-                    className="btn background color text-white mb-3 "
+                    className="btn add-btn-color text-white mb-3 "
                     onClick={() => navigate("/Add-breakfast")}
                     type="button"
                   >

@@ -162,11 +162,11 @@ const Dinnerlist = ({active,setActive,arrList,setArrList}) => {
         <div className="col-10  p-3  ">
           <div className="mx-5">
             <div className="row ">
-              <h5 className="bs">Personal Details</h5>
+              <h5 className="personaldetail">Personal Details</h5>
               <div className="col-3">
                 <label>Name :</label>
                 <input
-                  className=" form-control box"
+                  className=" form-control inputfield"
                   name="Name"
                   value={values.Name}
                   onChange={handleChange}
@@ -177,7 +177,7 @@ const Dinnerlist = ({active,setActive,arrList,setArrList}) => {
                 <label>Phone Number :</label>
                 <input
                   type="number"
-                  className=" form-control box"
+                  className=" form-control inputfield"
                   name="phoneNumber"
                   value={values.phoneNumber}
                   onChange={handleChange}
@@ -310,16 +310,16 @@ const Dinnerlist = ({active,setActive,arrList,setArrList}) => {
               <table className="table mt-3 p-4">
                 <thead>
                   <tr>
-                    <th scope="col" className="bs">
+                    <th scope="col" className="tableheading">
                       S.no
                     </th>
-                    <th scope="col" className="bs">
+                    <th scope="col" className="tableheading">
                       Food
                     </th>
-                    <th scope="col" className="bs">
+                    <th scope="col" className="tableheading">
                       Quantity
                     </th>
-                    <th scope="col" className="bs">
+                    <th scope="col" className="tableheading">
                       Price
                     </th>
                   </tr>
@@ -513,16 +513,16 @@ const Dinnerlist = ({active,setActive,arrList,setArrList}) => {
               <table className="table mt-3 p-4">
                 <thead>
                   <tr>
-                    <th scope="col" className="bs">
+                    <th scope="col" className="tableheading">
                       S.no
                     </th>
-                    <th scope="col" className="bs">
+                    <th scope="col" className="tableheading">
                       Food
                     </th>
-                    <th scope="col" className="bs">
+                    <th scope="col" className="tableheading">
                       Quantity
                     </th>
-                    <th scope="col" className="bs">
+                    <th scope="col" className="tableheading">
                       Price
                     </th>
                   </tr>
@@ -711,7 +711,7 @@ const Dinnerlist = ({active,setActive,arrList,setArrList}) => {
               </table>
             ) : null}
 
-            <h5 className="mt-2 bs">Address Details</h5>
+            <h5 className="mt-2 addressdetail">Address Details</h5>
 
             <label>Street :</label>
             <textarea
@@ -765,7 +765,7 @@ const Dinnerlist = ({active,setActive,arrList,setArrList}) => {
                 Cancel
               </button>
               <button
-                className="btn p-2 me-md-2 pink text-white"
+                className="btn p-2 me-md-2 buttoncolor text-white"
                 
            
                 type="submit"

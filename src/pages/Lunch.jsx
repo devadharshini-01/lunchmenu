@@ -43,7 +43,7 @@ import Searchbar from "../layout/Searchbar";
               <div className="col-12">
                 <div className=" d-flex justify-content-end ">
                   <button 
-                    className="btn commit text-white mb-3 " onClick={()=>navigate("/Add-lunch")}
+                    className="btn add-btn-color text-white mb-3 " onClick={()=>navigate("/Add-lunch")}
                    
                     
                     type="button"

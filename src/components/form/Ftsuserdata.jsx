@@ -88,7 +88,7 @@ const Ftsuserdata = ({ active, setActive }) => {
               <Sidebar active={active} setActive={setActive} />
             </div>
             <div className="col-10">
-            <h5 className="bs">FTS userdata</h5>
+            <h5 className="ftsuserdata">FTS userdata</h5>
               <Form.Group className="mb-3">
                 <Form.Label className="mt-2">Name :</Form.Label>
                 <Form.Control
@@ -133,7 +133,7 @@ const Ftsuserdata = ({ active, setActive }) => {
               <div className="d-grid gap-2 d-md-flex justify-content-end">
                 <Button
                   type="submit"
-                  className="pink text-black border"
+                  className="buttoncolor text-black border"
                   // onClick={() => handleSubmit()}
                 >
                   Submit
