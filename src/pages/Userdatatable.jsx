@@ -24,7 +24,9 @@ const UserDataTable = ({active,setActive})=>{
   }, []);
 return(
  <>
-     <div className="row">
+    
+<div class="overflow-hidden">
+<div className="row">
         <div className="col-2 ">
         <Sidebor active={active} setActive={setActive}  />
         
@@ -55,7 +57,7 @@ return(
                     <th className="tableheading">TITLE</th>
                     <th className="tableheading">RATING</th>
                     <th className="tableheading">PRICE</th>
-                    <th className="tableheading me-2">ACTIONS</th>
+                    <th className="tableheading text-center">ACTIONS</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -106,6 +108,8 @@ return(
           </div>
         </div>
       </div>
+</div>
+     
 </>
 )
 }

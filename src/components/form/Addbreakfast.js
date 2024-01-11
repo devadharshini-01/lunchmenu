@@ -127,13 +127,16 @@ const Datalist = ({
     >
       {({ handleSubmit, handleChange, values, errors }) => (
         <Form noValidate onSubmit={handleSubmit}>
+       
           <div className="row ">
-            <div className="col-2 d-none d-sm-none d-md-block d-lg-block">
+            <div className="col-2 d-none d-sm-none d-md-block d-lg-block ">
               <Sidebar active={active} setActive={setActive} />
             </div>
-            <div className=" col-sm-12 col-lg-10 col-xl-10  p-3   ">
+            
+            <div className=" col-sm-12 col-lg-10 col-md-10 col-xl-10  p-3   ">
               <div className="mx-5">
                 <div className="row ">
+                  
                   <div className="col-sm-12  col-lg-10 col-xl-12">
                     <h5 className="personaldetail">Personal Details</h5>
                     <div className="row">
@@ -186,7 +189,7 @@ const Datalist = ({
                   <div className="col-sm-12 col-md-12 col-lg-12">
                     <label className="mt-2 ">Gender :</label>
 
-                    <div className="row ">
+                    <div className="row w-50">
                       <div className="col-4">
                         <div className="form-check ">
                           <input
@@ -253,18 +256,14 @@ const Datalist = ({
                   {/* </div> */}
                 </div>
               </div>
-              <div className="row  ">
-                <div className="col-sm-12 col-md-12 col-lg-12 ">
-                  <label className=" mt-3 mx-5">
-                    Type of food like to have?
-                  </label>
-                </div>
-              </div>
-              <div className="row">
-                <div className="col-sm-12 col-md-12 col-lg-12">
-                  <div className="row mx-xl-5">
+          
+                
+             
+           
+               <label className="mt-3">Type of food like to have?</label>
+                  <div className="row w-50">
                     <div className="col-6">
-                      <div className="form-check mx-5">
+                      <div className="form-check ">
                         <input
                           className="form-check-input"
                           type="radio"
@@ -302,7 +301,7 @@ const Datalist = ({
 
                     {values.list === "veg" ? (
                       <div className="table-responsive">
-                        <table className="table  mt-3 p-4 mx-5 ">
+                        <table className="table  mt-3 p-4  ">
                           <thead>
                             <tr>
                               <th scope="col" className="tableheading">
@@ -696,78 +695,90 @@ const Datalist = ({
                         </tbody>
                       </table>
                     ) : null}
-                    <div className="row">
-                    <div className="col-sm-12  col-lg-10 col-xl-12">
-                        <h5 className="mt-2 addressdetail ">Address Details</h5>
+                    
+                    <h5 className="mt-2 addressdetail">Address Details</h5>
 
-                        <label>Street :</label>
-                        <textarea
-                          className=" form-control p-0 textarea "
-                          name="street"
-                          value={values.street}
-                          onChange={handleChange}
-                        />
-                        {<p className="formik">{errors.street}</p>}
-                      </div>
+<label>Street :</label>
+<textarea
+  className=" form-control p-0 textarea"
+  name="street"
+  value={values.street}
+  onChange={handleChange}
+
+/>
+ {<p className="formik">{errors.street}</p>}
+<div className="row">
+  <div className="col-3 mt-3">
+    <label>City :</label>
+    <input
+      className=" form-control "
+      name="city"
+      value={values.city}
+      onChange={handleChange}
+    />
+     {<p className="formik">{errors.city}</p>}
+    <div />
+  </div>
+  <div className="col-3 mt-3">
+    <label>State :</label>
+    <input
+      className="form-control "
+      name="state"
+      value={values.state}
+      onChange={handleChange}
+    />
+     {<p className="formik">{errors.state}</p>}
+  </div>
+
+  <div className="col-3 mt-3">
+    <label>Zip :</label>
+    <input
+      className=" form-control "
+      name="zip"
+      value={values.zip}
+      onChange={handleChange}
+    />
+     {<p className="formik">{errors.zip}</p>}
+  </div>
+</div>
+<div className="d-grid gap-2 d-md-flex justify-content-end">
+  <button
+    className="btn p-2 me-md-2  bg-white"
+    onClick={() => navigate("/dinner")}
+    type="button"
+  >
+    Cancel
+  </button>
+  <button
+    className="btn p-2 me-md-2 buttoncolor text-white"
+    
+
+    type="submit"
+  >
+    Submit
+  </button>
+</div>
+                     
+                        
+
+
+                    
+                 
                    
-
-                    <div className="col-sm-12 col-md-6 col-lg-3 col-xl-3 mt-3 mx-5">
-                      <label>City :</label>
-                      <input
-                        className=" form-control "
-                        name="city"
-                        value={values.city}
-                        onChange={handleChange}
-                      />
-                      {<p className="formik">{errors.city}</p>}
-                      <div />
-                    </div>
-
-                    <label>State :</label>
-                    <input
-                      className="form-control "
-                      name="state"
-                      value={values.state}
-                      onChange={handleChange}
-                    />
-                    {<p className="formik">{errors.state}</p>}
-
-                    <div className="col-sm-12 col-md-6 col-lg-3 col-xl-3 mt-3 mx-5">
-                      <label>Zip :</label>
-                      <input
-                        className=" form-control "
-                        name="zip"
-                        value={values.zip}
-                        onChange={handleChange}
-                      />
-                      {<p className="formik">{errors.zip}</p>}
-                    </div>
-                  </div>
+                </div>
                 </div>
               </div>
-            </div>
-             </div>
-             </div>
-            <div className="row">
-              <div className="col-sm-12 col-md-12 col-lg-12 mx-auto">
-                <div className="d-grid gap-2 d-md-flex justify-content-end">
-                  <button
-                    className="btn p-2 me-md-2  bg-white"
-                    onClick={() => navigate("/breakfast")}
-                    type="button"
-                  >
-                    Cancel
-                  </button>
-                  <button
-                    type="submit"
-                    className="btn p-2 me-md-2 buttoncolor text-white"
-                  >
-                    Submit
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
+            
+       
+            
+                   
+          
+      
+
+        
+    
+
+       
         </Form>
       )}
     </Formik>

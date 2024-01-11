@@ -5,8 +5,6 @@ import ReactPaginate from "react-paginate";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Model from "./Model";
-import Search from "../layout/Searchbar";
 import Searchbar from "../layout/Searchbar";
 
 const Breakfast = ({
@@ -18,46 +16,46 @@ const Breakfast = ({
   Search,
 }) => {
   const navigate = useNavigate();
-  const [view, setView] = useState(false);
+  const [show, setShow] = useState(false);
+  
+  // const [deleterecord, setDeleteRecord] = useState(false);
+  // const [deletekey, setDeleteKey] = useState(false);
 
-  const [deleterecord, setDeleteRecord] = useState(false);
-  const [deletekey, setDeleteKey] = useState(false);
+  // const [modelData, setModelData] = useState({
+  //   name: "",
+  //   email: "",
+  //   phoneNumber: "",
+  //   index: "",
+  //   deleteName: "",
+  //   deleteconform: "",
+  // });
+  // // console.log(modelData.name)
+  // // console.log(modelData.email)
+  // // console.log(modelData.phoneNumber,"phoneNumber")
+  // const handlemodeldata = (e) => {
+  //   setView(true);
+  //   console.log(view);
+  //   setDeleteKey(true);
+  //   // setModelData({ ...modelData, [e.target.name]: e.target.value });
+  //   // console.log(e.name)
+  //   setModelData((pre) => ({ ...pre, name: e.name }));
+  //   // console.log(e.email)
 
-  const [modelData, setModelData] = useState({
-    name: "",
-    email: "",
-    phoneNumber: "",
-    index: "",
-    deleteName: "",
-    deleteconform: "",
-  });
-  // console.log(modelData.name)
-  // console.log(modelData.email)
-  // console.log(modelData.phoneNumber,"phoneNumber")
-  const handlemodeldata = (e) => {
-    setView(true);
-    console.log(view);
-    setDeleteKey(true);
-    // setModelData({ ...modelData, [e.target.name]: e.target.value });
-    // console.log(e.name)
-    setModelData((pre) => ({ ...pre, name: e.name }));
-    // console.log(e.email)
+  //   setModelData((pre) => ({ ...pre, email: e.email }));
+  //   console.log(e.phoneNumber);
+  //   setModelData((pre) => ({ ...pre, phoneNumber: e.phoneNumber }));
+  // };
 
-    setModelData((pre) => ({ ...pre, email: e.email }));
-    console.log(e.phoneNumber);
-    setModelData((pre) => ({ ...pre, phoneNumber: e.phoneNumber }));
-  };
+  // const handeldelete = (i, name) => {
+  //   setDeleteRecord(true);
+  //   // console.log(i, "hai");
+  //   console.log(name, "hello");
+  //   setModelData((pre) => ({ ...pre, index: i }));
 
-  const handeldelete = (i, name) => {
-    setDeleteRecord(true);
-    // console.log(i, "hai");
-    console.log(name, "hello");
-    setModelData((pre) => ({ ...pre, index: i }));
+  //   setModelData((pre) => ({ ...pre, deleteName: name }));
 
-    setModelData((pre) => ({ ...pre, deleteName: name }));
-
-    console.log(view);
-  };
+  //   console.log(view);
+  // };
   // const tableRowRemove = (i) => {
   //   console.log(i);
   //   const dataRow = [...inputArr,i];
@@ -71,7 +69,8 @@ const Breakfast = ({
   };
   return (
     <>
-      <div className="row ">
+    <div class="overflow-hidden">
+    <div className="row ">
         <div className="col-2 ">
           <Sidebor active={active} setActive={setActive} />
         </div>
@@ -111,7 +110,7 @@ const Breakfast = ({
                     E-MAIL
                   </th>
                   <th scope="col" className="tableheading">
-                    MOBILE NUMBER
+                    PHONENUMBER
                   </th>
                   <th scope="col" className="text-center tableheading">
                     ACTIONS
@@ -143,35 +142,22 @@ const Breakfast = ({
                             width="18"
                             height="18"
                             className="w-25 pointer "
-                            onClick={() => handeldelete(i, val.name)}
+                            // onClick={() => handeldelete(i, val.name)}
                           />
                           <Icon
                             icon="zondicons:view-show"
                             width="18"
                             height="18"
                             className="w-25  pointer"
-                            onClick={() => handlemodeldata(val)}
+                            // onClick={() => handlemodeldata(val)}
                           />
                         </div>
                       </td>
                     </tr>
                   ))}
 
-                <Model
-                  show={view || deleterecord}
-                  view={view}
-                  deleterecord={deleterecord}
-                  setView={setView}
-                  i={modelData.index}
-                  deleteName={modelData.deleteName}
-                  // setDeleteName={modelData.deleteName}
-                  name={modelData.name}
-                  // setName={modelData.name}
-                  email={modelData.email}
-                  // setEmail={modelData.email}
-                  phoneNumber={modelData.phoneNumber}
-                  // setPhoneNumber={modelData.phoneNumber}
-                />
+       
+           
 
                 {/* <div className="row d-flex justify-content-end w-100">
                   <ReactPaginate
@@ -198,6 +184,8 @@ const Breakfast = ({
           </div>
         </div>
       </div>
+    </div>
+    
     </>
   );
 };

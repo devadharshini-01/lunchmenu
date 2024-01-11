@@ -160,8 +160,8 @@ const Dinnerlist = ({active,setActive,arrList,setArrList}) => {
         </div>
 
         <div className="col-10  p-3  ">
-          <div className="mx-5">
-            <div className="row ">
+      
+            <div className="row bg-white mx-3 rounded p-3">
               <h5 className="personaldetail">Personal Details</h5>
               <div className="col-3">
                 <label>Name :</label>
@@ -715,7 +715,7 @@ const Dinnerlist = ({active,setActive,arrList,setArrList}) => {
 
             <label>Street :</label>
             <textarea
-              className=" form-control p-0 "
+              className=" form-control p-0 textarea"
               name="street"
               value={values.street}
               onChange={handleChange}
@@ -777,7 +777,8 @@ const Dinnerlist = ({active,setActive,arrList,setArrList}) => {
           <div />
           <div />
         </div>
-      </div>
+        
+
       </Form>
         )}   
           </Formik>

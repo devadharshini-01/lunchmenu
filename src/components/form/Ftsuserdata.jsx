@@ -108,7 +108,7 @@ const Ftsuserdata = ({ active, setActive }) => {
                   isInvalid={!!errors.email}
                 />
                 {<p className="formik">{errors.email}</p>}
-                <Form.Label className="mt-2">phoneNumber :</Form.Label>
+                <Form.Label className="mt-2">PhoneNumber :</Form.Label>
                 <Form.Control
                   type="number"
                   name="phone_number"
@@ -119,7 +119,7 @@ const Ftsuserdata = ({ active, setActive }) => {
                 {<p className="formik">{errors.phone_number}</p>}
               </Form.Group>
               <Form.Group className="mb-3">
-                <Form.Label className="mt-2">Message</Form.Label>
+                <Form.Label className="mt-2">Message :</Form.Label>
                 <Form.Control
                   as="textarea"
                   className="textarea"
@@ -131,18 +131,19 @@ const Ftsuserdata = ({ active, setActive }) => {
                 {<p className="formik">{errors.message}</p>}
               </Form.Group>
               <div className="d-grid gap-2 d-md-flex justify-content-end">
-                <Button
-                  type="submit"
-                  className="buttoncolor text-black border"
-                  // onClick={() => handleSubmit()}
-                >
-                  Submit
-                </Button>
+              
                 <Button
                   onClick={() => navigate("/Fts-data-table")}
                   className="bg-white text-black border"
                 >
                   Cancel
+                </Button>
+                <Button
+                  type="submit"
+                  className="buttoncolor text-white border"
+                  // onClick={() => handleSubmit()}
+                >
+                  Submit
                 </Button>
               </div>
             </div>

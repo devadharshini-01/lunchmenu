@@ -38,17 +38,17 @@ return(
        <label className="block mt-4">Name:</label>
          <input className="form-control "/>
     
-         <label className="mt-2 block">E-mail</label>
+         <label className="mt-2 block">E-mail :</label>
          <input className="form-control "/>
  
-         <label className="mt-2 block">PhoneNumber</label>
+         <label className="mt-2 block">PhoneNumber :</label>
          <input type="number" className="form-control position"/>
-         <label className="mt-2 block">Message</label>
+         <label className="mt-2 block">Message :</label>
          <textarea className="form-control textarea "/>
          <div className="d-grid gap-2 d-md-flex justify-content-end">
-     
-         <button className=" btn text-white buttoncolor mt-2"  onClick={()=>Userdata()} >Submit</button>
          <button className=" btn text-block bg-white mt-2" >Cancel</button>
+         <button className=" btn text-white buttoncolor mt-2"  onClick={()=>Userdata()} >Submit</button>
+      
         </div>
        </div>
 

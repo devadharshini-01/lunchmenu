@@ -97,7 +97,8 @@ const Ftsdatatable = ({ active, setActive }) => {
   };
   return (
     <>
-      <div className="row">
+    <div class="overflow-hidden">
+    <div className="row">
         <div className="col-2 ">
           <Sidebar active={active} setActive={setActive} />
         </div>
@@ -132,8 +133,8 @@ const Ftsdatatable = ({ active, setActive }) => {
                   <th className="tableheading">PHONENUMBER</th>
                   <th className="tableheading">MESSAGE</th>
                   <th className="tableheading">CREATED AT</th>
-                  <th className="tableheading"> UPDATE AT</th>
-                  <th className="tableheading center"> ACTIONS</th>
+                  <th className="tableheading"> UPDATED AT</th>
+                  <th className="tableheading text-center"> ACTIONS</th>
                 </tr>
               </thead>
               <tbody>
@@ -198,7 +199,7 @@ const Ftsdatatable = ({ active, setActive }) => {
                 )}
               </tbody>
             </Table>
-            <div className="row d-flex justify-content-end w-100 ms-1 ">
+            <div className="row d-flex justify-content-end w-100 ms-1 mt-3">
               <ReactPaginate
                 previousLabel={"previous"}
                 nextLabel={"next"}
@@ -220,6 +221,8 @@ const Ftsdatatable = ({ active, setActive }) => {
           </div>
         </div>
       </div>
+    </div>
+    
       <Model
         show={show}
         title={"Delete User"}

@@ -1,6 +1,9 @@
 body {
   background-color: #e4edf2;
 }
+#root{
+overflow-x: hidden;
+}
 .card {
   width: 520px;
 }
@@ -188,4 +191,13 @@ a:link {
 }
 .ftsuserdata {
   color: #99a3cc !important;
+}
+.overflow-y
+{
+  overflow-y: hidden !important;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
