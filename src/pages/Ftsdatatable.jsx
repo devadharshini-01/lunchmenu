@@ -99,12 +99,12 @@ const Ftsdatatable = ({ active, setActive }) => {
     <>
     <div class="overflow-hidden">
     <div className="row">
-        <div className="col-2 ">
+        <div className="col-2 d-none d-sm-none d-md-block d-lg-block">
           <Sidebar active={active} setActive={setActive} />
         </div>
-        <div className="col-10">
+        <div className=" col-sm-12 col-md-10 col-lg-10">
           {/* {spinner ? spinner : "Loading..."} */}
-          <div className="bg-white mt-4 p-3 ">
+          <div className="bg-white mt-4 p-3 table-responsive">
             <div className="col-12">
               <div className=" d-flex justify-content-end ">
                 <button
@@ -117,14 +117,14 @@ const Ftsdatatable = ({ active, setActive }) => {
               </div>
             </div>
             <div className="row">
-              <div className="col-9">
+              <div className="col-sm-9 col-md-9 col-lg-9">
                 <p className="customerdetail">CUSTOMER DETAILS</p>
               </div>
-              <div className="col-3 mb-2">
+              <div className="col-sm-3 col-md-3 col-lg-3mb-2">
                 <Searchbar />
               </div>
             </div>
-            <Table responsive>
+            <Table className="table" >
               <thead>
                 <tr>
                   <th className="tableheading">S.NO</th>

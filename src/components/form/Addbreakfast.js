@@ -4,6 +4,9 @@ import { useEffect } from "react";
 import * as yup from "yup";
 import { Formik } from "formik";
 import Form from "react-bootstrap/Form";
+import logo from "../../assets/image/sidebarimage.png";
+import { Icon } from "@iconify/react";
+import { Link } from "react-router-dom";
 
 const Datalist = ({
   datalist,
@@ -12,6 +15,7 @@ const Datalist = ({
   setActive,
   inputArr,
   setInputArr,
+  
 }) => {
   // const [active, setActive] = useState();
 
@@ -127,94 +131,238 @@ const Datalist = ({
     >
       {({ handleSubmit, handleChange, values, errors }) => (
         <Form noValidate onSubmit={handleSubmit}>
-       
+      
           <div className="row ">
-            <div className="col-2 d-none d-sm-none d-md-block d-lg-block ">
-              <Sidebar active={active} setActive={setActive} />
-            </div>
-            
-            <div className=" col-sm-12 col-lg-10 col-md-10 col-xl-10  p-3   ">
-              <div className="mx-5">
-                <div className="row ">
-                  
-                  <div className="col-sm-12  col-lg-10 col-xl-12">
-                    <h5 className="personaldetail">Personal Details</h5>
-                    <div className="row">
-                      <div className="col-sm-12 col-md-6 col-lg-3 col-xl-3">
-                        <label>Name :</label>
+              <div className="col-2 d-none d-sm-none d-md-block d-lg-block">
+                <Sidebar active={active} setActive={setActive} />
+              </div>
+              <div className=" col-sm-12 col-md-10 col-lg-10 p-3  ">
+                <div className="row bg-white mx-3 rounded p-3 ">
+                <div className=" rounded image-color   d-flex  d-sm-block d-md-none d-lg-none">
+                <div className="col-10 ">
+                <img
+          src={logo}
+         className="image-width"
+        />
+                </div>
+                
+                <div className="col-2 ">
+                <a  data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+                <Icon className="text-white" icon="heroicons:bars-3-20-solid" width="30" height="30" />
+</a>
+
+
+<div className="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+  <div className="offcanvas-header">
+    <h5 className="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
+ 
+
+   
+    <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+ 
+  <div className="offcanvas-body">
+    <div>
+    <div className="row sidebar ">
+      <div className=" p-3 mb-5 rounded">
+        <img
+          src={logo}
+          className=" d-flex justify-content-center logo  "
+        />
+        <div className="list-group mt-3 ">
+          <Link to="/breakfast">
+            {" "}
+            <p
+              className={`${
+                active === "breakfast"
+                  ? "p-2 bg-white rounded-3  text-danger"
+                  : "text-white"
+              } p-2 fontsize hover  `}
+              onClick={() => setActive("breakfast")}
+            >
+              <Icon
+                className="me-2"
+                icon="material-symbols-light:no-meals-rounded"
+                width="20"
+                height="20"
+              />
+              Breakfast
+            </p>
+          </Link>
+          <Link to="/lunch" >
+            {" "}
+            <p
+              className={`${
+                active === "lunch"
+                  ? " p-2 bg-white rounded-3  text-danger"
+                  : "text-white"
+              } p-2 hover   fontsize `}
+              onClick={() => setActive("lunch")}
+            >
+              <Icon
+                className="mb-1 me-2"
+                icon="cil:dinner"
+                width="20"
+                height="20"
+              />
+              Lunch
+            </p>
+          </Link>
+
+          <Link to="/dinner" >
+            {" "}
+            <p
+              className={`${
+                active === "dinner"
+                  ? " p-2 bg-white rounded-3 text-danger"
+                  : "text-white"
+              } p-2 hover  fontsize `}
+              onClick={() => setActive("dinner")}
+            >
+              <Icon
+                className="mb-1 me-2"
+                icon="mdi:dinner"
+                width="20"
+                height="20"
+              />
+              Dinner
+            </p>
+          </Link>
+       
+          <Link to="/User-data-table">
+            <p
+              className={`${
+                active === "User-data-table"
+                  ? " p-2 bg-white rounded-3  text-danger"
+                  : "text-white"
+              } p-2 hover   `}
+              onClick={() =>setActive("User-data-table")}
+            >
+              <Icon
+                icon="uil:chat-bubble-user"
+                width="20"
+                height="20"
+                className="me-2 mb-1"
+              />
+              User DataTable
+            </p>
+          </Link>
+       
+          <Link to="/fts-data-table">
+            {" "}
+            <p
+              className={`${
+                active === "Ftsdatatable"
+                  ? " p-2 bg-white rounded-3 text-danger"
+                  : "text-white"
+              } p-2 hover  `}
+              onClick={() => setActive("Ftsdatatable")}
+            >
+              <Icon
+                icon="gridicons:multiple-users"
+                className="mb-1 me-2"
+                width="20"
+                height="20"
+              />
+              Ftsdatatable
+            </p>
+          </Link>
+        </div>
+        </div>
+      </div>
+    </div>
+    </div>
+   
+  </div>
+                </div>
+              </div>
+                  <div className="col-md-6">
+                    <div className="row ">
+                      <h5 className="personaldetail">Personal Details</h5>
+                      <div className="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                        <label
+                          for="exampleFormControlInput1"
+                          className="form-label"
+                        >
+                          Name :
+                        </label>
                         <input
-                          className=" form-control inputfield"
+                          type="text"
+                          class="form-control"
+                          id="exampleFormControlInput1"
                           name="Name"
                           value={values.Name}
                           onChange={handleChange}
                         />
-                        {<p className="formik">{errors.Name}</p>}
+                        <p className="formik">{errors.Name}</p>
                       </div>
-                      <div className="col-sm-12 col-md-6 col-lg-3 col-xl-3">
-                        <label>Phone Number :</label>
+                      <div className="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                        <label for="phonenumber2" class="form-label">
+                          PhoneNumber:
+                        </label>
                         <input
-                          type="number"
-                          className=" form-control inputfield"
+                          type=""
+                          className="form-control"
+                          id="phonenumber2"
                           name="phoneNumber"
                           value={values.phoneNumber}
                           onChange={handleChange}
                         />
-                        {<p className="formik">{errors.phoneNumber}</p>}
+                        <p className="formik">{errors.phoneNumber}</p>
                       </div>
-                      <div className="col-sm-12 col-md-6 col-lg-3 col-xl-3">
-                        <label>Date of Birth :</label>
+                    </div>
+                    <div className="row">
+                      <div className="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                       
+                          <label for="emailinput" className="form-label">
+                        Email :
+                      </label>
+                      <input
+                        type="email"
+                        class="form-control"
+                        id="emailinput"
+                        name="email"
+                        value={values.email}
+                        onChange={handleChange}
+                      />
+                        {<p className="formik">{errors.email}</p>}
+                      </div>
+
+                      <div className="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                        <label for="dateofbirth" class="form-label">
+                          Date Of Birth
+                        </label>
                         <input
                           type="date"
                           className="form-control"
+                          id="dateofbirth"
                           name="dateofbirth"
                           value={values.dateofbirth}
                           onChange={handleChange}
                         />
                         {<p className="formik">{errors.dateofbirth}</p>}
                       </div>
-                      <div className="col-sm-12 col-md-6 col-lg-3 col-xl-3">
-                        <label>E-mail:</label>
-                        <input
-                          className=" form-control inputfield"
-                          name="email"
-                          value={values.email}
-                          onChange={handleChange}
-                        />
-                        {<p className="formik">{errors.email}</p>}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="col-sm-12 col-md-12 col-lg-12">
-                    <label className="mt-2 ">Gender :</label>
 
-                    <div className="row w-50">
-                      <div className="col-4">
-                        <div className="form-check ">
+                      <div>
+                        <label for="gender" class="form-label">
+                          Gender :
+                        </label>{" "}
+                        <div class="form-check form-check-inline">
                           <input
-                            className="form-check-input "
+                            className="form-check-input"
                             type="radio"
-                            id="male"
                             name="gender"
                             value={"male"}
                             onChange={handleChange}
-                            defaultChecked={values.gender === "male"}
+                            defaultChecked={values.gender === "gender"}
                           />
-
-                          <label
-                            className="form-check-label male "
-                            for="flexRadioDefault1"
-                          >
+                          <label className="form-check-label" for="inlineRadio1">
                             Male
                           </label>
                         </div>
-                      </div>
-
-                      <div className="col-4">
-                        <div className="form-check  ">
+                        <div className="form-check form-check-inline">
                           <input
-                            className="form-check-input "
+                            class="form-check-input"
                             type="radio"
                             id="female"
                             name="gender"
@@ -222,17 +370,11 @@ const Datalist = ({
                             onChange={handleChange}
                             defaultChecked={values.gender === "female"}
                           />
-                          <label
-                            className="form-check-label"
-                            for="flexRadioDefault2"
-                          >
+                          <label className="form-check-label" for="inlineRadio2">
                             Female
                           </label>
                         </div>
-                      </div>
-
-                      <div className="col-4">
-                        <div className="form-check  ">
+                        <div className="form-check form-check-inline">
                           <input
                             className="form-check-input"
                             type="radio"
@@ -242,28 +384,85 @@ const Datalist = ({
                             onChange={handleChange}
                             defaultChecked={values.gender === "others"}
                           />
-                          <label
-                            className="form-check-label"
-                            for="flexRadioDefault2"
-                          >
+                          <label className="form-check-label" for="inlineRadio2">
                             Others
                           </label>
                         </div>
                       </div>
+                      <p className="formik">{errors.gender}</p>
+                    </div>
+
+                    <h5 className="mt-2 addressdetail">Address Details</h5>
+
+                    <div className="row ">
+                      <div className="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                        <label for="street" className="form-label">
+                          Street :
+                        </label>
+                        <input
+                          type="text"
+                          className="form-control"
+                          id="street"
+                          name="street"
+                          value={values.street}
+                          onChange={handleChange}
+                        />
+                        <p className="formik">{errors.street}</p>
+                      </div>
+                      <div className="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                        <label for="city" className="form-label">
+                          City:
+                        </label>
+                        <input
+                          type="text"
+                          className="form-control"
+                          id="city"
+                          name="city"
+                          value={values.city}
+                          onChange={handleChange}
+                        />
+                        <p className="formik">{errors.city}</p>
+                      </div>
+                    </div>
+                    <div className="row">
+                      <div className="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                        <label for="state" class="form-label">
+                          State :
+                        </label>
+                        <input
+                          type="email"
+                          className="form-control"
+                          id="state"
+                          name="state"
+                          value={values.state}
+                          onChange={handleChange}
+                        />
+                        {<p className="formik">{errors.state}</p>}
+                      </div>
+
+                      <div className="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                        <label for="zip" class="form-label">
+                          Zip :
+                        </label>
+                        <input
+                          type="text"
+                          className="form-control"
+                          id="zip"
+                          name="zip"
+                          value={values.zip}
+                          onChange={handleChange}
+                        />
+                        {<p className="formik">{errors.zip}</p>}
+                      </div>
                     </div>
                   </div>
-                  <p className="formik">{errors.gender}</p>
-                  {/* </div> */}
-                </div>
-              </div>
-          
-                
-             
-           
-               <label className="mt-3">Type of food like to have?</label>
-                  <div className="row w-50">
-                    <div className="col-6">
-                      <div className="form-check ">
+                  <div className="col-md-6 border border-right-0 border-top-0 border-bottom-0">
+                    <label className=" mt-3  ">
+                      Type of food like to have?
+                    </label>
+
+                    <div>
+                      <div className="form-check form-check-inline">
                         <input
                           className="form-check-input"
                           type="radio"
@@ -273,14 +472,12 @@ const Datalist = ({
                           onChange={handleChange}
                           defaultChecked={values.list === "veg"}
                         />
-
-                        <label className="form-check-label  " for="price">
-                          Veg
+                        <label class="form-check-label" for="inlineRadio1">
+                          veg
                         </label>
-                      </div>
+  
                     </div>
-                    <div className="col-6">
-                      <div className="form-check ">
+                      <div class="form-check form-check-inline">
                         <input
                           className="form-check-input"
                           type="radio"
@@ -290,32 +487,23 @@ const Datalist = ({
                           onChange={handleChange}
                           defaultChecked={values.list === "Non-veg"}
                         />
-
-                        <label className="form-check-label  " for="price">
-                          Non veg
+                        <label class="form-check-label" for="inlineRadio2">
+                          Nonveg
                         </label>
                       </div>
                     </div>
 
                     {<p className="formik">{errors.list}</p>}
-
+                   
                     {values.list === "veg" ? (
                       <div className="table-responsive">
-                        <table className="table  mt-3 p-4  ">
+                        <table className="table  table-hover table-striped  d-block mt-3 p-4  ">
                           <thead>
                             <tr>
-                              <th scope="col" className="tableheading">
-                                S.no
-                              </th>
-                              <th scope="col" className="tableheading">
-                                Food
-                              </th>
-                              <th scope="col" className="tableheading">
-                                Quantity
-                              </th>
-                              <th scope="col" className="tableheading">
-                                Price
-                              </th>
+                            <th >S.no</th>
+                            <th >Product</th>
+                            <th >Quantity</th>
+                            <th >Price</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -496,21 +684,13 @@ const Datalist = ({
                         </table>
                       </div>
                     ) : values.list === "Non-veg" ? (
-                      <table className="table mt-3 p-4">
+                      <table className="table table-responsive  table-hover table-striped  d-block mt-3 p-4">
                         <thead>
                           <tr>
-                            <th scope="col" className="tableheading">
-                              S.no
-                            </th>
-                            <th scope="col" className="tableheading">
-                              Product
-                            </th>
-                            <th scope="col" className="tableheading">
-                              Quantity
-                            </th>
-                            <th scope="col" className="tableheading">
-                              Price
-                            </th>
+                          <th >S.no</th>
+                            <th >Product</th>
+                            <th >Quantity</th>
+                            <th >Price</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -695,90 +875,26 @@ const Datalist = ({
                         </tbody>
                       </table>
                     ) : null}
-                    
-                    <h5 className="mt-2 addressdetail">Address Details</h5>
-
-<label>Street :</label>
-<textarea
-  className=" form-control p-0 textarea"
-  name="street"
-  value={values.street}
-  onChange={handleChange}
-
-/>
- {<p className="formik">{errors.street}</p>}
-<div className="row">
-  <div className="col-3 mt-3">
-    <label>City :</label>
-    <input
-      className=" form-control "
-      name="city"
-      value={values.city}
-      onChange={handleChange}
-    />
-     {<p className="formik">{errors.city}</p>}
-    <div />
-  </div>
-  <div className="col-3 mt-3">
-    <label>State :</label>
-    <input
-      className="form-control "
-      name="state"
-      value={values.state}
-      onChange={handleChange}
-    />
-     {<p className="formik">{errors.state}</p>}
-  </div>
-
-  <div className="col-3 mt-3">
-    <label>Zip :</label>
-    <input
-      className=" form-control "
-      name="zip"
-      value={values.zip}
-      onChange={handleChange}
-    />
-     {<p className="formik">{errors.zip}</p>}
-  </div>
-</div>
-<div className="d-grid gap-2 d-md-flex justify-content-end">
-  <button
-    className="btn p-2 me-md-2  bg-white"
-    onClick={() => navigate("/dinner")}
-    type="button"
-  >
-    Cancel
-  </button>
-  <button
-    className="btn p-2 me-md-2 buttoncolor text-white"
-    
-
-    type="submit"
-  >
-    Submit
-  </button>
-</div>
-                     
-                        
-
-
-                    
-                 
-                   
-                </div>
-                </div>
+                  </div>
+                  <div className=" d-grid gap-2 d-md-flex justify-content-end">
+                    <button
+                      className="btn p-2 me-md-2 bg-white  btn-outline-dark"
+                      onClick={() => navigate("/lunch")}
+                      type="button"
+                    >
+                      Cancel
+                    </button>
+                    <button
+                      className="btn p-2 me-md-2 buttoncolor text-white"
+                      type="submit"
+                    >
+                      Submit
+                    </button>
+                  </div>
+     </div>
               </div>
-            
-       
-            
-                   
-          
-      
-
-        
-    
-
-       
+            </div>
+         
         </Form>
       )}
     </Formik>

@@ -43,12 +43,11 @@ const Login = () => {
   return (
     <div className="homebanner">
       <div className="row h-100 ">
-        <div className="row">
        
-        </div>
-        <div className="col-6 align-items">
+      
+        <div className="  col-lg-6 col-xl-6   align-item d-none d-sm-none d-md-none d-lg-block p-5">
        
-          <div className="card card-color p-4">
+          <div className="card card-color p-4  ">
             <div className="d-flex flex-column mb-0 mb-0">
               <img className="logo-width" src={logo}></img>
             </div>
@@ -66,8 +65,8 @@ const Login = () => {
             </div>
           </div>
         </div>
-
-        <div className="col-6 display-flex ">
+       
+        <div className="col-sm-12   col-lg-6 display-flex ">
           <div>
             <p className="text-color">
               <span className="login">Login</span> to your account to manage all
@@ -112,7 +111,7 @@ const Login = () => {
               </div>
             </div>
             <button
-              className=" btn text-white mt-4"
+              className=" btn text-white mt-4 "
               onClick={() => handleSubmit()}
             >
               Login 

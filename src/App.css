@@ -130,7 +130,7 @@ body {
 }
 
 .logo {
-  width: 90px !important;
+  width: 120px !important;
 }
 
 .personaldetail {
@@ -200,4 +200,12 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+.image-width
+{
+ 
+  width: 90px !important;
+}
+.image-color{
+  background-color: #f0005f !important;
 }

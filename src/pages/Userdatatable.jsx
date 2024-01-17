@@ -3,6 +3,7 @@ import Sidebor from "../layout/Sidebar";
 import { Navigate, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import Searchbar from "../layout/Searchbar";
 
 const UserDataTable = ({active,setActive})=>{
 
@@ -27,12 +28,12 @@ return(
     
 <div class="overflow-hidden">
 <div className="row">
-        <div className="col-2 ">
+        <div className="col-2 d-none d-sm-none d-md-block d-lg-block ">
         <Sidebor active={active} setActive={setActive}  />
         
         </div>
-        <div className=" col-10 p-2 mb-5 rounded ">
-          <div className="bg-white  p-3 ">
+        <div className=" col-sm-12 col-md-10 col-lg-10 p-2 mb-5 rounded ">
+          <div className="bg-white  p-3 table-responsive">
             <div className="row">
       
     
@@ -47,7 +48,14 @@ return(
                   </button>
                 </div>
               </div>
-
+              <div className="row">
+              <div className=" col-sm-9 col-md-9 col-lg-9">
+                <p className="customerdetail">PRODUCT DETAILS</p>
+              </div>
+              <div className="col-sm-3 col-md-3 col-lg-3 mb-2">
+                <Searchbar />
+              </div>
+            </div>
 
               <table class="table">
                 <thead>

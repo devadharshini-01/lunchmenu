@@ -3,10 +3,11 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { Formik } from "formik";
 import Form from "react-bootstrap/Form";
-import * as yup from "yup"; 
-
-import { Navigate, useNavigate } from "react-router-dom";
-const Dinnerlist = ({active,setActive,arrList,setArrList}) => {
+import * as yup from "yup";
+import logo from "../../assets/image/sidebarimage.png";
+import { Link, useNavigate } from "react-router-dom";
+import { Icon } from "@iconify/react";
+const Dinnerlist = ({ active, setActive, setArrList }) => {
   const [dinnerlist, setDinnerlist] = useState({
     name: "",
     phoneNumber: "",
@@ -73,11 +74,9 @@ const Dinnerlist = ({active,setActive,arrList,setArrList}) => {
 
   const handleChange = (values) => {
     // console.log(menulist,"menulist");
-    setArrList((prev)=>[...prev, values])
-   navigate("/dinner");
-   
+    setArrList((prev) => [...prev, values]);
+    navigate("/dinner");
   };
-
 
   useEffect(() => {
     const temp = dinnerlist.cost * 15;
@@ -127,7 +126,7 @@ const Dinnerlist = ({active,setActive,arrList,setArrList}) => {
     dateofbirth: yup.string().required("date of birth is a required field"),
     email: yup.string().email().required("E-mail is a required field"),
     gender: yup.string().required("Gender is a required field"),
-    test:yup.string().required("lunchlist is a required field"),
+    test: yup.string().required("lunchlist is a required field"),
     street: yup.string().required("street is a required field"),
     city: yup.string().required("city is a required field"),
     state: yup.string().required("state is a required field"),
@@ -136,654 +135,829 @@ const Dinnerlist = ({active,setActive,arrList,setArrList}) => {
   return (
     <>
       <Formik
-      validationSchema={schema}
-      onSubmit= { handleChange}
-      initialValues={{
-        Name: "",
-        phoneNumber: "",
-        dateofbirth:"",
-        email: "",
-        gender:"",
-        test:"",
-        street: "",
-        city: "",
-        state: "",
-        zip: "",
-      }}
-    >
+        validationSchema={schema}
+        onSubmit={handleChange}
+        initialValues={{
+          Name: "",
+          phoneNumber: "",
+          dateofbirth: "",
+          email: "",
+          gender: "",
+          test: "",
+          street: "",
+          city: "",
+          state: "",
+          zip: "",
+        }}
+      >
         {({ handleSubmit, handleChange, values, errors }) => (
-
-<Form noValidate onSubmit={handleSubmit}>
-      <div className="row ">
-        <div className="col-2 ">
-          <Sidebar active={active} setActive={setActive} />
-        </div>
-
-        <div className="col-10  p-3  ">
-      
-            <div className="row bg-white mx-3 rounded p-3">
-              <h5 className="personaldetail">Personal Details</h5>
-              <div className="col-3">
-                <label>Name :</label>
-                <input
-                  className=" form-control inputfield"
-                  name="Name"
-                  value={values.Name}
-                  onChange={handleChange}
-                />
-                 {<p className="formik">{errors.Name}</p>}
+          <Form noValidate onSubmit={handleSubmit}>
+            <div className="row ">
+              <div className="col-2 d-none d-sm-none d-md-block d-lg-block">
+                <Sidebar active={active} setActive={setActive} />
               </div>
-              <div className="col-3">
-                <label>Phone Number :</label>
-                <input
-                  type="number"
-                  className=" form-control inputfield"
-                  name="phoneNumber"
-                  value={values.phoneNumber}
-                  onChange={handleChange}
-                />
-                 {<p className="formik">{errors.phoneNumber}</p>}
-              </div>
-              <div className="col-3">
-                <label>Date of Birth :</label>
-                <input
-                  type="date"
-                  className="form-control"
-                  name="dateofbirth"
-                  value={values.dateofbirth}
-                  onChange={handleChange}
-                />
-                 {<p className="formik">{errors.dateofbirth}</p>}
-              </div>
-              <div className="col-3">
-              <label>E-mail:</label>
-              <input
-                className=" form-control box"
-                name="email"
-                value={values.email}
-                 onChange={handleChange}
-              />
-               {<p className="formik">{errors.email}</p>}
-            </div>
 
-              <div className="row">
-                <label className="mt-2 ">Gender :</label>
-                <div className="row w-50">
-                  <div className="col-4">
-                    <div className="form-check ">
-                      <input
-                        className="form-check-input "
-                        type="radio"
-                        id="male"
-                        name="gender"
-                        value={"male"}
-                        onChange={handleChange}
-                        defaultChecked={values.gender=== "male"}
-                      />
-                      <label
-                        className="form-check-label male "
-                        for="flexRadioDefault1"
+              <div className="  col-sm-12 col-md-10 col-lg-10  p-3  ">
+                <div className="row bg-white mx-3 rounded p-3">
+                  <div className=" rounded image-color   d-flex  d-sm-block d-md-none d-lg-none">
+                    <div className="col-10 ">
+                      <img src={logo} className="image-width" />
+                    </div>
+
+                    <div className="col-2 ">
+                      <a
+                        data-bs-toggle="offcanvas"
+                        href="#offcanvasExample"
+                        role="button"
+                        aria-controls="offcanvasExample"
                       >
-                        Male
-                      </label>
+                        <Icon
+                          className="text-white"
+                          icon="heroicons:bars-3-20-solid"
+                          width="30"
+                          height="30"
+                        />
+                      </a>
+
+                      <div
+                        className="offcanvas offcanvas-start"
+                        tabindex="-1"
+                        id="offcanvasExample"
+                        aria-labelledby="offcanvasExampleLabel"
+                      >
+                        <div className="offcanvas-header">
+                          <h5
+                            className="offcanvas-title"
+                            id="offcanvasExampleLabel"
+                          >
+                            Offcanvas
+                          </h5>
+
+                          <button
+                            type="button"
+                            className="btn-close"
+                            data-bs-dismiss="offcanvas"
+                            aria-label="Close"
+                          ></button>
+                        </div>
+
+                        <div className="offcanvas-body">
+                          <div>
+                            <div className="row sidebar ">
+                              <div className=" p-3 mb-5 rounded">
+                                <img
+                                  src={logo}
+                                  className=" d-flex justify-content-center logo  "
+                                />
+                                <div className="list-group mt-3 ">
+                                  <Link to="/breakfast">
+                                    {" "}
+                                    <p
+                                      className={`${
+                                        active === "breakfast"
+                                          ? "p-2 bg-white rounded-3  text-danger"
+                                          : "text-white"
+                                      } p-2 fontsize hover  `}
+                                      onClick={() => setActive("breakfast")}
+                                    >
+                                      <Icon
+                                        className="me-2"
+                                        icon="material-symbols-light:no-meals-rounded"
+                                        width="20"
+                                        height="20"
+                                      />
+                                      Breakfast
+                                    </p>
+                                  </Link>
+                                  <Link to="/lunch">
+                                    {" "}
+                                    <p
+                                      className={`${
+                                        active === "lunch"
+                                          ? " p-2 bg-white rounded-3  text-danger"
+                                          : "text-white"
+                                      } p-2 hover   fontsize `}
+                                      onClick={() => setActive("lunch")}
+                                    >
+                                      <Icon
+                                        className="mb-1 me-2"
+                                        icon="cil:dinner"
+                                        width="20"
+                                        height="20"
+                                      />
+                                      Lunch
+                                    </p>
+                                  </Link>
+
+                                  <Link to="/dinner">
+                                    {" "}
+                                    <p
+                                      className={`${
+                                        active === "dinner"
+                                          ? " p-2 bg-white rounded-3 text-danger"
+                                          : "text-white"
+                                      } p-2 hover  fontsize `}
+                                      onClick={() => setActive("dinner")}
+                                    >
+                                      <Icon
+                                        className="mb-1 me-2"
+                                        icon="mdi:dinner"
+                                        width="20"
+                                        height="20"
+                                      />
+                                      Dinner
+                                    </p>
+                                  </Link>
+
+                                  <Link to="/User-data-table">
+                                    <p
+                                      className={`${
+                                        active === "User-data-table"
+                                          ? " p-2 bg-white rounded-3  text-danger"
+                                          : "text-white"
+                                      } p-2 hover   `}
+                                      onClick={() =>
+                                        setActive("User-data-table")
+                                      }
+                                    >
+                                      <Icon
+                                        icon="uil:chat-bubble-user"
+                                        width="20"
+                                        height="20"
+                                        className="me-2 mb-1"
+                                      />
+                                      User DataTable
+                                    </p>
+                                  </Link>
+
+                                  <Link to="/fts-data-table">
+                                    {" "}
+                                    <p
+                                      className={`${
+                                        active === "Ftsdatatable"
+                                          ? " p-2 bg-white rounded-3 text-danger"
+                                          : "text-white"
+                                      } p-2 hover  `}
+                                      onClick={() => setActive("Ftsdatatable")}
+                                    >
+                                      <Icon
+                                        icon="gridicons:multiple-users"
+                                        className="mb-1 me-2"
+                                        width="20"
+                                        height="20"
+                                      />
+                                      Ftsdatatable
+                                    </p>
+                                  </Link>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                  <div className="col-4">
-                    <div className="form-check  ">
-                      <input
-                        className="form-check-input "
-                        type="radio"
-                        id="female"
-                        name="gender"
-                        value={"female"}
-                        onChange={handleChange}
-                        defaultChecked={values.gender=== "female"}
-                      />
-                      <label
-                        className="form-check-label"
-                        for="flexRadioDefault2"
-                      >
-                        Female
-                      </label>
+                  <div className="col-md-6">
+                    <div className="row ">
+                      <h5 className="personaldetail">Personal Details</h5>
+                      <div className="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                        <label
+                          for="exampleFormControlInput1"
+                          classname="form-label"
+                        >
+                          Name :
+                        </label>
+                        <input
+                          type="text"
+                          className="form-control"
+                          id="exampleFormControlInput1"
+                          name="Name"
+                          value={values.Name}
+                          onChange={handleChange}
+                        />
+                        <p className="formik">{errors.Name}</p>
+                      </div>
+                      <div className="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                        <label for="phonenumber2" class="form-label">
+                          PhoneNumber:
+                        </label>
+                        <input
+                          type=""
+                          className="form-control"
+                          id="phonenumber2"
+                          name="phoneNumber"
+                          value={values.phoneNumber}
+                          onChange={handleChange}
+                        />
+                        <p className="formik">{errors.phoneNumber}</p>
+                      </div>
+                    </div>
+                    <div className="row">
+                      <div className="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                        <label for="emailinput" className="form-label">
+                          Email :
+                        </label>
+                        <input
+                          type="email"
+                          class="form-control"
+                          id="emailinput"
+                          name="email"
+                          value={values.email}
+                          onChange={handleChange}
+                        />
+                        {<p className="formik">{errors.email}</p>}
+                      </div>
+
+                      <div className="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                        <label for="dateofbirth" class="form-label">
+                          Date Of Birth
+                        </label>
+                        <input
+                          type="date"
+                          className="form-control"
+                          id="dateofbirth"
+                          name="dateofbirth"
+                          value={values.dateofbirth}
+                          onChange={handleChange}
+                        />
+                        {<p className="formik">{errors.dateofbirth}</p>}
+                      </div>
+
+                      <div>
+                        <label for="gender" class="form-label">
+                          Gender :
+                        </label>{" "}
+                        <div className="form-check form-check-inline">
+                          <input
+                            className="form-check-input"
+                            type="radio"
+                            name="gender"
+                            value={"male"}
+                            onChange={handleChange}
+                            defaultChecked={values.gender === "gender"}
+                          />
+                          <label
+                            className="form-check-label"
+                            for="inlineRadio1"
+                          >
+                            Male
+                          </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input
+                            className="form-check-input"
+                            type="radio"
+                            id="female"
+                            name="gender"
+                            value={"female"}
+                            onChange={handleChange}
+                            defaultChecked={values.gender === "female"}
+                          />
+                          <label
+                            className="form-check-label"
+                            for="inlineRadio2"
+                          >
+                            Female
+                          </label>
+                        </div>
+                        <div className="form-check form-check-inline">
+                          <input
+                            className="form-check-input"
+                            type="radio"
+                            id="others"
+                            name="gender"
+                            value={"others"}
+                            onChange={handleChange}
+                            defaultChecked={values.gender === "others"}
+                          />
+                          <label
+                            className="form-check-label"
+                            for="inlineRadio2"
+                          >
+                            Others
+                          </label>
+                        </div>
+                      </div>
+                      <p className="formik">{errors.gender}</p>
+                    </div>
+
+                    <h5 className="mt-2 addressdetail">Address Details</h5>
+
+                    <div className="row ">
+                      <div className="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                        <label for="street" class="form-label">
+                          Street :
+                        </label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="street"
+                          name="street"
+                          value={values.street}
+                          onChange={handleChange}
+                        />
+                        <p className="formik">{errors.street}</p>
+                      </div>
+                      <div className="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                        <label for="city" class="form-label">
+                          City:
+                        </label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="city"
+                          name="city"
+                          value={values.city}
+                          onChange={handleChange}
+                        />
+                        <p className="formik">{errors.city}</p>
+                      </div>
+                    </div>
+                    <div className="row">
+                      <div className="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                        <label for="state" class="form-label">
+                          State :
+                        </label>
+                        <input
+                          type="email"
+                          class="form-control"
+                          id="state"
+                          name="state"
+                          value={values.state}
+                          onChange={handleChange}
+                        />
+                        {<p className="formik">{errors.state}</p>}
+                      </div>
+
+                      <div className="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                        <label for="zip" class="form-label">
+                          Zip :
+                        </label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="zip"
+                          name="zip"
+                          value={values.zip}
+                          onChange={handleChange}
+                        />
+                        {<p className="formik">{errors.zip}</p>}
+                      </div>
                     </div>
                   </div>
-                  <div className="col-4">
-                    <div className="form-check  ">
-                      <input
-                        className="form-check-input"
-                        type="radio"
-                        id="others"
-                        name="gender"
-                        value={"others"}
-                        onChange={handleChange}
-                        defaultChecked={values.gender=== "others"}
-                      />
-                      <label
-                        className="form-check-label"
-                        for="flexRadioDefault2"
-                      >
-                        Others
-                      </label>
+                  <div className="col-md-6 border border-right-0 border-top-0 border-bottom-0">
+                    <label className=" mt-3  ">
+                      Type of food like to have?
+                    </label>
+                    <div>
+                      <div class="form-check form-check-inline">
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          name="test"
+                          id="veg"
+                          value={"veg"}
+                          onChange={handleChange}
+                          defaultChecked={values.test === "veg"}
+                        />
+                        <label class="form-check-label" for="inlineRadio1">
+                          veg
+                        </label>
+                      </div>
+
+                      <div class="form-check form-check-inline">
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          name="test"
+                          id="Nonveg"
+                          value={"Non-veg"}
+                          onChange={handleChange}
+                          defaultChecked={values.test === "Non-veg"}
+                        />
+                        <label class="form-check-label" for="inlineRadio2">
+                          Nonveg
+                        </label>
+                      </div>
                     </div>
+
+                    <p className="formik">{errors.test}</p>
+                    {values.test === "veg" ? (
+                      <table className="table table-hover table-striped  d-block mt-3 p-4">
+                        <thead>
+                          <tr>
+                          <th >S.no</th>
+                            <th >Product</th>
+                            <th >Quantity</th>
+                            <th >Price</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <th scope="row">1</th>
+                            <td>
+                              <div className="form-check">
+                                <input
+                                  className="form-check-input"
+                                  type="checkbox"
+                                  id="parota"
+                                  name="parotaproduct"
+                                  value={"parota"}
+                                  onClick={(e) => handleproduct(e)}
+                                />
+                                <label
+                                  className="form-check-label"
+                                  for="flexCheckDefault"
+                                >
+                                  Parota
+                                </label>
+                              </div>
+                            </td>
+
+                            <td>
+                              {dinnerlist.product.includes("parota") && (
+                                <input
+                                  className="form-control w-25"
+                                  type="number"
+                                  name="parotaquantity"
+                                  value={dinnerlist.cost}
+                                  onChange={(e) =>
+                                    setDinnerlist({
+                                      ...dinnerlist,
+                                      cost: e.target.value,
+                                    })
+                                  }
+                                />
+                              )}
+                            </td>
+
+                            {/* {<td> {dinnerlist.price!== "" &&dinnerlist.price}</td>} */}
+                            {
+                              <td>
+                                {" "}
+                                {dinnerlist.price !== ""
+                                  ? dinnerlist.price
+                                  : (dinnerlist.price = 0)}
+                              </td>
+                            }
+                          </tr>
+                          <tr>
+                            <th scope="row">2</th>
+                            <td>
+                              <div className="form-check">
+                                <input
+                                  className="form-check-input"
+                                  type="checkbox"
+                                  id="chapati"
+                                  name="chapatiproduct"
+                                  value={"chapati"}
+                                  onClick={(e) => handleproduct(e)}
+                                />
+                                <label
+                                  className="form-check-label"
+                                  for="flexCheckDefault"
+                                >
+                                  Chapati
+                                </label>
+                              </div>
+                            </td>
+                            <td>
+                              {dinnerlist.product.includes("chapati") && (
+                                <input
+                                  className="form-control w-25"
+                                  type="number"
+                                  name="chapatiquantity"
+                                  value={dinnerlist.rupees}
+                                  onChange={(e) =>
+                                    setDinnerlist({
+                                      ...dinnerlist,
+                                      rupees: e.target.value,
+                                    })
+                                  }
+                                />
+                              )}
+                            </td>
+
+                            {
+                              <td>
+                                {dinnerlist.value !== ""
+                                  ? dinnerlist.value
+                                  : (dinnerlist.value = 0)}
+                              </td>
+                            }
+                          </tr>
+                          <tr>
+                            <th scope="row">3</th>
+                            <td>
+                              <div className="form-check">
+                                <input
+                                  className="form-check-input"
+                                  type="checkbox"
+                                  id="poori"
+                                  name="pooriproduct"
+                                  value={"poori"}
+                                  onClick={(e) => handleproduct(e)}
+                                />
+                                <label
+                                  className="form-check-label"
+                                  for="flexCheckDefault"
+                                >
+                                  Poori
+                                </label>
+                              </div>
+                            </td>
+                            <td>
+                              {dinnerlist.product.includes("poori") && (
+                                <input
+                                  className="form-control w-25"
+                                  type="number"
+                                  name="pooriquantity"
+                                  value={dinnerlist.coin}
+                                  onChange={(e) =>
+                                    setDinnerlist({
+                                      ...dinnerlist,
+                                      coin: e.target.value,
+                                    })
+                                  }
+                                />
+                              )}
+                            </td>
+                            {
+                              <td>
+                                {dinnerlist.money !== ""
+                                  ? dinnerlist.money
+                                  : (dinnerlist.money = 0)}
+                              </td>
+                            }
+                          </tr>
+                          <tr>
+                            <th scope="row">4</th>
+
+                            <td>
+                              <div className="form-check">
+                                <input
+                                  className="form-check-input"
+                                  type="checkbox"
+                                  id="paniyaram"
+                                  name="paniyaramproduct"
+                                  value={"paniyaram"}
+                                  onClick={(e) => handleproduct(e)}
+                                />
+                                <label
+                                  className="form-check-label"
+                                  for="flexCheckDefault"
+                                >
+                                  Paniyaram
+                                </label>
+                              </div>
+                            </td>
+                            <td>
+                              {dinnerlist.product.includes("paniyaram") && (
+                                <input
+                                  className="form-control w-25"
+                                  type="number"
+                                  name="paniyaramquantity"
+                                  value={dinnerlist.image}
+                                  onChange={(e) =>
+                                    setDinnerlist({
+                                      ...dinnerlist,
+                                      image: e.target.value,
+                                    })
+                                  }
+                                />
+                              )}
+                            </td>
+                            {
+                              <td>
+                                {dinnerlist.test !== ""
+                                  ? dinnerlist.test
+                                  : (dinnerlist.test = 0)}
+                              </td>
+                            }
+                          </tr>
+                        </tbody>
+                      </table>
+                    ) : values.test === "Non-veg" ? (
+                      <table className="table  table-hover table-striped  d-block mt-3 p-4">
+                        <thead>
+                          <tr>
+                          <th >S.no</th>
+                            <th >Product</th>
+                            <th >Quantity</th>
+                            <th >Price</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <th scope="row">1</th>
+                            <td>
+                              <div className="form-check">
+                                <input
+                                  className="form-check-input"
+                                  type="checkbox"
+                                  id="chicken tikka"
+                                  name="chickentikkaquantity"
+                                  value={"chickentikka"}
+                                  onClick={(e) => handlequantity(e)}
+                                />
+                                <label
+                                  className="form-check-label"
+                                  for="flexCheckDefault"
+                                >
+                                  Chicken kolampu
+                                </label>
+                              </div>
+                            </td>
+                            <td>
+                              {dinnerlist.quantity.includes("chickentikka") && (
+                                <input
+                                  className="form-control w-25"
+                                  type="number"
+                                  name="chickentikkaquantity"
+                                  value={dinnerlist.universe}
+                                  onChange={(e) =>
+                                    setDinnerlist({
+                                      ...dinnerlist,
+                                      universe: e.target.value,
+                                    })
+                                  }
+                                />
+                              )}
+                            </td>
+                            {
+                              <td>
+                                {dinnerlist.unit !== ""
+                                  ? dinnerlist.unit
+                                  : (dinnerlist.unit = 0)}
+                              </td>
+                            }
+                          </tr>
+                          <tr>
+                            <th scope="row">2</th>
+                            <td>
+                              <div className="form-check">
+                                <input
+                                  className="form-check-input"
+                                  type="checkbox"
+                                  id="chicken rice"
+                                  name="chickenricequantity"
+                                  value={"chickenrice"}
+                                  onClick={(e) => handlequantity(e)}
+                                />
+                                <label
+                                  className="form-check-label"
+                                  for="flexCheckDefault"
+                                >
+                                  Matton kolampu
+                                </label>
+                              </div>
+                            </td>
+                            <td>
+                              {dinnerlist.quantity.includes("chickenrice") && (
+                                <input
+                                  className="form-control w-25"
+                                  type="number"
+                                  name="chickenricequantity"
+                                  value={dinnerlist.edit}
+                                  onChange={(e) =>
+                                    setDinnerlist({
+                                      ...dinnerlist,
+                                      edit: e.target.value,
+                                    })
+                                  }
+                                />
+                              )}
+                            </td>
+                            {
+                              <td>
+                                {dinnerlist.get !== ""
+                                  ? dinnerlist.get
+                                  : (dinnerlist.get = 0)}
+                              </td>
+                            }
+                          </tr>
+                          <tr>
+                            <th scope="row">3</th>
+                            <td>
+                              <div className="form-check">
+                                <input
+                                  className="form-check-input"
+                                  type="checkbox"
+                                  id="chicken noodles"
+                                  name="chickennoodlesquantity"
+                                  value={"chickennoodles"}
+                                  onClick={(e) => handlequantity(e)}
+                                />
+                                <label
+                                  className="form-check-label"
+                                  for="flexCheckDefault"
+                                >
+                                  Chicken noodles
+                                </label>
+                              </div>
+                            </td>
+                            <td>
+                              {dinnerlist.quantity.includes(
+                                "chickennoodles"
+                              ) && (
+                                <input
+                                  className="form-control w-25"
+                                  type="number"
+                                  name="vegricequantity"
+                                  value={dinnerlist.max}
+                                  onChange={(e) =>
+                                    setDinnerlist({
+                                      ...dinnerlist,
+                                      max: e.target.value,
+                                    })
+                                  }
+                                />
+                              )}
+                            </td>
+                            {
+                              <td>
+                                {dinnerlist.exam !== ""
+                                  ? dinnerlist.exam
+                                  : (dinnerlist.exam = 0)}
+                              </td>
+                            }
+                          </tr>
+                          <tr>
+                            <th scope="row">4</th>
+
+                            <td>
+                              <div className="form-check">
+                                <input
+                                  className="form-check-input"
+                                  type="checkbox"
+                                  id="grilled chicken sandwich"
+                                  name="grilledchickensandwichquantity"
+                                  value={"grilledchickensandwich"}
+                                  onClick={(e) => handlequantity(e)}
+                                />
+                                <label
+                                  className="form-check-label"
+                                  for="flexCheckDefault"
+                                >
+                                  Chicken rice
+                                </label>
+                              </div>
+                            </td>
+                            <td>
+                              {dinnerlist.quantity.includes(
+                                "grilledchickensandwich"
+                              ) && (
+                                <input
+                                  className="form-control w-25"
+                                  type="number"
+                                  name="grilledchickensandwichquantity"
+                                  value={dinnerlist.delete}
+                                  onChange={(e) =>
+                                    setDinnerlist({
+                                      ...dinnerlist,
+                                      delete: e.target.value,
+                                    })
+                                  }
+                                />
+                              )}
+                            </td>
+                            {
+                              <td>
+                                {dinnerlist.head !== ""
+                                  ? dinnerlist.head
+                                  : (dinnerlist.head = 0)}
+                              </td>
+                            }
+                          </tr>
+                        </tbody>
+                      </table>
+                    ) : null}
+                  </div>
+
+                  <div className="d-grid gap-2 d-md-flex justify-content-end">
+                    <button
+                      className="btn p-2 me-md-2 bg-white  btn-outline-dark"
+                      onClick={() => navigate("/lunch")}
+                      type="button"
+                    >
+                      Cancel
+                    </button>
+                    <button
+                      className="btn p-2 me-md-2 buttoncolor text-white"
+                      type="submit"
+                    >
+                      Submit
+                    </button>
                   </div>
                 </div>
               </div>
-              <p className="formik">{errors.gender}</p>
+              <div />
+              <div />
             </div>
-            <label className=" mt-3  ">Type of food like to have?</label>
-            <div className="row w-50">
-              <div className="col-6">
-                <div className="form-check">
-                  <input
-                    className="form-check-input"
-                    type="radio"
-                    name="test"
-                    id="veg"
-                    value={"veg"}
-                    onChange={handleChange}
-                    defaultChecked={values.test=== "veg"}
-                  />
-                  <label className="form-check-label  " for="price">
-                    Veg
-                  </label>
-                </div>
-              </div>
-              <div className="col-6">
-                <div className="form-check ">
-                  <input
-                    className="form-check-input"
-                    type="radio"
-                    name="test"
-                    id="Nonveg"
-                    value={"Non-veg"}
-                    onChange={handleChange}
-                        defaultChecked={values.test=== "Non-veg"}
-                  />
-                  <label className="form-check-label  " for="price">
-                    Non veg
-                  </label>
-                </div>
-              </div>
-            </div>
-            <p className="formik">{errors.test}</p>
-            {values.test === "veg" ? (
-              <table className="table mt-3 p-4">
-                <thead>
-                  <tr>
-                    <th scope="col" className="tableheading">
-                      S.no
-                    </th>
-                    <th scope="col" className="tableheading">
-                      Food
-                    </th>
-                    <th scope="col" className="tableheading">
-                      Quantity
-                    </th>
-                    <th scope="col" className="tableheading">
-                      Price
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>
-                      <div className="form-check">
-                        <input
-                          className="form-check-input"
-                          type="checkbox"
-                          id="parota"
-                          name="parotaproduct"
-                          value={"parota"}
-                          onClick={(e) => handleproduct(e)}
-                        />
-                        <label
-                          className="form-check-label"
-                          for="flexCheckDefault"
-                        >
-                          Parota
-                        </label>
-                      </div>
-                    </td>
-
-                    <td>
-                      {dinnerlist.product.includes("parota") && (
-                        <input
-                          className="form-control w-25"
-                          type="number"
-                          name="parotaquantity"
-                          value={dinnerlist.cost}
-                          onChange={(e) =>
-                            setDinnerlist({
-                              ...dinnerlist,
-                              cost: e.target.value,
-                            })
-                          }
-                        />
-                      )}
-                    </td>
-
-                    {/* {<td> {dinnerlist.price!== "" &&dinnerlist.price}</td>} */}
-                    {
-                      <td>
-                        {" "}
-                        {dinnerlist.price !== ""
-                          ? dinnerlist.price
-                          : (dinnerlist.price = 0)}
-                      </td>
-                    }
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>
-                      <div className="form-check">
-                        <input
-                          className="form-check-input"
-                          type="checkbox"
-                          id="chapati"
-                          name="chapatiproduct"
-                          value={"chapati"}
-                          onClick={(e) => handleproduct(e)}
-                        />
-                        <label
-                          className="form-check-label"
-                          for="flexCheckDefault"
-                        >
-                          Chapati
-                        </label>
-                      </div>
-                    </td>
-                    <td>
-                      {dinnerlist.product.includes("chapati") && (
-                        <input
-                          className="form-control w-25"
-                          type="number"
-                          name="chapatiquantity"
-                          value={dinnerlist.rupees}
-                          onChange={(e) =>
-                            setDinnerlist({
-                              ...dinnerlist,
-                              rupees: e.target.value,
-                            })
-                          }
-                        />
-                      )}
-                    </td>
-
-                    {
-                      <td>
-                        {dinnerlist.value !== ""
-                          ? dinnerlist.value
-                          : (dinnerlist.value = 0)}
-                      </td>
-                    }
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>
-                      <div className="form-check">
-                        <input
-                          className="form-check-input"
-                          type="checkbox"
-                          id="poori"
-                          name="pooriproduct"
-                          value={"poori"}
-                          onClick={(e) => handleproduct(e)}
-                        />
-                        <label
-                          className="form-check-label"
-                          for="flexCheckDefault"
-                        >
-                          Poori
-                        </label>
-                      </div>
-                    </td>
-                    <td>
-                      {dinnerlist.product.includes("poori") && (
-                        <input
-                          className="form-control w-25"
-                          type="number"
-                          name="pooriquantity"
-                          value={dinnerlist.coin}
-                          onChange={(e) =>
-                            setDinnerlist({
-                              ...dinnerlist,
-                              coin: e.target.value,
-                            })
-                          }
-                        />
-                      )}
-                    </td>
-                    {
-                      <td>
-                        {dinnerlist.money !== ""
-                          ? dinnerlist.money
-                          : (dinnerlist.money = 0)}
-                      </td>
-                    }
-                  </tr>
-                  <tr>
-                    <th scope="row">4</th>
-
-                    <td>
-                      <div className="form-check">
-                        <input
-                          className="form-check-input"
-                          type="checkbox"
-                          id="paniyaram"
-                          name="paniyaramproduct"
-                          value={"paniyaram"}
-                          onClick={(e) => handleproduct(e)}
-                        />
-                        <label
-                          className="form-check-label"
-                          for="flexCheckDefault"
-                        >
-                          Paniyaram
-                        </label>
-                      </div>
-                    </td>
-                    <td>
-                      {dinnerlist.product.includes("paniyaram") && (
-                        <input
-                          className="form-control w-25"
-                          type="number"
-                          name="paniyaramquantity"
-                          value={dinnerlist.image}
-                          onChange={(e) =>
-                            setDinnerlist({
-                              ...dinnerlist,
-                              image: e.target.value,
-                            })
-                          }
-                        />
-                      )}
-                    </td>
-                    {
-                      <td>
-                        {dinnerlist.test !== ""
-                          ? dinnerlist.test
-                          : (dinnerlist.test = 0)}
-                      </td>
-                    }
-                  </tr>
-                </tbody>
-              </table>
-            ) : values.test === "Non-veg" ? (
-              <table className="table mt-3 p-4">
-                <thead>
-                  <tr>
-                    <th scope="col" className="tableheading">
-                      S.no
-                    </th>
-                    <th scope="col" className="tableheading">
-                      Food
-                    </th>
-                    <th scope="col" className="tableheading">
-                      Quantity
-                    </th>
-                    <th scope="col" className="tableheading">
-                      Price
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>
-                      <div className="form-check">
-                        <input
-                          className="form-check-input"
-                          type="checkbox"
-                          id="chicken tikka"
-                          name="chickentikkaquantity"
-                          value={"chickentikka"}
-                          onClick={(e) => handlequantity(e)}
-                        />
-                        <label
-                          className="form-check-label"
-                          for="flexCheckDefault"
-                        >
-                          Chicken kolampu
-                        </label>
-                      </div>
-                    </td>
-                    <td>
-                      {dinnerlist.quantity.includes("chickentikka") && (
-                        <input
-                          className="form-control w-25"
-                          type="number"
-                          name="chickentikkaquantity"
-                          value={dinnerlist.universe}
-                          onChange={(e) =>
-                            setDinnerlist({
-                              ...dinnerlist,
-                              universe: e.target.value,
-                            })
-                          }
-                        />
-                      )}
-                    </td>
-                    {
-                      <td>
-                        {dinnerlist.unit !== ""
-                          ? dinnerlist.unit
-                          : (dinnerlist.unit = 0)}
-                      </td>
-                    }
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>
-                      <div className="form-check">
-                        <input
-                          className="form-check-input"
-                          type="checkbox"
-                          id="chicken rice"
-                          name="chickenricequantity"
-                          value={"chickenrice"}
-                          onClick={(e) => handlequantity(e)}
-                        />
-                        <label
-                          className="form-check-label"
-                          for="flexCheckDefault"
-                        >
-                          Matton kolampu
-                        </label>
-                      </div>
-                    </td>
-                    <td>
-                      {dinnerlist.quantity.includes("chickenrice") && (
-                        <input
-                          className="form-control w-25"
-                          type="number"
-                          name="chickenricequantity"
-                          value={dinnerlist.edit}
-                          onChange={(e) =>
-                            setDinnerlist({
-                              ...dinnerlist,
-                              edit: e.target.value,
-                            })
-                          }
-                        />
-                      )}
-                    </td>
-                    {
-                      <td>
-                        {dinnerlist.get !== ""
-                          ? dinnerlist.get
-                          : (dinnerlist.get = 0)}
-                      </td>
-                    }
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>
-                      <div className="form-check">
-                        <input
-                          className="form-check-input"
-                          type="checkbox"
-                          id="chicken noodles"
-                          name="chickennoodlesquantity"
-                          value={"chickennoodles"}
-                          onClick={(e) => handlequantity(e)}
-                        />
-                        <label
-                          className="form-check-label"
-                          for="flexCheckDefault"
-                        >
-                          Chicken noodles
-                        </label>
-                      </div>
-                    </td>
-                    <td>
-                      {dinnerlist.quantity.includes("chickennoodles") && (
-                        <input
-                          className="form-control w-25"
-                          type="number"
-                          name="vegricequantity"
-                          value={dinnerlist.max}
-                          onChange={(e) =>
-                            setDinnerlist({
-                              ...dinnerlist,
-                              max: e.target.value,
-                            })
-                          }
-                        />
-                      )}
-                    </td>
-                    {
-                      <td>
-                        {dinnerlist.exam !== ""
-                          ? dinnerlist.exam
-                          : (dinnerlist.exam = 0)}
-                      </td>
-                    }
-                  </tr>
-                  <tr>
-                    <th scope="row">4</th>
-
-                    <td>
-                      <div className="form-check">
-                        <input
-                          className="form-check-input"
-                          type="checkbox"
-                          id="grilled chicken sandwich"
-                          name="grilledchickensandwichquantity"
-                          value={"grilledchickensandwich"}
-                          onClick={(e) => handlequantity(e)}
-                        />
-                        <label
-                          className="form-check-label"
-                          for="flexCheckDefault"
-                        >
-                          Chicken rice
-                        </label>
-                      </div>
-                    </td>
-                    <td>
-                      {dinnerlist.quantity.includes(
-                        "grilledchickensandwich"
-                      ) && (
-                        <input
-                          className="form-control w-25"
-                          type="number"
-                          name="grilledchickensandwichquantity"
-                          value={dinnerlist.delete}
-                          onChange={(e) =>
-                            setDinnerlist({
-                              ...dinnerlist,
-                              delete: e.target.value,
-                            })
-                          }
-                        />
-                      )}
-                    </td>
-                    {
-                      <td>
-                        {dinnerlist.head !== ""
-                          ? dinnerlist.head
-                          : (dinnerlist.head = 0)}
-                      </td>
-                    }
-                  </tr>
-                </tbody>
-              </table>
-            ) : null}
-
-            <h5 className="mt-2 addressdetail">Address Details</h5>
-
-            <label>Street :</label>
-            <textarea
-              className=" form-control p-0 textarea"
-              name="street"
-              value={values.street}
-              onChange={handleChange}
-          
-            />
-             {<p className="formik">{errors.street}</p>}
-            <div className="row">
-              <div className="col-3 mt-3">
-                <label>City :</label>
-                <input
-                  className=" form-control "
-                  name="city"
-                  value={values.city}
-                  onChange={handleChange}
-                />
-                 {<p className="formik">{errors.city}</p>}
-                <div />
-              </div>
-              <div className="col-3 mt-3">
-                <label>State :</label>
-                <input
-                  className="form-control "
-                  name="state"
-                  value={values.state}
-                  onChange={handleChange}
-                />
-                 {<p className="formik">{errors.state}</p>}
-              </div>
-
-              <div className="col-3 mt-3">
-                <label>Zip :</label>
-                <input
-                  className=" form-control "
-                  name="zip"
-                  value={values.zip}
-                  onChange={handleChange}
-                />
-                 {<p className="formik">{errors.zip}</p>}
-              </div>
-            </div>
-            <div className="d-grid gap-2 d-md-flex justify-content-end">
-              <button
-                className="btn p-2 me-md-2  bg-white"
-                onClick={() => navigate("/dinner")}
-                type="button"
-              >
-                Cancel
-              </button>
-              <button
-                className="btn p-2 me-md-2 buttoncolor text-white"
-                
-           
-                type="submit"
-              >
-                Submit
-              </button>
-            </div>
-          </div>
-          <div />
-          <div />
-        </div>
-        
-
-      </Form>
-        )}   
-          </Formik>
+          </Form>
+        )}
+      </Formik>
     </>
-   
   );
 };
 export default Dinnerlist;

@@ -1,15 +1,15 @@
-import logo from "../assets/image/logo.png";
+import logo from "../assets/image/sidebarimage.png";
 import { Icon } from "@iconify/react";
 import { Link } from "react-router-dom";
 const Sidebar = (props) => {
   return (
     <div className="row sidebar ">
-      <div className=" p-3 mb-5   rounded">
+      <div className=" p-3 mb-5 rounded">
         <img
           src={logo}
-          className=" d-flex justify-content-center logo mx-auto"
+          className=" d-flex justify-content-center logo  "
         />
-        <div className="list-group  ">
+        <div className="list-group mt-3 ">
           <Link to="/breakfast">
             {" "}
             <p

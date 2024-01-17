@@ -1,10 +1,12 @@
 import Sidebar from "../../layout/Sidebar";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { Formik } from "formik";
 import Form from "react-bootstrap/Form";
 import * as yup from "yup";
+import { Icon } from "@iconify/react";
+import logo from "../../assets/image/sidebarimage.png";
 const AddLunch = ({ active, setActive, changeArr, setChangeArr }) => {
   const [menulist, setMenulist] = useState({
     Name: "",
@@ -147,18 +149,156 @@ const AddLunch = ({ active, setActive, changeArr, setChangeArr }) => {
         {({ handleSubmit, handleChange, values, errors }) => (
           <Form noValidate onSubmit={handleSubmit}>
             <div className="row ">
-              <div className="col-2 ">
+              <div className="col-2 d-none d-sm-none d-md-block d-lg-block">
                 <Sidebar active={active} setActive={setActive} />
               </div>
-              <div className="col-10  p-3  ">
-                <div className="row bg-white mx-3 rounded p-3">
+              <div className=" col-sm-12 col-md-10 col-lg-10 p-3  ">
+                <div className="row bg-white mx-3 rounded p-3 ">
+                <div className=" rounded image-color   d-flex  d-sm-block d-md-none d-lg-none">
+                <div className="col-10 ">
+                <img
+          src={logo}
+         className="image-width"
+        />
+                </div>
+                
+                <div className="col-2 ">
+                <a  data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+                <Icon className="text-white" icon="heroicons:bars-3-20-solid" width="30" height="30" />
+</a>
+
+
+<div className="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+  <div className="offcanvas-header">
+    <h5 className="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
+ 
+
+   
+    <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+ 
+  <div className="offcanvas-body">
+    <div>
+    <div className="row sidebar ">
+      <div className=" p-3 mb-5 rounded">
+        <img
+          src={logo}
+          className=" d-flex justify-content-center logo  "
+        />
+        <div className="list-group mt-3 ">
+          <Link to="/breakfast">
+            {" "}
+            <p
+              className={`${
+                active === "breakfast"
+                  ? "p-2 bg-white rounded-3  text-danger"
+                  : "text-white"
+              } p-2 fontsize hover  `}
+              onClick={() => setActive("breakfast")}
+            >
+              <Icon
+                className="me-2"
+                icon="material-symbols-light:no-meals-rounded"
+                width="20"
+                height="20"
+              />
+              Breakfast
+            </p>
+          </Link>
+          <Link to="/lunch" >
+            {" "}
+            <p
+              className={`${
+                active === "lunch"
+                  ? " p-2 bg-white rounded-3  text-danger"
+                  : "text-white"
+              } p-2 hover   fontsize `}
+              onClick={() => setActive("lunch")}
+            >
+              <Icon
+                className="mb-1 me-2"
+                icon="cil:dinner"
+                width="20"
+                height="20"
+              />
+              Lunch
+            </p>
+          </Link>
+
+          <Link to="/dinner" >
+            {" "}
+            <p
+              className={`${
+                active === "dinner"
+                  ? " p-2 bg-white rounded-3 text-danger"
+                  : "text-white"
+              } p-2 hover  fontsize `}
+              onClick={() => setActive("dinner")}
+            >
+              <Icon
+                className="mb-1 me-2"
+                icon="mdi:dinner"
+                width="20"
+                height="20"
+              />
+              Dinner
+            </p>
+          </Link>
+       
+          <Link to="/User-data-table">
+            <p
+              className={`${
+                active === "User-data-table"
+                  ? " p-2 bg-white rounded-3  text-danger"
+                  : "text-white"
+              } p-2 hover   `}
+              onClick={() =>setActive("User-data-table")}
+            >
+              <Icon
+                icon="uil:chat-bubble-user"
+                width="20"
+                height="20"
+                className="me-2 mb-1"
+              />
+              User DataTable
+            </p>
+          </Link>
+       
+          <Link to="/fts-data-table">
+            {" "}
+            <p
+              className={`${
+                active === "Ftsdatatable"
+                  ? " p-2 bg-white rounded-3 text-danger"
+                  : "text-white"
+              } p-2 hover  `}
+              onClick={() => setActive("Ftsdatatable")}
+            >
+              <Icon
+                icon="gridicons:multiple-users"
+                className="mb-1 me-2"
+                width="20"
+                height="20"
+              />
+              Ftsdatatable
+            </p>
+          </Link>
+        </div>
+        </div>
+      </div>
+    </div>
+    </div>
+   
+  </div>
+                </div>
+              </div>
                   <div className="col-md-6">
                     <div className="row ">
                       <h5 className="personaldetail">Personal Details</h5>
-                      <div className="col-6">
+                      <div className="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                         <label
                           for="exampleFormControlInput1"
-                          class="form-label"
+                          className="form-label"
                         >
                           Name :
                         </label>
@@ -172,13 +312,13 @@ const AddLunch = ({ active, setActive, changeArr, setChangeArr }) => {
                         />
                         <p className="formik">{errors.Name}</p>
                       </div>
-                      <div className="col-6">
+                      <div className="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                         <label for="phonenumber2" class="form-label">
-                          phoneNumber:
+                          PhoneNumber:
                         </label>
                         <input
                           type=""
-                          class="form-control"
+                          className="form-control"
                           id="phonenumber2"
                           name="phoneNumber"
                           value={values.phoneNumber}
@@ -188,8 +328,8 @@ const AddLunch = ({ active, setActive, changeArr, setChangeArr }) => {
                       </div>
                     </div>
                     <div className="row">
-                      <div className="col-6">
-                        <label for="emailinput" class="form-label">
+                      <div className="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                        <label for="emailinput" className="form-label">
                           Email :
                         </label>
                         <input
@@ -203,13 +343,13 @@ const AddLunch = ({ active, setActive, changeArr, setChangeArr }) => {
                         {<p className="formik">{errors.email}</p>}
                       </div>
 
-                      <div className="col-6">
+                      <div className="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                         <label for="dateofbirth" class="form-label">
                           Date Of Birth
                         </label>
                         <input
                           type="date"
-                          class="form-control"
+                          className="form-control"
                           id="dateofbirth"
                           name="dateofbirth"
                           value={values.dateofbirth}
@@ -224,18 +364,21 @@ const AddLunch = ({ active, setActive, changeArr, setChangeArr }) => {
                         </label>{" "}
                         <div class="form-check form-check-inline">
                           <input
-                            class="form-check-input"
+                            className="form-check-input"
                             type="radio"
                             name="gender"
                             value={"male"}
                             onChange={handleChange}
                             defaultChecked={values.gender === "gender"}
                           />
-                          <label class="form-check-label" for="inlineRadio1">
+                          <label
+                            className="form-check-label"
+                            for="inlineRadio1"
+                          >
                             Male
                           </label>
                         </div>
-                        <div class="form-check form-check-inline">
+                        <div className="form-check form-check-inline">
                           <input
                             class="form-check-input"
                             type="radio"
@@ -245,13 +388,16 @@ const AddLunch = ({ active, setActive, changeArr, setChangeArr }) => {
                             onChange={handleChange}
                             defaultChecked={values.gender === "female"}
                           />
-                          <label class="form-check-label" for="inlineRadio2">
+                          <label
+                            className="form-check-label"
+                            for="inlineRadio2"
+                          >
                             Female
                           </label>
                         </div>
-                        <div class="form-check form-check-inline">
+                        <div className="form-check form-check-inline">
                           <input
-                            class="form-check-input"
+                            className="form-check-input"
                             type="radio"
                             id="others"
                             name="gender"
@@ -259,7 +405,10 @@ const AddLunch = ({ active, setActive, changeArr, setChangeArr }) => {
                             onChange={handleChange}
                             defaultChecked={values.gender === "others"}
                           />
-                          <label class="form-check-label" for="inlineRadio2">
+                          <label
+                            className="form-check-label"
+                            for="inlineRadio2"
+                          >
                             Others
                           </label>
                         </div>
@@ -270,13 +419,13 @@ const AddLunch = ({ active, setActive, changeArr, setChangeArr }) => {
                     <h5 className="mt-2 addressdetail">Address Details</h5>
 
                     <div className="row ">
-                      <div className="col-6">
-                        <label for="street" class="form-label">
+                      <div className="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                        <label for="street" className="form-label">
                           Street :
                         </label>
                         <input
                           type="text"
-                          class="form-control"
+                          className="form-control"
                           id="street"
                           name="street"
                           value={values.street}
@@ -284,13 +433,13 @@ const AddLunch = ({ active, setActive, changeArr, setChangeArr }) => {
                         />
                         <p className="formik">{errors.street}</p>
                       </div>
-                      <div className="col-6">
-                        <label for="city" class="form-label">
+                      <div className="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                        <label for="city" className="form-label">
                           City:
                         </label>
                         <input
                           type="text"
-                          class="form-control"
+                          className="form-control"
                           id="city"
                           name="city"
                           value={values.city}
@@ -300,13 +449,13 @@ const AddLunch = ({ active, setActive, changeArr, setChangeArr }) => {
                       </div>
                     </div>
                     <div className="row">
-                      <div className="col-6">
+                      <div className="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                         <label for="state" class="form-label">
                           State :
                         </label>
                         <input
                           type="email"
-                          class="form-control"
+                          className="form-control"
                           id="state"
                           name="state"
                           value={values.state}
@@ -315,13 +464,13 @@ const AddLunch = ({ active, setActive, changeArr, setChangeArr }) => {
                         {<p className="formik">{errors.state}</p>}
                       </div>
 
-                      <div className="col-6">
+                      <div className="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                         <label for="zip" class="form-label">
                           Zip :
                         </label>
                         <input
                           type="text"
-                          class="form-control"
+                          className="form-control"
                           id="zip"
                           name="zip"
                           value={values.zip}
@@ -337,9 +486,9 @@ const AddLunch = ({ active, setActive, changeArr, setChangeArr }) => {
                     </label>
 
                     <div>
-                      <div class="form-check form-check-inline">
+                      <div className="form-check form-check-inline">
                         <input
-                          class="form-check-input"
+                          className="form-check-input"
                           type="radio"
                           name="coin"
                           id="veg"
@@ -347,13 +496,13 @@ const AddLunch = ({ active, setActive, changeArr, setChangeArr }) => {
                           onChange={handleChange}
                           defaultChecked={values.coin === "veg"}
                         />
-                        <label class="form-check-label" for="inlineRadio1">
+                        <label className="form-check-label" for="inlineRadio1">
                           veg
                         </label>
                       </div>
                       <div class="form-check form-check-inline">
                         <input
-                          class="form-check-input"
+                          className="form-check-input"
                           type="radio"
                           name="coin"
                           id="Nonveg"
@@ -361,14 +510,14 @@ const AddLunch = ({ active, setActive, changeArr, setChangeArr }) => {
                           onChange={handleChange}
                           defaultChecked={values.coin === "Non-veg"}
                         />
-                        <label class="form-check-label" for="inlineRadio2">
+                        <label className="form-check-label" for="inlineRadio2">
                           Nonveg
                         </label>
                       </div>
                     </div>
                     <p className="formik">{errors.coin}</p>
                     {values.coin === "veg" ? (
-                      <table className="table table-responsive d-block border mt-3 p-4 ">
+                      <table className="table table-responsive table-hover table-striped  d-block mt-3 p-4 ">
                         <thead>
                           <tr>
                             <th>S.no</th>
@@ -566,10 +715,10 @@ const AddLunch = ({ active, setActive, changeArr, setChangeArr }) => {
                       <table className="table  table-responsive table-hover table-striped  d-block mt-3 p-4">
                         <thead>
                           <tr>
-                            <th scope="col">S.no</th>
-                            <th scope="col">Product</th>
-                            <th scope="col">Quantity</th>
-                            <th scope="col">Price</th>
+                            <th >S.no</th>
+                            <th >Product</th>
+                            <th >Quantity</th>
+                            <th >Price</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -758,6 +907,7 @@ const AddLunch = ({ active, setActive, changeArr, setChangeArr }) => {
                       </table>
                     ) : null}
                   </div>
+              
                   <div className="d-grid gap-2 d-md-flex justify-content-end">
                     <button
                       className="btn p-2 me-md-2 bg-white  btn-outline-dark"
@@ -776,6 +926,7 @@ const AddLunch = ({ active, setActive, changeArr, setChangeArr }) => {
                 </div>
               </div>
             </div>
+           
           </Form>
         )}
       </Formik>

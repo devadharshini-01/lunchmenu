@@ -1,5 +1,6 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.js";
 import Login from "./pages/login";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Breakfast from "./pages/Breakfast";
