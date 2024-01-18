@@ -3,12 +3,13 @@ import Sidebar from "../layout/Sidebar";
 import Table from "react-bootstrap/Table";
 import { Icon } from "@iconify/react";
 import axios from "axios";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Model from "./Model";
 import ReactPaginate from "react-paginate";
 import Searchbar from "../layout/Searchbar";
 import { Spinner } from "react-bootstrap";
 import { ToastContainer, toast } from "react-toastify";
+import logo from "../assets/image/sidebarimage.png";
 
 const Ftsdatatable = ({ active, setActive }) => {
   const navigate = useNavigate();
@@ -98,13 +99,151 @@ const Ftsdatatable = ({ active, setActive }) => {
   return (
     <>
     <div class="overflow-hidden">
-    <div className="row">
+    <div className="row vh-100">
         <div className="col-2 d-none d-sm-none d-md-block d-lg-block">
           <Sidebar active={active} setActive={setActive} />
         </div>
         <div className=" col-sm-12 col-md-10 col-lg-10">
-          {/* {spinner ? spinner : "Loading..."} */}
-          <div className="bg-white mt-4 p-3 table-responsive">
+
+        <div className="  rounded image-color  p-4 d-flex  d-sm-block d-md-none d-lg-none">
+                <div className="col-10 ">
+                <img
+          src={logo}
+         className="image-width"
+        />
+                </div>
+                <div className="col-2">
+                <a  data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+                <Icon className="text-white" icon="heroicons:bars-3-20-solid" width="30" height="30" />
+</a>
+
+
+<div class="offcanvas offcanvas-start w-75" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title text-white" id="offcanvasExampleLabel">Offcanvas</h5>
+ 
+
+   
+    <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+ 
+  <div class="offcanvas-body">
+    <div>
+    <div className="row sidebar h-00 ">
+      <div className=" p-3 mb-5 rounded">
+        <img
+          src={logo}
+          className=" d-flex justify-content-center logo  "
+        />
+        <div className="list-group mt-3 ">
+          <Link to="/breakfast">
+            {" "}
+            <p
+              className={`${
+                active === "breakfast"
+                  ? "p-2 bg-white rounded-3  text-danger"
+                  : "text-white"
+              } p-2 fontsize hover  `}
+              onClick={() => setActive("breakfast")}
+            >
+              <Icon
+                className="me-2"
+                icon="material-symbols-light:no-meals-rounded"
+                width="20"
+                height="20"
+              />
+              Breakfast
+            </p>
+          </Link>
+          <Link to="/lunch" >
+            {" "}
+            <p
+              className={`${
+                active === "lunch"
+                  ? " p-2 bg-white rounded-3  text-danger"
+                  : "text-white"
+              } p-2 hover   fontsize `}
+              onClick={() => setActive("lunch")}
+            >
+              <Icon
+                className="mb-1 me-2"
+                icon="cil:dinner"
+                width="20"
+                height="20"
+              />
+              Lunch
+            </p>
+          </Link>
+
+          <Link to="/dinner" >
+            {" "}
+            <p
+              className={`${
+                active === "dinner"
+                  ? " p-2 bg-white rounded-3 text-danger"
+                  : "text-white"
+              } p-2 hover  fontsize `}
+              onClick={() => setActive("dinner")}
+            >
+              <Icon
+                className="mb-1 me-2"
+                icon="mdi:dinner"
+                width="20"
+                height="20"
+              />
+              Dinner
+            </p>
+          </Link>
+       
+          <Link to="/User-data-table">
+            <p
+              className={`${
+                active === "User-data-table"
+                  ? " p-2 bg-white rounded-3  text-danger"
+                  : "text-white"
+              } p-2 hover   `}
+              onClick={() =>setActive("User-data-table")}
+            >
+              <Icon
+                icon="uil:chat-bubble-user"
+                width="20"
+                height="20"
+                className="me-2 mb-1"
+              />
+              User DataTable
+            </p>
+          </Link>
+       
+          <Link to="/fts-data-table">
+            {" "}
+            <p
+              className={`${
+                active === "Ftsdatatable"
+                  ? " p-2 bg-white rounded-3 text-danger"
+                  : "text-white"
+              } p-2 hover  `}
+              onClick={() => setActive("Ftsdatatable")}
+            >
+              <Icon
+                icon="gridicons:multiple-users"
+                className="mb-1 me-2"
+                width="20"
+                height="20"
+              />
+              Ftsdatatable
+            </p>
+          </Link>
+        </div>
+        </div>
+      </div>
+    </div>
+    </div>
+   
+  </div>
+                </div>
+             
+              </div>
+          <div className="bg-white  p-3">
             <div className="col-12">
               <div className=" d-flex justify-content-end ">
                 <button
@@ -124,6 +263,8 @@ const Ftsdatatable = ({ active, setActive }) => {
                 <Searchbar />
               </div>
             </div>
+
+            <div className=" table-responsive">
             <Table className="table" >
               <thead>
                 <tr>
@@ -199,6 +340,8 @@ const Ftsdatatable = ({ active, setActive }) => {
                 )}
               </tbody>
             </Table>
+            </div>
+         
             <div className="row d-flex justify-content-end w-100 ms-1 mt-3">
               <ReactPaginate
                 previousLabel={"previous"}

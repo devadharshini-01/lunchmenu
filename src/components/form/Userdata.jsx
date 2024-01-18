@@ -22,12 +22,12 @@ const Userdata = ({ active, setActive }) => {
 
   return (
     <>
-      <div className="row">
+      <div className="row vh-100">
         <div className="col-2 d-none d-sm-none d-md-block d-lg-block">
           <Sidebar active={active} setActive={setActive} />
         </div>
         <div className=" col-sm-12  col-md-10 col-lg-10">
-          <div className=" rounded image-color   d-flex  d-sm-block d-md-none d-lg-none">
+          <div className=" rounded image-color p-4  d-flex  d-sm-block d-md-none d-lg-none">
             <div className="col-10 ">
               <img src={logo} className="image-width" />
             </div>
@@ -48,13 +48,16 @@ const Userdata = ({ active, setActive }) => {
               </a>
 
               <div
-                className="offcanvas offcanvas-start"
+                className="offcanvas offcanvas-start w-75"
                 tabindex="-1"
                 id="offcanvasExample"
                 aria-labelledby="offcanvasExampleLabel"
               >
                 <div className="offcanvas-header">
-                  <h5 className="offcanvas-title" id="offcanvasExampleLabel">
+                  <h5
+                    className="offcanvas-title text-white"
+                    id="offcanvasExampleLabel"
+                  >
                     Offcanvas
                   </h5>
 
@@ -197,21 +200,21 @@ const Userdata = ({ active, setActive }) => {
             </button>
             <button className=" btn text-white buttoncolor mt-2">Submit</button>
           </div> */}
-               <div className="d-grid gap-2 d-md-flex justify-content-end">
-                    <button
-                      className="btn p-2 me-md-2 bg-white  btn-outline-dark mt-2"
-                      onClick={() => navigate("/User-data-table")}
-                      type="button"
-                    >
-                      Cancel
-                    </button>
-                    <button
-                      className="btn mt-2 me-md-2 buttoncolor text-white"
-                      type="submit"
-                    >
-                      Submit
-                    </button>
-                  </div>
+          <div className=" gap-2 d-flex justify-content-end">
+            <button
+              className="  btn p-2  bg-white mt-2  btn-outline-dark"
+              onClick={() => navigate("/User-data-table")}
+              type="button"
+            >
+              Cancel
+            </button>
+            <button
+              className="btn mt-2 me-md-2 buttoncolor text-white"
+              type="submit"
+            >
+              Submit
+            </button>
+          </div>
         </div>
       </div>
     </>

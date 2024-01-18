@@ -3,7 +3,7 @@ import { Icon } from "@iconify/react";
 import { Link } from "react-router-dom";
 const Sidebar = (props) => {
   return (
-    <div className="row sidebar ">
+    <div className="row sidebar  h-100">
       <div className=" p-3 mb-5 rounded">
         <img
           src={logo}

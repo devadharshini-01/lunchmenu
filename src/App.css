@@ -1,5 +1,7 @@
 body {
   background-color: #e4edf2;
+  height: 100vh !important;
+
 }
 #root{
 overflow-x: hidden;
@@ -111,6 +113,7 @@ overflow-x: hidden;
 
 body {
   background-color: #e4edf2 !important;
+  height: 100vh !important;
 }
 .addressdetail {
   color: #99a3cc !important;
@@ -195,6 +198,7 @@ a:link {
 .overflow-y
 {
   overflow-y: hidden !important;
+  height:100vh !important;
 }
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -204,8 +208,13 @@ input::-webkit-inner-spin-button {
 .image-width
 {
  
-  width: 90px !important;
+  width: 121px !important;
 }
 .image-color{
-  background-color: #f0005f !important;
+  background-color:  #ff4b92  !important;
+}
+.offcanvas
+{
+  height:100vh !important;
+  background-color:#ff3285 !important ;
 }
