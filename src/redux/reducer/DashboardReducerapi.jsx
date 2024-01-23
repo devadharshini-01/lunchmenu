@@ -1,13 +1,15 @@
-let initialvalues = {
+import { dashboardApiConstants } from "../constant/DashboardConstants";
+
+let initialValues = {
   dashboardgetapi: [],
 };
-export const dashboardReducer = (value = initialvalues, action) => {
+export const dashboardReducer = (value = initialValues, action) => {
   switch (action?.type) {
-    case "Darshini_REQUEST":
+    case dashboardApiConstants.REQUEST:
       return { dashboardgetapi: action?.payload };
-    case "SUCCESS":
+    case dashboardApiConstants.SUCCESS:
       return { dashboardgetapi: action?.payload };
-    case "ERROR":
+    case dashboardApiConstants.ERROR:
       return { dashboardgetapi: action?.payload };
     default:
       return value;

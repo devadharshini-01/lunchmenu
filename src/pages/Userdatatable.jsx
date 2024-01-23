@@ -1,24 +1,21 @@
 import { Icon } from "@iconify/react";
 import Sidebor from "../layout/Sidebar";
-import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Searchbar from "../layout/Searchbar";
-import logo from "../assets/image/sidebarimage.png";
 import Header from "../layout/Header";
 import { useSelector, useDispatch } from "react-redux";
-import DashboardActionapi from "../redux/actions/DashboardActionapi";
-import TestActionApi from "../redux/actions/TestActionApi";
+import { DashboardGetAction } from "../redux/actions/DashboardApiAction";
 
 const UserDataTable = ({ active, setActive }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  // const data = useSelector((state) => state.reducer.DashboardActionapi);
-  // console.log(data);
-  const [store, setStore] = useState([]);
+  const data = useSelector((state) => state.dashboard.dashboardgetapi);
+  console.log("data::", data);
+  const [store] = useState([]);
 
   useEffect(() => {
-    dispatch(TestActionApi());
+    dispatch(DashboardGetAction());
   }, []);
 
   // useEffect(() => {
