@@ -1,5 +1,4 @@
 import axios from "axios";
-import { Navigate } from "react-router-dom";
 
 const Interceptor = () => {
   const refreshToken =JSON.parse( localStorage.getItem("refreshToken"));

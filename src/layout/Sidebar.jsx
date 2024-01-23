@@ -10,6 +10,7 @@ const Sidebar = (props) => {
           className=" d-flex justify-content-center logo  "
         />
         <div className="list-group mt-3 ">
+
           <Link to="/breakfast">
             {" "}
             <p
@@ -108,7 +109,22 @@ const Sidebar = (props) => {
             </p>
           </Link>
         </div>
+        
       </div>
+ 
+      <Link to="/">
+            {" "}
+            <p
+              className={`$ p-2 text-white mt-5`}
+              onClick={() => props.setActive("/")}
+            >
+                  <Icon className="mb-1 me-2" icon="ic:baseline-logout" width="20" height="20"
+               
+                />
+              Log Out
+            </p>
+          </Link>
+   
     </div>
   );
 };
