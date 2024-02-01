@@ -1,24 +1,21 @@
 import { Icon } from "@iconify/react";
 import Sidebor from "../layout/Sidebar";
-import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Searchbar from "../layout/Searchbar";
-import logo from "../assets/image/sidebarimage.png";
 import Header from "../layout/Header";
 import { useSelector, useDispatch } from "react-redux";
-import DashboardActionapi from "../redux/actions/DashboardActionapi";
-import TestActionApi from "../redux/actions/TestActionApi";
+import { DashboardGetAction } from "../redux/actions/DashboardApiAction";
 
 const UserDataTable = ({ active, setActive }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  // const data = useSelector((state) => state.reducer.DashboardActionapi);
-  // console.log(data);
-  const [store, setStore] = useState([]);
+  const data = useSelector((state) => state.dashboard.dashboardgetapi);
+  console.log("data::", data);
+  const [store] = useState([]);
 
   useEffect(() => {
-    dispatch(TestActionApi());
+    dispatch(DashboardGetAction());
   }, []);
 
   // useEffect(() => {
@@ -75,18 +72,18 @@ const UserDataTable = ({ active, setActive }) => {
                       </tr>
                     </thead>
                     <tbody>
-                      {Array.isArray(store) &&
-                        store.map((val, i) => {
+                      {Array.isArray(data?.data) &&
+                        data.data.map((item, i) => {
                           return (
                             <tr key={i}>
-                              {console.log(val)}
+                              {console.log(item)}
                               <th scope="row">{i + 1}</th>
 
-                              <td className="idea">{val.category}</td>
+                              <td className="idea">{item.category}</td>
 
-                              <td className="idea">{val.title}</td>
-                              <td className="idea">{val.rating.rate}</td>
-                              <td className="idea">{val.price}</td>
+                              <td className="idea">{item.title}</td>
+                              <td className="idea">{item.rating && item.rating.rate}</td>
+                              <td className="idea">{item.price}</td>
                               {/* <td className="idea">{val.message}</td> */}
 
                               <td>
@@ -116,7 +113,7 @@ const UserDataTable = ({ active, setActive }) => {
                           );
                         })}
                     </tbody>
-                  </table>
+                  </table>   
                 </div>
               </div>
             </div>

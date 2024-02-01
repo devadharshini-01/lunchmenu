@@ -50,7 +50,7 @@ const Login = () => {
        
           <div className="card card-color p-4  ">
             <div className="d-flex flex-column mb-0 mb-0">
-              <img className="logo-width" src={logo}></img>
+              <img className="logo-width " src={logo}></img>
             </div>
             <p className="text-white font-style ">Welcome To Foodingo</p>
             <p className="fontcolor-style ">Deliver Food Instanly</p>
